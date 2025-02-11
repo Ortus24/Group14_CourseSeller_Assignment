@@ -35,6 +35,19 @@ public class Courses {
         this.status = status;
     }
 
+    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate) {
+        this.courseID = courseID;
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.duration = duration;
+        this.thumbnail = thumbnail;
+        this.categoryID = categoryID;
+        this.createdDate = createdDate;
+    }
+    
+    
+
     public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate, int status) {
         this.courseID = courseID;
         this.title = title;
