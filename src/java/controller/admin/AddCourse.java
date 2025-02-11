@@ -80,7 +80,7 @@ public class AddCourse extends HttpServlet {
         String thumbnail = request.getParameter("thumbnail");
         String categoryID = request.getParameter("categoryID");
         String createdDate = request.getParameter("createdDate");
-
+  
         CategoryDAO d = new CategoryDAO();
 
         int priceInt = Integer.parseInt(price);

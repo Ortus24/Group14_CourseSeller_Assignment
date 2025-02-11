@@ -17,13 +17,14 @@ public class Courses {
     private String thumbnail;
     private int categoryID;
     private String createdDate;
+    private int status;
     
 //    dang do minh duc
 
     public Courses() {
     }
 
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, String createdDate) {
+    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, String createdDate, int status) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
@@ -31,9 +32,10 @@ public class Courses {
         this.duration = duration;
         this.thumbnail = thumbnail;
         this.createdDate = createdDate;
+        this.status = status;
     }
 
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate) {
+    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate, int status) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
@@ -42,6 +44,7 @@ public class Courses {
         this.thumbnail = thumbnail;
         this.categoryID = categoryID;
         this.createdDate = createdDate;
+        this.status = status;
     }
     
     
@@ -109,4 +112,14 @@ public class Courses {
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
     }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+    
+    
 }

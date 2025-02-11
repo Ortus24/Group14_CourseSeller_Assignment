@@ -8,5 +8,9 @@
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Project/web/views/admin/addcourse.jsp</file>
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Project/src/java/dal/CategoryDAO.java</file>
         </group>
+        <group name="LAB211">
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/assets/css/theme.css</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/home/HomeController.java</file>
+        </group>
     </open-files>
 </project-private>

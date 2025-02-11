@@ -28,7 +28,7 @@ public class CategoryDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getString("createdDate"));
+                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getString("createdDate"), rs.getInt("status"));
                 list.add(c);
             }
         } catch (SQLException ex) {
@@ -74,8 +74,6 @@ public class CategoryDAO extends DBContext {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    
 
     public Courses getCourseByTitle(String title) {
         String sql = "SELECT *\n"
@@ -87,7 +85,7 @@ public class CategoryDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"));
+                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"), rs.getInt("status"));
                 return c;
             }
         } catch (SQLException ex) {
@@ -96,4 +94,11 @@ public class CategoryDAO extends DBContext {
         return null;
     }
 
+    public static void main(String[] args) {
+        CategoryDAO categoryDAO = new CategoryDAO();
+        List<Courses> listCouses = categoryDAO.getCourses();
+        for (Courses listCouse : listCouses) {
+            System.out.println(listCouse.getTitle());
+        }
+    }
 }
