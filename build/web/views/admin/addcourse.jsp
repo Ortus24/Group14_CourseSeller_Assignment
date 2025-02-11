@@ -35,7 +35,7 @@
                 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
                 width: 600px;
 
-                margin-top: 200px;
+                margin-top: 100px;
             }
             .container h2 {
                 text-align: center;

@@ -5,7 +5,7 @@
 
 package controller.admin;
 
-import dal.CategoryDAO;
+import dal.CourseDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -57,8 +57,9 @@ public class DeleteCourse extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("courseID"));
-        CategoryDAO d  = new CategoryDAO();
-        
+        CourseDAO d  = new CourseDAO();
+        d.deleteCourse(id);
+        response.sendRedirect("listcourse");
     } 
 
     /** 

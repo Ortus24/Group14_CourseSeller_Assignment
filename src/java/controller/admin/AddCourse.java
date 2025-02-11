@@ -4,7 +4,7 @@
  */
 package controller.admin;
 
-import dal.CategoryDAO;
+import dal.CourseDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -81,7 +81,7 @@ public class AddCourse extends HttpServlet {
         String categoryID = request.getParameter("categoryID");
         String createdDate = request.getParameter("createdDate");
 
-        CategoryDAO d = new CategoryDAO();
+        CourseDAO d = new CourseDAO();
 
         int priceInt = Integer.parseInt(price);
         int durationInt = Integer.parseInt(duration);
