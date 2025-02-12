@@ -59,7 +59,7 @@
                         <nav class="navbar navbar-expand-lg" style="height: 90px">
                             <!-- logo Start-->
                             <a class="navbar-brand" href="index-2.html">
-                                <img style="width: auto; height: 64px; margin-top: 10px; margin-right: 50px" src="${pageContext.request.contextPath}/assets/images/logo5.png" alt="">
+                                <img style="width: auto; height: 64px; margin-top: 10px; margin-right: 50px" src="${pageContext.request.contextPath}/assets/images/logo6.png" alt="">
                             </a>
                             <!-- logo End-->
 
