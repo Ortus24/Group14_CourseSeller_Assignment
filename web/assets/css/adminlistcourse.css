@@ -6,7 +6,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Feb 14, 2025, 1:13:39 PM
     Author     : Nhat
 */
-body {
+.body-list-course {
     font-family: Arial, sans-serif;
     background-color: #f4f6f9;
     padding: 0;
@@ -53,6 +53,17 @@ body {
     background: #6699ff;
     font-weight: bold;
 }
+.sidebar.closed~.content {
+    margin-left: 20px;
+}
+
+.sidebar button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
 .content {
     margin-top: 60px;
@@ -60,31 +71,6 @@ body {
     flex-grow: 1;
     padding: 20px;
     transition: margin-left 0.3s ease-in-out;
-}
-
-.sidebar.closed~.content {
-    margin-left: 20px;
-}
-
-.course-management {
-    width: 80%;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-th,td {
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
 }
 
 .content th {
@@ -101,12 +87,42 @@ th,td {
     transition: 0.3s;
 }
 
-.sidebar button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
+.course-management {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-management table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.course-management th,td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.course-management td button {
+    background: #28a745;
+    color: white;
+}
+
+.course-management td button:hover {
+    background: #218838;
+}
+
+.course-management td button:last-child {
+    background: #dc3545;
+}
+
+.course-management td button:last-child:hover {
+    background: #c82333;
 }
 
 .open{
@@ -130,22 +146,6 @@ th,td {
     background: #0056b3;
 }
 
-td button {
-    background: #28a745;
-    color: white;
-}
-
-td button:hover {
-    background: #218838;
-}
-
-td button:last-child {
-    background: #dc3545;
-}
-
-td button:last-child:hover {
-    background: #c82333;
-}
 .paging{
     text-align: right;
     margin-right: 100px;

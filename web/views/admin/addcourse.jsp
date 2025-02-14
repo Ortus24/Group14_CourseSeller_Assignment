@@ -15,7 +15,7 @@
 
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/adminaddcourse.css" />
     </head>
-    <body >
+    <body class="body-add-course">
 
         <%@include file="/views/header/header.jsp" %>
 

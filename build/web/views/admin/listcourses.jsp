@@ -14,17 +14,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Quản lý Khóa học</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/adminlistcourse.css" />
-
-        <!--        <style>
-                    .pagingcourse{
-                        text-align: right;
-                        margin-right: 100px; 
-                        margin-top: 10px;
-                    }
-                </style>-->
     </head>
 
-    <body>
+    <body class="body-list-course">
 
         <%@include file="/views/header/header.jsp" %>
 
