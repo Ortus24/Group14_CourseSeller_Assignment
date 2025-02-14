@@ -1,0 +1,184 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 14, 2025, 1:13:39 PM
+    Author     : Nhat
+*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    margin-top: 89px;
+    width: 250px;
+    background: #007bff;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar a{
+    color: white;
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: white;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+}
+
+.sidebar ul li:hover {
+    background: #6699ff;
+    font-weight: bold;
+}
+
+.content {
+    margin-top: 60px;
+    margin-left: 270px;
+    flex-grow: 1;
+    padding: 20px;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar.closed~.content {
+    margin-left: 20px;
+}
+
+.course-management {
+    width: 80%;
+    margin: 20px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.content th {
+    background: #007bff;
+    color: white;
+    text-align: center;
+}
+
+.content button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.sidebar button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.open{
+    color: green;
+    font-weight: bold;
+}
+
+.closed{
+    color: red;
+    font-weight: bold;
+}
+
+.choice {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    
+}
+
+.choice:hover {
+    background: #0056b3;
+}
+
+td button {
+    background: #28a745;
+    color: white;
+}
+
+td button:hover {
+    background: #218838;
+}
+
+td button:last-child {
+    background: #dc3545;
+}
+
+td button:last-child:hover {
+    background: #c82333;
+}
+.paging{
+    text-align: right;
+    margin-right: 100px;
+    margin-top: 20px;
+}
+
+.paging>a{
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 7px;
+}
+
+.paging>a:hover{
+    background: #0056b3;
+    color: white;
+}
+.menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 0px;
+    background: #007bff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.des{
+    text-align: left;
+    max-width: 190px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+

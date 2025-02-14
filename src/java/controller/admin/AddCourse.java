@@ -75,21 +75,20 @@ public class AddCourse extends HttpServlet {
             throws ServletException, IOException {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
-        String price = request.getParameter("price");
-        String duration = request.getParameter("duration");
+        int price = Integer.parseInt(request.getParameter("price"));
+        int duration = Integer.parseInt(request.getParameter("duration"));
         String thumbnail = request.getParameter("thumbnail");
-        String categoryID = request.getParameter("categoryID");
+        int categoryID = Integer.parseInt(request.getParameter("categoryID"));
         String createdDate = request.getParameter("createdDate");
+        boolean status = Boolean.parseBoolean(request.getParameter("status"));
 
         CourseDAO d = new CourseDAO();
 
-        int priceInt = Integer.parseInt(price);
-        int durationInt = Integer.parseInt(duration);
-        int categoryIDInt = Integer.parseInt(categoryID);
+        
 
         Courses courses = d.getCourseByTitle(title);
         if (courses == null) {
-            Courses newCourses = new Courses(32, title, description, priceInt, durationInt, thumbnail, categoryIDInt, createdDate);
+            Courses newCourses = new Courses(32, title, description, price, duration, thumbnail, categoryID, createdDate,status);
             d.insertCourse(newCourses);
             response.sendRedirect("listcourse");
         } else {

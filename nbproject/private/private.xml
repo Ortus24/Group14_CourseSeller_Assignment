@@ -3,16 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/DeleteCourse.java</file>
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/ListCourse.java</file>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/model/Category.java</file>
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/web/views/admin/listcourses.jsp</file>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/model/Courses.java</file>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/web/views/header/header.jsp</file>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/AddCourseForm.java</file>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/AddCourse.java</file>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/web/views/admin/addcourse.jsp</file>
-            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/dal/CategoryDAO.java</file>
         </group>
     </open-files>
 </project-private>

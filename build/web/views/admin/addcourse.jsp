@@ -13,78 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Thêm Khóa Học</title>
 
-        <link rel="stylesheet" href="styles.css">
-
-
-
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-color: #f4f6f9;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-            .container {
-                background: white;
-                padding: 20px;
-                border-radius: 10px;
-                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                width: 600px;
-
-                margin-top: 100px;
-            }
-            .container h2 {
-                text-align: center;
-                color: #333;
-            }
-            .container label {
-                font-weight: bold;
-                display: block;
-                margin-top: 10px;
-            }
-            input, select {
-                width: 100%;
-                padding: 8px;
-                margin-top: 5px;
-                border: 1px solid #ccc;
-                border-radius: 5px;
-            }
-
-
-            .choice {
-                width: 100%;
-                padding: 10px;
-                margin-top: 20px;
-                background: #007bff;
-                color: white;
-                border: none;
-                border-radius: 5px;
-                font-size: 16px;
-                cursor: pointer;
-            }
-            .container button:hover {
-                background: #0056b3;
-            }
-
-            .ba {
-                background: #007bff;
-                color: white;
-                font-weight: bold;
-                padding: 8px 12px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                transition: 0.3s;
-            }
-            .ba:hover {
-                background: #0056b3;
-            }
-
-        </style>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/adminaddcourse.css" />
     </head>
     <body >
 
@@ -125,8 +54,8 @@
 
                 <label for="status">Trạng Thái</label>
                 <select id="status" name="status">
-                    <option value="open">Đang mở</option>
-                    <option value="closed">Đã đóng</option>
+                    <option value="1">Open</option>
+                    <option value="0">Closed</option>
                 </select>
 
                 <button class="choice" type="submit">Thêm Khóa Học</button>

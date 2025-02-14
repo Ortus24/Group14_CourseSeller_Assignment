@@ -27,8 +27,10 @@ public class CourseDAO extends DBContext {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getString("createdDate"));
+                Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), 
+                        rs.getString("description"), rs.getInt("price"), rs.getInt("duration"), 
+                        rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"), 
+                        rs.getBoolean("status"));
                 list.add(c);
             }
         } catch (SQLException ex) {
@@ -42,7 +44,7 @@ public class CourseDAO extends DBContext {
     }
 
     public void insertCourse(Courses c) {
-        String sql = "INSERT INTO Courses (Title, Description, Price, Duration, Thumbnail, CategoryID) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Courses (Title, Description, Price, Duration, Thumbnail, CategoryID, Status) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, c.getTitle());
@@ -51,6 +53,7 @@ public class CourseDAO extends DBContext {
             ps.setInt(4, c.getDuration());
             ps.setString(5, c.getThumbnail());
             ps.setInt(6, c.getCategoryID());
+            ps.setBoolean(7, c.isStatus());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -84,7 +87,8 @@ public class CourseDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"));
+                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"),
+                        rs.getInt("categoryID"), rs.getString("createdDate"), rs.getBoolean("status"));
                 return c;
             }
         } catch (SQLException ex) {
