@@ -6,6 +6,8 @@
 	 version="6.0">
          
     <welcome-file-list>
+        <welcome-file>test</welcome-file>
+        <welcome-file>singlecourse</welcome-file>
         <welcome-file>listcourse</welcome-file>
     </welcome-file-list>
 
