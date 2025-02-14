@@ -4,15 +4,11 @@
  */
 package model;
 
-/**
- *
- * @author Nhat
- */
 public class Courses {
     private int courseID;
     private String title;
     private String description;
-    private int price;
+    private double price;
     private int duration;
     private String thumbnail;
     private int categoryID;
@@ -23,17 +19,7 @@ public class Courses {
     public Courses() {
     }
 
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, String createdDate) {
-        this.courseID = courseID;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.duration = duration;
-        this.thumbnail = thumbnail;
-        this.createdDate = createdDate;
-    }
-
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate) {
+    public Courses(int courseID, String title, String description, double price, int duration, String thumbnail, int categoryID, String createdDate) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
@@ -43,8 +29,6 @@ public class Courses {
         this.categoryID = categoryID;
         this.createdDate = createdDate;
     }
-    
-    
 
     public int getCourseID() {
         return courseID;
@@ -70,11 +54,11 @@ public class Courses {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
