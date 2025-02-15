@@ -143,9 +143,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="banner-title">Courses Single</h2>
+                        <!--Category : hien ki may-->
+                        <h2 class="banner-title">${requestScope.category.categoryName}</h2>
                         <div class="bread-crumbs">
-                            <a href="index-2.html">Home</a> <span></span> Courses Single
+                            <a href="views/home/home.jsp">Home</a> <span></span> ${requestScope.category.categoryName}
                         </div>
                     </div>
                 </div>
@@ -154,36 +155,57 @@
         <!-- Banner End -->
 
         <!-- Course Section Start -->
-        <section class="course-details-section">            
+        <section class="course-details-section">
             <div class="container">
                 <div class="row">
-                    <c:set var="co" value="${requestScope.course}"></c:set>
-                        <div class="col-lg-9">
+                    <div class="col-lg-9"> 
+                        <c:set value="${requestScope.course}" var="course"></c:set>
                             <div class="single-course-area">
                                 <div class="course-top">
-                                    <h4>${co.title}</h4>
+                                    <h4>${course.title}</h4>
+                                <div class="course-meta">
+                                    <!--                                    <div class="author">
+                                                                            <img src="${course.thumbnail}" alt="">
+                                                                            <span>Teacher</span>
+                                                                            <a href="#">Anthony</a>
+                                                                        </div>-->
+                                    <c:set value="${requestScope.category}" var="category"></c:set>
+                                        <div class="categories">
+                                            <span>Categories:</span>
+                                            <a href="#">${category.categoryName}</a>
+                                    </div>
+                                    <!--                                    <div class="ratings">
+                                                                            <span>4.5 (9 Reviews)</span>
+                                                                            <i class="icon_star"></i>
+                                                                            <i class="icon_star"></i>
+                                                                            <i class="icon_star"></i>
+                                                                            <i class="icon_star"></i>
+                                                                            <i class="icon_star"></i>
+                                                                        </div>-->
+                                </div>
                                 <div class="course-price">
-                                    ${co.price}
-<!--                                    <span>500.000VND</span>-->
+                                    ${course.price*1000}VND
+                                    <!--                                        <span>$92.00</span>-->
                                 </div>
                             </div>
                             <div class="sc-thumb">
-                                <img src="${co.thumbnail}" alt="">
+                                <img src="${course.thumbnail}" alt="">
                             </div>
                             <div class="course-tab-wrapper">
                                 <ul class="course-tab-btn nav nav-tabs">
-                                    <li><a href="#overview" data-toggle="tab"><i class="icon_ribbon_alt"></i>Overview</a></li>
+                                    <li><a class="active" href="#overview" data-toggle="tab"><i class="icon_ribbon_alt"></i>Overview</a></li>
                                     <li><a href="#curriculum" data-toggle="tab"><i class="icon_book_alt"></i>Curriculum</a></li>
+
                                     <li><a href="#reviews" data-toggle="tab"><i class="icon_star"></i>Reviews</a></li>
                                 </ul>
                                 <!-- Tab Content -->
                                 <div class="tab-content">
                                     <!-- Overview Tab -->
                                     <div class="tab-pane fade in show active" id="overview" role="tabpanel">
+
                                         <div class="overview-content">
                                             <h4>Course Description</h4>
-
-                                            <p>${co.description}</p>
+                                            <p>${course.description}</p>
                                         </div>
                                     </div>
                                     <!-- Overview Tab -->
@@ -193,20 +215,21 @@
                                             <div class="card-header" id="cc_1">
                                                 <h5 class="mb-0">
                                                     <button class="btn btn-link" data-toggle="collapse" data-target="#acc_1" aria-expanded="true" aria-controls="acc_1">
-                                                        List Course Video
+                                                        Understanding Customer Service
                                                     </button>
                                                 </h5>
                                             </div>
                                             <div id="acc_1" class="collapse show" aria-labelledby="cc_1" data-parent="#id_1">
                                                 <div class="card-body">
-                                                    <c:forEach items="${requestScope.listCourseVideo}" var="cv">
+                                                    <c:forEach items="${requestScope.listCourseVideo}" var="courseVideo">
                                                         <div class="ci-item">
                                                             <h5>
                                                                 <i class="icon_menu-square_alt2"></i>
-                                                                <a href="#">${cv.title}</a>
+                                                                <a href="#">${courseVideo.title}</a>
                                                             </h5>
+                                                            
                                                             <div class="ci-tools">
-                                                                <a href="#" class="time">${cv.duration} hour</a>
+                                                                <a href="#" class="time">${courseVideo.duration} minutes</a>
                                                                 <a href="#" class="lock"><i class="icon_lock_alt"></i></a>
                                                             </div>
                                                         </div>
@@ -214,62 +237,11 @@
                                                 </div>
                                             </div>
                                         </div>
+
+
                                     </div>
                                     <!-- Curriculum Tab -->
                                     <!-- Instructors Tab -->
-                                    <!--                                    <div class="tab-pane fade in show active" id="instructors" role="tabpanel">
-                                                                            <div class="teacher-item-3">
-                                                                                <div class="teacher-thumb">
-                                                                                    <img src="${pageContext.request.contextPath}/assets/images/single-course/i1.jpg" alt="">
-                                                                                </div>
-                                                                                <div class="teacher-meta">
-                                                                                    <h5><a href="#">Dianne Ameter</a></h5>
-                                                                                    <span>Illustrator</span>
-                                                                                    <p>
-                                                                                        I don't want no agro car boot lavatory wind up twit haggle spiffing show off show off pick your nose and blow off spend a penny David zonked what a plonker are you taking.
-                                                                                    </p>
-                                                                                    <div class="teacher-social">
-                                                                                        <a href="#"><i class="social_facebook"></i></a>
-                                                                                        <a href="#"><i class="social_twitter"></i></a>
-                                                                                        <a href="#"><i class="social_linkedin"></i></a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="teacher-item-3">
-                                                                                <div class="teacher-thumb">
-                                                                                    <img src="${pageContext.request.contextPath}/assets/images/single-course/i2.jpg" alt="">
-                                                                                </div>
-                                                                                <div class="teacher-meta">
-                                                                                    <h5><a href="#">Hugh Saturation</a></h5>
-                                                                                    <span>Photographer</span>
-                                                                                    <p>
-                                                                                        I don't want no agro car boot lavatory wind up twit haggle spiffing show off show off pick your nose and blow off spend a penny David zonked what a plonker are you taking.
-                                                                                    </p>
-                                                                                    <div class="teacher-social">
-                                                                                        <a href="#"><i class="social_facebook"></i></a>
-                                                                                        <a href="#"><i class="social_twitter"></i></a>
-                                                                                        <a href="#"><i class="social_linkedin"></i></a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="teacher-item-3">
-                                                                                <div class="teacher-thumb">
-                                                                                    <img src="${pageContext.request.contextPath}/assets/images/single-course/i3.jpg" alt="">
-                                                                                </div>
-                                                                                <div class="teacher-meta">
-                                                                                    <h5><a href="#">Jim Séchen</a></h5>
-                                                                                    <span>Stylist & Author</span>
-                                                                                    <p>
-                                                                                        I don't want no agro car boot lavatory wind up twit haggle spiffing show off show off pick your nose and blow off spend a penny David zonked what a plonker are you taking.
-                                                                                    </p>
-                                                                                    <div class="teacher-social">
-                                                                                        <a href="#"><i class="social_facebook"></i></a>
-                                                                                        <a href="#"><i class="social_twitter"></i></a>
-                                                                                        <a href="#"><i class="social_linkedin"></i></a>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>-->
                                     <!-- Instructors Tab -->
                                     <!-- Reviews Tab -->
                                     <div class="tab-pane fade in" id="reviews" role="tabpanel">
@@ -336,7 +308,7 @@
                                                 <ol>
                                                     <li>
                                                         <div class="single-comment">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/single-course/r1.png" alt="">
+                                                            <img src="assets/images/single-course/r1.png" alt="">
                                                             <h5><a href="#">Dianne Ameter</a></h5>
                                                             <span>August 8, 2012 at 9:22 am</span>
                                                             <div class="comment">
@@ -356,7 +328,7 @@
                                                     </li>
                                                     <li>
                                                         <div class="single-comment">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/single-course/r2.png" alt="">
+                                                            <img src="assets/images/single-course/r2.png" alt="">
                                                             <h5><a href="#">Hugh Saturation</a></h5>
                                                             <span>March 14, 2012 at 10:13 am</span>
                                                             <div class="comment">
@@ -376,7 +348,7 @@
                                                     </li>
                                                     <li>
                                                         <div class="single-comment">
-                                                            <img src="${pageContext.request.contextPath}/assets/images/single-course/r3.png" alt="">
+                                                            <img src="assets/images/single-course/r3.png" alt="">
                                                             <h5><a href="#">Jim Séchen</a></h5>
                                                             <span>April 16, 2012 at 12:15 pm</span>
                                                             <div class="comment">
@@ -445,147 +417,264 @@
                                 <a class="twi" href="#"><i class="social_twitter"></i></a>
                                 <a class="goo" href="#"><i class="social_googleplus"></i></a>
                             </div>
-                            <div class="related-course">
-                                <h3>Related Courses</h3>
+                            <!--                                <div class="related-course">
+                                                                <h3>Related Courses</h3>
+                                                                <div class="related-course-slider owl-carousel">
+                                                                    <div class="feature-course-item-4">
+                                                                        <div class="fcf-thumb">
+                                                                            <img src="assets/images/profile/1.jpg" alt="">
+                                                                            <a class="enroll" href="#">Enroll Now</a>
+                                                                        </div>
+                                                                        <div class="fci-details">
+                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Computer Science</a>
+                                                                            <h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
+                                                                            <div class="author">
+                                                                                <img src="assets/images/home3/course/a1.png" alt="">
+                                                                                <a href="#">Anthony</a>
+                                                                            </div>
+                                                                            <div class="price-rate">
+                                                                                <div class="course-price">
+                                                                                    Free
+                                                                                    <span>$42.85</span>
+                                                                                </div>
+                                                                                <div class="ratings">
+                                                                                    <i class="icon_star"></i>
+                                                                                    <span>4.5 (2,420)</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="feature-course-item-4">
+                                                                        <div class="fcf-thumb">
+                                                                            <img src="assets/images/profile/2.jpg" alt="">
+                                                                            <a class="enroll" href="#">Enroll Now</a>
+                                                                        </div>
+                                                                        <div class="fci-details">
+                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Art &amp; Design</a>
+                                                                            <h4><a href="single-course.html">The Art of Black and White Photography</a></h4>
+                                                                            <div class="author">
+                                                                                <img src="assets/images/home3/course/a2.png" alt="">
+                                                                                <a href="#">Giles Posture</a>
+                                                                            </div>
+                                                                            <div class="price-rate">
+                                                                                <div class="course-price">
+                                                                                    $75.00
+                                                                                    <span>$92.00</span>
+                                                                                </div>
+                                                                                <div class="ratings">
+                                                                                    <i class="icon_star"></i>
+                                                                                    <span>4.2 (1,203)</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="feature-course-item-4">
+                                                                        <div class="fcf-thumb">
+                                                                            <img src="assets/images/profile/3.jpg" alt="">
+                                                                            <a class="enroll" href="#">Enroll Now</a>
+                                                                        </div>
+                                                                        <div class="fci-details">
+                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Business Study</a>
+                                                                            <h4><a href="single-course.html">Learning jQuery mobile for Beginners</a></h4>
+                                                                            <div class="author">
+                                                                                <img src="assets/images/home3/course/a3.png" alt="">
+                                                                                <a href="#">Hans Down</a>
+                                                                            </div>
+                                                                            <div class="price-rate">
+                                                                                <div class="course-price">
+                                                                                    $53.00
+                                                                                    <span>$74.00</span>
+                                                                                </div>
+                                                                                <div class="ratings">
+                                                                                    <i class="icon_star"></i>
+                                                                                    <span>4.5 (2,420)</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="feature-course-item-4">
+                                                                        <div class="fcf-thumb">
+                                                                            <img src="assets/images/profile/4.jpg" alt="">
+                                                                            <a class="enroll" href="#">Enroll Now</a>
+                                                                        </div>
+                                                                        <div class="fci-details">
+                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Data Science</a>
+                                                                            <h4><a href="single-course.html">Buddhism and modern Psychology</a></h4>
+                                                                            <div class="author">
+                                                                                <img src="assets/images/home3/course/a4.png" alt="">
+                                                                                <a href="#">Richard Tea</a>
+                                                                            </div>
+                                                                            <div class="price-rate">
+                                                                                <div class="course-price">
+                                                                                    $62.00
+                                                                                    <span>$97.00</span>
+                                                                                </div>
+                                                                                <div class="ratings">
+                                                                                    <i class="icon_star"></i>
+                                                                                    <span>4.5 (2,420)</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="feature-course-item-4">
+                                                                        <div class="fcf-thumb">
+                                                                            <img src="assets/images/profile/5.jpg" alt="">
+                                                                            <a class="enroll" href="#">Enroll Now</a>
+                                                                        </div>
+                                                                        <div class="fci-details">
+                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Web Development</a>
+                                                                            <h4><a href="single-course.html">Making music with Other people</a></h4>
+                                                                            <div class="author">
+                                                                                <img src="assets/images/home3/course/a6.png" alt="">
+                                                                                <a href="#">Hilary Ouse</a>
+                                                                            </div>
+                                                                            <div class="price-rate">
+                                                                                <div class="course-price">
+                                                                                    #34.00
+                                                                                    <span>$55.00</span>
+                                                                                </div>
+                                                                                <div class="ratings">
+                                                                                    <i class="icon_star"></i>
+                                                                                    <span>4.5 (2,420)</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+                        </div>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="course-sidebar">
+                            <aside class="widget">
+                                <div class="info-course">
+                                    <ul>
+                                        <li><i class="icon_document_alt"></i><span>Lectures: </span> 14</li>
+                                        <li><i class="icon_clock_alt"></i><span>Duration: </span> 10 weeks</li>
+                                        <li><i class="icon_profile"></i><span>Enrolled: </span> </li>
+                                        <li><i class="icon_cog"></i><span>Language: </span> Vietnamese</li>
+                                    </ul>
+                                    <a class="bisylms-btn" href="#">Enroll Course</a>
+                                </div>
+                            </aside>
+                            <aside class="widget">
+                                <h3 class="widget-title">Related Courses</h3>
                                 <c:forEach items="${requestScope.relatedCourses}" var="rc">
-                                    <div class="related-course-slider owl-carousel">
-                                        <div class="feature-course-item-4">
-                                            <div class="fcf-thumb">
-                                                <img src="${rc.thumbnail}" alt="">
-                                                <a class="enroll" href="singlecourse?id=${rc.courseID}">Enroll Now</a>
-                                            </div>
-                                            <div class="fci-details">
-                                                <!--                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Computer Science</a>-->
-                                                <h4><a href="singlecourse?id=${rc.courseID}">${rc.title}</a></h4>
-                                                <div class="price-rate">
-                                                    <div class="course-price">
-                                                        ${rc.price}
-                                                        <!--                                                        <span>$42.85</span>-->
-                                                    </div>
-                                                    <!--                                                    <div class="ratings">
-                                                                                                            <i class="icon_star"></i>
-                                                                                                            <span>4.5 (2,420)</span>
-                                                                                                        </div>-->
-                                                </div>
-                                            </div>
+                                    <div class="latest-course">
+                                        <a href="singlecourse?id=${rc.courseID}"><img src="${rc.thumbnail}" alt=""></a>
+                                        <h5><a href="singlecourse?id=${rc.courseID}">${rc.title}</a></h5>
+                                        <div class="course-price">
+                                            ${rc.price * 1000}VND
                                         </div>
                                     </div>
                                 </c:forEach>
+                            </aside>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <!-- Course Section End -->
+
+        <!-- Footer Section Start -->
+        <footer class="footer-1 pd-top-90">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-3">
+                        <aside class="widget">
+                            <div class="about-widget">
+                                <a href="index-2.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" alt=""></a>
+                                <p>
+                                    Lost the plot Richard you mug cup of tea knackered boot bender.
+                                </p>
+                                <div class="ab-social">
+                                    <a class="fac" href="#"><i class="social_facebook"></i></a>
+                                    <a class="twi" href="#"><i class="social_twitter"></i></a>
+                                    <a class="you" href="#"><i class="social_youtube"></i></a>
+                                    <a class="lin" href="#"><i class="social_linkedin"></i></a>
+                                </div>
                             </div>
+                        </aside>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <aside class="widget">
+                            <h3 class="widget-title">Explore</h3>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Success Story</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Resource Center</a></li>
+                                <li><a href="#">Courses</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <div class="col-lg-3 col-md-3">
+                        <aside class="widget">
+                            <h3 class="widget-title">Catecories</h3>
+                            <ul>
+                                <li><a href="#">All Courses</a></li>
+                                <li><a href="#">Storytelling & Voice Over</a></li>
+                                <li><a href="#">Digital Marketing</a></li>
+                                <li><a href="#">Design & Branding</a></li>
+                                <li><a href="#">Nanodegree Plus</a></li>
+                                <li><a href="#">Veterans</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                    <div class="col-lg-2 col-md-3">
+                        <aside class="widget">
+                            <h3 class="widget-title">Support</h3>
+                            <ul>
+                                <li><a href="#">Help Center</a></li>
+                                <li><a href="#">System Requirements</a></li>
+                                <li><a href="#">Register Activation Key</a></li>
+                                <li><a href="#">Site Feedback</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Forums</a></li>
+                            </ul>
+                        </aside>
+                    </div>
+                </div>
+                <!-- Copyrigh -->
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="copyright">
+                            <p>© 2021 Copyright all Right Reserved Design by <a href="http://quomodosoft.com/">Quomodosoft</a></p>
                         </div>
                     </div>
                 </div>
+                <!-- Copyrigh -->
             </div>
-        </div>
-    </div>
-</div>
-</div>
-</aside>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Course Section End -->
+        </footer>
+        <!-- Footer Section End -->
 
-<!-- Footer Section Start -->
-<footer class="footer-1 pd-top-90">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-4 col-md-3">
-                <aside class="widget">
-                    <div class="about-widget">
-                        <a href="index-2.html"><img src="${pageContext.request.contextPath}/assets/images/logo.png" alt=""></a>
-                        <p>
-                            Lost the plot Richard you mug cup of tea knackered boot bender.
-                        </p>
-                        <div class="ab-social">
-                            <a class="fac" href="#"><i class="social_facebook"></i></a>
-                            <a class="twi" href="#"><i class="social_twitter"></i></a>
-                            <a class="you" href="#"><i class="social_youtube"></i></a>
-                            <a class="lin" href="#"><i class="social_linkedin"></i></a>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <aside class="widget">
-                    <h3 class="widget-title">Explore</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Success Story</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Resource Center</a></li>
-                        <li><a href="#">Courses</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                    </ul>
-                </aside>
-            </div>
-            <div class="col-lg-3 col-md-3">
-                <aside class="widget">
-                    <h3 class="widget-title">Catecories</h3>
-                    <ul>
-                        <li><a href="#">All Courses</a></li>
-                        <li><a href="#">Storytelling & Voice Over</a></li>
-                        <li><a href="#">Digital Marketing</a></li>
-                        <li><a href="#">Design & Branding</a></li>
-                        <li><a href="#">Nanodegree Plus</a></li>
-                        <li><a href="#">Veterans</a></li>
-                    </ul>
-                </aside>
-            </div>
-            <div class="col-lg-2 col-md-3">
-                <aside class="widget">
-                    <h3 class="widget-title">Support</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">System Requirements</a></li>
-                        <li><a href="#">Register Activation Key</a></li>
-                        <li><a href="#">Site Feedback</a></li>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
-                </aside>
-            </div>
-        </div>
-        <!-- Copyrigh -->
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <div class="copyright">
-                    <p>© 2021 Copyright all Right Reserved Design by <a href="http://quomodosoft.com/">Quomodosoft</a></p>
-                </div>
-            </div>
-        </div>
-        <!-- Copyrigh -->
-    </div>
-</footer>
-<!-- Footer Section End -->
+        <!-- Back To Top -->
+        <a href="#" id="back-to-top">
+            <i class="fal fa-angle-double-up"></i>
+        </a>
+        <!-- Back To Top -->
 
-<!-- Back To Top -->
-<a href="#" id="back-to-top">
-    <i class="fal fa-angle-double-up"></i>
-</a>
-<!-- Back To Top -->
+        <!-- Start Include All JS -->
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.appear.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/owl.carousel.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/slick.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.nice-select.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/swiper-bundle.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/TweenMax.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/lightcase.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.plugin.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.countdown.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.easing.1.3.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/jquery.shuffle.min.js"></script>
 
-<!-- Start Include All JS -->
-<script src="${pageContext.request.contextPath}/assets/js/jquery.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.appear.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/owl.carousel.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/slick.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.nice-select.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/swiper-bundle.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/TweenMax.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/lightcase.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.plugin.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.countdown.min.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.easing.1.3.js"></script>
-<script src="${pageContext.request.contextPath}/assets/js/jquery.shuffle.min.js"></script>
+        <script src="${pageContext.request.contextPath}/assets/js/theme.js"></script>
+        <!-- End Include All JS -->
 
-<script src="${pageContext.request.contextPath}/assets/js/theme.js"></script>
-<!-- End Include All JS -->
+    </body>
 
-</body>
-
-<!-- Mirrored from quomodosoft.com/html/bisy/single-course.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:49 GMT -->
+    <!-- Mirrored from quomodosoft.com/html/bisy/single-course.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:49 GMT -->
 </html>

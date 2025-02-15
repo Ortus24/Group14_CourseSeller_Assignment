@@ -43,13 +43,22 @@ public class SingleCourseServlet extends HttpServlet {
         String courseId_raw = request.getParameter("id");
         try {
             int courseId = Integer.parseInt(courseId_raw);
+            
             Courses c = cd.getCourseById(courseId);
+            request.setAttribute("course", c);
+            
             List<CourseVideo> listCourseVideo = cd.getAllCourseVideoByCourseId(courseId);
+            request.setAttribute("listCourseVideo", listCourseVideo);
+            
             Category category = cd.getCategoryIdByCourseId(courseId);
+            request.setAttribute("category", category);
+            
             List<Courses> relatedCourses = cd.relatedCourses(category.getCategoryID(), courseId);
             request.setAttribute("relatedCourses", relatedCourses);
-            request.setAttribute("course", c);
-            request.setAttribute("listCourseVideo", listCourseVideo);
+           
+            //tong bai hoc
+            
+            
         } catch (NumberFormatException e) {
         } 
         request.getRequestDispatcher("views/courses/single-course.jsp").forward(request, response);

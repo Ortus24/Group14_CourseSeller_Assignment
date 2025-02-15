@@ -4484,18 +4484,6 @@ Profile Page
     padding-right: 28px;
     padding-left: 28px;
 }
-
-.related-course-slider {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px; /* Khoảng cách giữa các khóa học */
-    justify-content: center; /* Căn giữa các phần tử */
-}
-
-.feature-course-item-4 {
-    flex: 1 1 calc(33.333% - 20px); /* Chia 3 phần trên 1 hàng (trừ khoảng cách) */
-    max-width: calc(33.333% - 20px);
-}
 .restult-tab-title{
     position: relative;
     border: none;
