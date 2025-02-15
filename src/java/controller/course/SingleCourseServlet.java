@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Category;
 import model.CourseVideo;
 import model.Courses;
 
@@ -44,8 +45,11 @@ public class SingleCourseServlet extends HttpServlet {
             int courseId = Integer.parseInt(courseId_raw);
             Courses c = cd.getCourseById(courseId);
             List<CourseVideo> listCourseVideo = cd.getAllCourseVideoByCourseId(courseId);
-            session.setAttribute("course", c);
-            session.setAttribute("listCourseVideo", listCourseVideo);
+            Category category = cd.getCategoryIdByCourseId(courseId);
+            List<Courses> relatedCourses = cd.relatedCourses(category.getCategoryID(), courseId);
+            request.setAttribute("relatedCourses", relatedCourses);
+            request.setAttribute("course", c);
+            request.setAttribute("listCourseVideo", listCourseVideo);
         } catch (NumberFormatException e) {
         } 
         request.getRequestDispatcher("views/courses/single-course.jsp").forward(request, response);
