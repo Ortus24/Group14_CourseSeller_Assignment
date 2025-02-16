@@ -7,7 +7,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Nhat
 */
 .body-list-course {
-    font-family: Arial, sans-serif;
+    /*font-family: Arial, sans-serif;*/
     background-color: #f4f6f9;
     padding: 0;
     display: flex;
@@ -16,7 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .sidebar {
     margin-top: 89px;
     width: 250px;
-    background: #007bff;
+    background: #212529;
     padding: 20px;
     height: 100vh;
     position: fixed;
@@ -74,7 +74,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .content th {
-    background: #007bff;
+    background: #3A3A3A;
     color: white;
     text-align: center;
 }
@@ -88,12 +88,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .course-management {
-    width: 80%;
-    margin: 20px auto;
+    width: 99%;
+    margin-top: 3%;
+    /* margin: 20px auto; */
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.course-management>h1{
+    text-align: center;
 }
 
 .course-management table {
@@ -108,20 +113,21 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-bottom: 1px solid #ddd;
 }
 
-.course-management td button {
+.edit-course {
     background: #28a745;
     color: white;
 }
 
-.course-management td button:hover {
+.edit-course:hover {
     background: #218838;
 }
 
-.course-management td button:last-child {
+.delete-course {
     background: #dc3545;
+    color: white;
 }
 
-.course-management td button:last-child:hover {
+.delete-course:hover {
     background: #c82333;
 }
 
@@ -136,14 +142,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .choice {
-    background: #007bff;
+    background: #999999;
     color: white;
     font-weight: bold;
     
 }
 
 .choice:hover {
-    background: #0056b3;
+    background: #505050;
 }
 
 .paging{
@@ -153,7 +159,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .paging>a{
-    background: #007bff;
+    background: #8A8A8A;
     color: white;
     font-weight: bold;
     padding: 5px 10px;
@@ -161,14 +167,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .paging>a:hover{
-    background: #0056b3;
+    background: #505050;
     color: white;
 }
 .menu-toggle {
     position: absolute;
     top: 10px;
-    left: 0px;
-    background: #007bff;
+    left: 10px;
+    background: white;
     border: none;
     padding: 10px;
     cursor: pointer;
@@ -180,5 +186,55 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+/* Modal overlay */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Nội dung modal */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 350px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+
+/* Nút xóa và hủy */
+.modal-buttons {
+    margin-top: 20px;
+}
+
+.delete-btn {
+    background-color: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cancel-btn {
+    background-color: gray;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 

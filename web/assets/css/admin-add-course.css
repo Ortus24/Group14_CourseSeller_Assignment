@@ -42,24 +42,25 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius: 5px;
 }
 
+.container button:hover {
+    background: #505050;
+}
 
 .choice {
     width: 100%;
     padding: 10px;
     margin-top: 20px;
-    background: #007bff;
+    background: #8A8A8A;
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
 }
-.container button:hover {
-    background: #0056b3;
-}
 
-.ba {
-    background: #007bff;
+.back-list {
+    background: #8A8A8A;
     color: white;
     font-weight: bold;
     padding: 8px 12px;
@@ -68,6 +69,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     cursor: pointer;
     transition: 0.3s;
 }
-.ba:hover {
+.back-list:hover {
     background: #0056b3;
 }

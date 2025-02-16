@@ -34,26 +34,10 @@
     </head>
     <body>
 
-        <!-- Preloader Icon -->      
-        <div class="preloader">
-            <div class="loaderInner">
-                <div id="top" class="mask">
-                    <div class="plane"></div>
-                </div>
-                <div id="middle" class="mask">
-                    <div class="plane"></div>
-                </div>
-                <div id="bottom" class="mask">
-                    <div class="plane"></div>
-                </div>
-                <p>LOADING...</p>
-            </div>
-            <!--
-            </div>-->
-            <!-- Preloader Icon -->
+        
 
             <!-- Header Start -->
-            <header class="header-03 sticky" style="background: #333; padding-left: 40px ">
+            <header class="header-03 sticky" style="background: #212529; padding-left: 40px ">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12" >

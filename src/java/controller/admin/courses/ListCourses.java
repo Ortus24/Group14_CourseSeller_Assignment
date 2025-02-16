@@ -12,14 +12,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
 import model.Courses;
 
 /**
  *
  * @author Nhat
  */
-@WebServlet(name = "AddCourse", urlPatterns = {"/addcourses"})
-public class AddCourse extends HttpServlet {
+@WebServlet(name = "ListCourse", urlPatterns = {"/listcourse"})
+public class ListCourses extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class AddCourse extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet AddCourse</title>");
+            out.println("<title>Servlet ManagerCourse</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet AddCourse at adsasdasdasdasd" + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ManagerCourse at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +60,38 @@ public class AddCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doPost(request, response);
+        CourseDAO d = new CourseDAO();
+        List<Courses> listCourses = d.getCourses();
+        
+        int pageSize = 8; 
+        int totalCourses = listCourses.size();
+        int totalPages = (int) Math.ceil((double) totalCourses / pageSize);
+
+        String pageStr = request.getParameter("page");
+        int currentPage = (pageStr != null) ? Integer.parseInt(pageStr) : 1;
+
+        if (currentPage < 1) {
+            currentPage = 1;
+        }
+        if (currentPage > totalPages) {
+            currentPage = totalPages;
+        }
+
+        int start = (currentPage - 1) * pageSize;
+        int end = Math.min(start + pageSize, totalCourses);
+
+        List<Courses> paginatedCourses = listCourses.subList(start, end);
+
+        int beforePage = Math.max(1, currentPage - 2);
+        int afterPage = Math.min(totalPages, currentPage + 2);
+
+        request.setAttribute("beforePage", beforePage);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("afterPage", afterPage);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("listcourse", paginatedCourses);
+
+        request.getRequestDispatcher("views/admin/courses/listcourses.jsp").forward(request, response);
     }
 
     /**
@@ -73,28 +105,7 @@ public class AddCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String title = request.getParameter("title");
-        String description = request.getParameter("description");
-        int price = Integer.parseInt(request.getParameter("price"));
-        int duration = Integer.parseInt(request.getParameter("duration"));
-        String thumbnail = request.getParameter("thumbnail");
-        int categoryID = Integer.parseInt(request.getParameter("categoryID"));
-        String createdDate = request.getParameter("createdDate");
-        boolean status = Boolean.parseBoolean(request.getParameter("status"));
-
-        CourseDAO d = new CourseDAO();
-
-        
-
-        Courses courses = d.getCourseByTitle(title);
-        if (courses == null) {
-            Courses newCourses = new Courses(32, title, description, price, duration, thumbnail, categoryID, createdDate,status);
-            d.insertCourse(newCourses);
-            response.sendRedirect("listcourse");
-        } else {
-            request.setAttribute("errorTitle", "*Id must be existes!");
-            request.getRequestDispatcher("/addcourse").forward(request, response);
-        }
+        doGet(request, response);
     }
 
     /**

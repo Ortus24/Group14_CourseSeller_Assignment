@@ -13,8 +13,22 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Quản lý Khóa học</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/adminlistcourse.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/admin-list-course.css" />
     </head>
+
+    <!-- Modal xác nhận xóa -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this course?</p>
+            <div class="modal-buttons">
+                <button id="confirmDelete" class="delete-btn">Delete</button>
+                <button class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
 
     <body class="body-list-course">
 
@@ -32,16 +46,12 @@
             </ul>
         </div>
 
-
-
         <div class="content" id="content">
-
-
             <main>
                 <section class="course-management">
-                    <h2>List Courses</h2>
+                    <h1>List Courses</h1>
 
-                    <a href="${pageContext.request.contextPath}/addcourse">
+                    <a href="${pageContext.request.contextPath}/add-courses">
                         <button class="choice">Add Course</button>
                     </a>
 
@@ -75,8 +85,8 @@
                                         </c:choose>
                                     </td>
                                     <td>
-                                        <button>Edit</button>
-                                        <a href="#" onclick="doDelete(${c.courseID})"><button>Delete</button></a>
+                                        <a href="update-courses?courseID=${c.courseID}"><button class="edit-course">Edit</button></a>
+                                        <a href="#" onclick="doDelete(${c.courseID})"><button class="delete-course">Delete</button></a>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -92,7 +102,7 @@
                         <c:forEach begin="${beforePage}" end="${afterPage}" var="i">
                             <c:choose>
                                 <c:when test="${i == currentPage}">
-                                    <a href="listcourse?page=${i}" style="background-color: #5838fc;">${i}</a>
+                                    <a href="listcourse?page=${i}" style="background-color: #3A3A3A;">${i}</a>
                                 </c:when>
                                 <c:otherwise>
                                     <a href="listcourse?page=${i}">${i}</a>
@@ -112,11 +122,24 @@
         </div>
 
         <script>
+
+            let deleteCourseID = null;
+
             function doDelete(courseID) {
-                if (confirm("Are you sure you want to delete the category with ID: " + courseID + "?")) {
-                    window.location.href = "deletecourse?courseID=" + courseID;
-                }
+                deleteCourseID = courseID;
+                document.getElementById("deleteModal").style.display = "block";
             }
+
+
+            document.querySelector(".cancel-btn").addEventListener("click", function () {
+                document.getElementById("deleteModal").style.display = "none";
+            });
+
+            document.getElementById("confirmDelete").addEventListener("click", function () {
+                if (deleteCourseID !== null) {
+                    window.location.href = "deletecourse?courseID=" + deleteCourseID;
+                }
+            });
 
             document.getElementById("menuToggle").addEventListener("click", function () {
                 var sidebar = document.getElementById("sidebar");
@@ -129,24 +152,14 @@
                 // Đổi màu nút ☰ khi menu mở
                 if (!sidebar.classList.contains("closed")) {
                     menuToggle.style.background = "white";
-                    menuToggle.style.color = "#007bff";
+                    menuToggle.style.color = "#212529";
                     menuToggle.style.left = "10px";
                 } else {
-                    menuToggle.style.background = "#007bff";
+                    menuToggle.style.background = "#212529";
                     menuToggle.style.color = "white";
                     menuToggle.style.left = "260px";
                 }
             });
-
-            window.onload = function () {
-                var sidebar = document.getElementById("sidebar");
-                var menuToggle = document.getElementById("menuToggle");
-                menuToggle.style.background = "#007bff";
-                menuToggle.style.color = "white";
-                menuToggle.style.left = "260px";
-                sidebar.classList.add("closed");
-            };
-
 
         </script>
 
