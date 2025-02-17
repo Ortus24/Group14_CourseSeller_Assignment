@@ -38,6 +38,9 @@
         </div>
         <div  class="detail-update">
             <div class="content">
+                <a href="${pageContext.request.contextPath}/listcourse?page=${requestScope.returnPage}">
+                    <button class="back-list">Back</button>
+                </a>
                 <h2>Course</h2>
                 <form action="update-courses" method="post">
                     <c:set var="course" value="${CourseUpdate}" />
@@ -106,61 +109,61 @@
                         </c:forEach>
                     </tbody>
                 </table>
-                <!--                    <div class="paging">
-                                        
-                <c:if test="${currentPage > 1}">
-                    <a href="listcourse?page=${currentPage - 1}"><</a>
-                </c:if>
-                
-                <c:forEach begin="${beforePage}" end="${afterPage}" var="i">
-                    <c:choose>
-                        <c:when test="${i == currentPage}">
-                            <a href="listcourse?page=${i}" style="background-color: #505050;">${i}</a>
-                        </c:when>
-                        <c:otherwise>
-                            <a href="listcourse?page=${i}">${i}</a>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
-   saas
-                <c:if test="${currentPage < totalPages}">
-                    <a href="listcourse?page=${currentPage + 1}">></a>
-                </c:if>-->
+                <div class="paging">
+
+                    <c:if test="${currentPage > 1}">
+                        <a href="update-courses?courseID=${CourseUpdate.courseID}&page=${currentPage - 1}"><</a>
+                    </c:if>
+                    
+                    <c:forEach begin="${beforePage}" end="${afterPage}" var="i">
+                        <c:choose>
+                            <c:when test="${i == currentPage}">
+                                <a href="update-courses?courseID=${CourseUpdate.courseID}&page=${i}" style="background-color: #505050;">${i}</a>
+                            </c:when>
+                            <c:otherwise>
+                                <a href="update-courses?courseID=${CourseUpdate.courseID}&page=${i}">${i}</a>
+                            </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
+                                
+                    <c:if test="${currentPage < totalPages}">
+                        <a href="update-courses?courseID=${CourseUpdate.courseID}&page=${currentPage + 1}">></a>
+                    </c:if>
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <script>
-        function doDelete(courseID) {
-            if (confirm("Are you sure you want to delete the category with ID: " + courseID + "?")) {
-                window.location.href = "deletecourse?courseID=" + courseID;
+        <script>
+            function doDelete(courseID) {
+                if (confirm("Are you sure you want to delete the category with ID: " + courseID + "?")) {
+                    window.location.href = "deletecourse?courseID=" + courseID;
+                }
             }
-        }
 
-        document.getElementById("menuToggle").addEventListener("click", function () {
-            var sidebar = document.getElementById("sidebar");
-            var content = document.getElementById("main-update");
-            var menuToggle = document.getElementById("menuToggle");
+            document.getElementById("menuToggle").addEventListener("click", function () {
+                var sidebar = document.getElementById("sidebar");
+                var content = document.getElementById("main-update");
+                var menuToggle = document.getElementById("menuToggle");
 
-            sidebar.classList.toggle("closed");
-            content.classList.toggle("sidebar-closed");
+                sidebar.classList.toggle("closed");
+                content.classList.toggle("sidebar-closed");
 
-            // Đổi màu nút ☰ khi menu mở
-            if (!sidebar.classList.contains("closed")) {
-                menuToggle.style.background = "white";
-                menuToggle.style.color = "#212529";
-                menuToggle.style.margin = "0px 0px 0px 3px";
-                menuToggle.style.border = "none";
-            } else {
-                menuToggle.style.background = "#212529";
-                menuToggle.style.color = "white";
-                menuToggle.style.margin = "0px 0px 0px 245px";
-                menuToggle.style.border = "none";
-            }
-        });
+                // Đổi màu nút ☰ khi menu mở
+                if (!sidebar.classList.contains("closed")) {
+                    menuToggle.style.background = "white";
+                    menuToggle.style.color = "#212529";
+                    menuToggle.style.margin = "0px 0px 0px 3px";
+                    menuToggle.style.border = "none";
+                } else {
+                    menuToggle.style.background = "#212529";
+                    menuToggle.style.color = "white";
+                    menuToggle.style.margin = "0px 0px 0px 245px";
+                    menuToggle.style.border = "none";
+                }
+            });
 
-    </script>
+        </script>
 
 </body>
 </html>

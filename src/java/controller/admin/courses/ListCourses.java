@@ -60,8 +60,8 @@ public class ListCourses extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        CourseDAO d = new CourseDAO();
-        List<Courses> listCourses = d.getCourses();
+        CourseDAO coDAO = new CourseDAO();
+        List<Courses> listCourses = coDAO.getCourses();
         
         int pageSize = 8; 
         int totalCourses = listCourses.size();
@@ -105,7 +105,7 @@ public class ListCourses extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        doGet(request, response);
+        
     }
 
     /**

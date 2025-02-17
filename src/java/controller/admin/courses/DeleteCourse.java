@@ -13,6 +13,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Courses;
 
 /**
  *
@@ -57,9 +59,29 @@ public class DeleteCourse extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         int id = Integer.parseInt(request.getParameter("courseID"));
-        CourseDAO d  = new CourseDAO();
-        d.deleteCourse(id);
-        response.sendRedirect("listcourse");
+        
+        CourseDAO coDAO  = new CourseDAO();
+        List<Courses> listCourses = coDAO.getCourses();
+//        int pageSize = 8; 
+//        int totalCourses = listCourses.size();
+//        int totalPages = (int) Math.ceil((double) totalCourses / pageSize);
+        
+        int totalPage = 0;
+        for (int i = 0; i < listCourses.size(); i++) {
+            if(listCourses.get(i).getCourseID()==id){
+                totalPage = i+1;
+            }
+        }
+        int returnPage = totalPage/8+1;
+        if (totalPage % 8 == 0  ) {
+            returnPage--;
+        }
+        
+        //delete
+        coDAO.deleteCourse(id);
+        //---------//
+        
+        response.sendRedirect("listcourse?page="+2+"");
     } 
 
     /** 

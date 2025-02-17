@@ -124,7 +124,7 @@ public class CourseDAO extends DBContext {
     }
 
     public Courses getCourseByCourseID(int id) {
-        String sql = "SELECT * FROM [dbo].[Courses] WHERE CourseID = ?";
+        String sql = "SELECT * FROM [ASSGINMENT_PRJ301].[dbo].[Courses] WHERE CourseID = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);

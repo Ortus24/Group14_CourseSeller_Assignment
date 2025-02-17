@@ -17,7 +17,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-top: 89px;
     width: 250px;
     background: #212529;
-    padding: 20px;
+    padding: 10px 20px;
     height: 100vh;
     position: fixed;
     left: 0;
@@ -89,7 +89,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .course-management {
     width: 99%;
-    margin-top: 3%;
+    margin-top: 4%;
     /* margin: 20px auto; */
     background: white;
     padding: 20px;

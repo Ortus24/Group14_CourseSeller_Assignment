@@ -53,6 +53,7 @@ public class UpdateCourses extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int courseID = Integer.parseInt(request.getParameter("courseID"));
+       
 
         CourseDAO coDAO = new CourseDAO();
         Courses c = coDAO.getCourseByCourseID(courseID);
@@ -60,11 +61,58 @@ public class UpdateCourses extends HttpServlet {
         CourseVideosDAO cv = new CourseVideosDAO();
         List<CourseVideos> listCourseVideos = cv.getCourseVideosByCourseID(courseID);
 
+        //Category
         CategoryDAO caDAO = new CategoryDAO();
         List<Category> listCategory = caDAO.getCategory();
-
-        request.setAttribute("listCourseVideos", listCourseVideos);
         request.setAttribute("listCourse", listCategory);
+        //---------//
+        
+        
+        //return page
+        List<Courses> listCourses = coDAO.getCourses();
+        int totalPage = 0;
+        for (int i = 0; i < listCourses.size(); i++) {
+            if(listCourses.get(i).getCourseID()==courseID){
+                totalPage = i+1;
+            }
+        }
+        int returnPage = totalPage/8+1;
+        if (totalPage % 8 == 0) {
+            returnPage--;
+        }
+        request.setAttribute("returnPage", returnPage);
+        //-----------//
+        
+        
+        //paging
+        int pageSize = 10;
+        int totalCourseVideos = listCourseVideos.size();
+        int totalPages = (int) Math.ceil((double) totalCourseVideos / pageSize);
+
+        String pageStr = request.getParameter("page");
+        int currentPage = (pageStr != null) ? Integer.parseInt(pageStr) : 1;
+
+        if (currentPage < 1) {
+            currentPage = 1;
+        }
+        if (currentPage > totalPages) {
+            currentPage = totalPages;
+        }
+
+        if (totalCourseVideos > 0) {
+            int start = (currentPage - 1) * pageSize;
+            int end = Math.min(start + pageSize, totalCourseVideos);
+            List<CourseVideos> paginatedCourseVideos = listCourseVideos.subList(start, end);
+            request.setAttribute("listCourseVideos", paginatedCourseVideos);
+        }
+        int beforePage = Math.max(1, currentPage - 2);
+        int afterPage = Math.min(totalPages, currentPage + 2);
+        request.setAttribute("beforePage", beforePage);
+        request.setAttribute("currentPage", currentPage);
+        request.setAttribute("afterPage", afterPage);
+        request.setAttribute("totalPages", totalPages);
+        //------------//
+        
         request.setAttribute("CourseUpdate", c);
         request.getRequestDispatcher("views/admin/courses/updatecourses.jsp").forward(request, response);
     }
@@ -80,7 +128,7 @@ public class UpdateCourses extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int courseID = Integer.parseInt(request.getParameter("courseID")); // Lấy courseID từ form
+        int courseID = Integer.parseInt(request.getParameter("courseID")); 
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         int price = (int) Double.parseDouble(request.getParameter("price"));
