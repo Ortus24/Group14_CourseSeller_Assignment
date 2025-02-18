@@ -138,10 +138,27 @@ public class UpdateCourses extends HttpServlet {
         boolean status = Boolean.parseBoolean(request.getParameter("status"));
         Courses update = new Courses(courseID, title, description, price, duration, thumbnail, categoryID, title, status);
 
+        //update-course
         CourseDAO coDAO = new CourseDAO();
-
         coDAO.updateCourse(update);
-        response.sendRedirect("listcourse");
+        //----------------//
+        
+        List<Courses> listCourses = coDAO.getCourses();
+        
+        int totalPage = 0;
+        for (int i = 0; i < listCourses.size(); i++) {
+            if(listCourses.get(i).getCourseID()==courseID){
+                totalPage = i+1;
+            }
+        }
+        int returnPage = totalPage/8+1;
+        if (totalPage % 8 == 0  ) {
+            returnPage--;
+        }
+        
+       
+        
+        response.sendRedirect("listcourse?page="+returnPage);
 
     }
 

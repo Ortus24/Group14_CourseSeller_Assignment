@@ -214,12 +214,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     text-align: center;
 }
 
-
-/* Nút xóa và hủy */
-.modal-buttons {
-    margin-top: 20px;
-}
-
 .delete-btn {
     background-color: red;
     color: white;
@@ -237,4 +231,3 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     cursor: pointer;
     border-radius: 5px;
 }
-

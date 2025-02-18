@@ -3,9 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller.admin;
+package controller.admin.coursevideos;
 
-import dal.CourseDAO;
+import dal.CourseVideosDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,15 +13,15 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
+import model.CourseVideos;
 import model.Courses;
 
 /**
  *
  * @author Nhat
  */
-@WebServlet(name="DeleteCourse", urlPatterns={"/deletecourse"})
-public class DeleteCourse extends HttpServlet {
+@WebServlet(name="AddCourseVideos", urlPatterns={"/add-course-videos"})
+public class AddCourseVideos extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -38,10 +38,10 @@ public class DeleteCourse extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DeleteCourse</title>");  
+            out.println("<title>Servlet AddCourseVideos</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet DeleteCourse at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet AddCourseVideos at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -58,27 +58,7 @@ public class DeleteCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("courseID"));
-        
-        CourseDAO coDAO  = new CourseDAO();
-        List<Courses> listCourses = coDAO.getCourses();
-        
-        int totalPage = 0;
-        for (int i = 0; i < listCourses.size(); i++) {
-            if(listCourses.get(i).getCourseID()==id){
-                totalPage = i+1;
-            }
-        }
-        int returnPage = totalPage/8+1;
-        if (totalPage % 8 == 0  ) {
-            returnPage--;
-        }
-        
-        //delete
-        coDAO.deleteCourse(id);
-        //---------//
-        
-        response.sendRedirect("listcourse?page="+returnPage);
+        processRequest(request, response);
     } 
 
     /** 
@@ -91,7 +71,18 @@ public class DeleteCourse extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        int courseID = Integer.parseInt(request.getParameter("courseID"));
+        int currentPage = Integer.parseInt(request.getParameter("page"));
+        String url = request.getParameter("url");
+        String title = request.getParameter("title");
+        int duration = Integer.parseInt(request.getParameter("duration"));
+        
+        CourseVideos cv = new CourseVideos(courseID, url, title, duration);
+        CourseVideosDAO cvDAO = new CourseVideosDAO();
+        cvDAO.insertCourseVideos(cv);
+        
+        response.sendRedirect("update-courses?courseID="+courseID+"&page="+currentPage);
+
     }
 
     /** 

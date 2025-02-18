@@ -9,6 +9,7 @@ package model;
  * @author Nhat
  */
 public class CourseVideos {
+
     private int videoID;
     private int courseID;
     private String videoURL;
@@ -26,6 +27,13 @@ public class CourseVideos {
         this.title = title;
         this.duration = duration;
         this.createdDate = createdDate;
+    }
+
+    public CourseVideos(int courseID, String videoURL, String title, int duration) {
+        this.courseID = courseID;
+        this.videoURL = videoURL;
+        this.title = title;
+        this.duration = duration;
     }
 
     public int getVideoID() {
@@ -76,5 +84,4 @@ public class CourseVideos {
         this.createdDate = createdDate;
     }
 
-    
 }

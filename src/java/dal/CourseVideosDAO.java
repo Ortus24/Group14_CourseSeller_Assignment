@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.CourseVideos;
+import model.Courses;
 
 /**
  *
@@ -55,4 +56,45 @@ public class CourseVideosDAO extends DBContext {
         return list;
     }
     
+    
+    public int getCourseVideosByVideoID(int id) {
+        String sql = "SELECT * FROM [ASSGINMENT_PRJ301].[dbo].[CourseVideos] WHERE VideoID=?";
+        
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                return rs.getInt("courseID");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
+    }
+    
+    
+    public void insertCourseVideos(CourseVideos cv) {
+        String sql = "INSERT INTO CourseVideos (CourseID, VideoURL, Title, Duration) VALUES (?, ?, ?, ?)";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, cv.getCourseID());
+            ps.setString(2, cv.getVideoURL());
+            ps.setString(3, cv.getTitle());
+            ps.setInt(4, cv.getDuration());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void deleteCourseVideos(int videoID){
+        String sql = "DELETE FROM [dbo].[CourseVideos] WHERE VideoID = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, videoID);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

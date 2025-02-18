@@ -20,7 +20,7 @@
     <div id="deleteModal" class="modal">
         <div class="modal-content" style="width: 35%;
              padding: 3% 20px;
-             border-radius: 39px;;">
+             border-radius: 39px;">
             <h1>Confirm Deletion</h1>
             <p>Are you sure you want to delete this course?</p>
             <div class="modal-buttons">

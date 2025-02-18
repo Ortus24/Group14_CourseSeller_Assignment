@@ -14,6 +14,48 @@
         <title>Update</title>
         <link href="${pageContext.request.contextPath}/assets/css/admin-update-courses.css" rel="stylesheet" type="text/css"/>
         <%@include file="/views/header/header.jsp" %>
+
+
+    <div class="delete-video-form">
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <h1>Confirm Deletion</h1>
+                <p>Are you sure you want to delete this course?</p>
+                <div class="modal-buttons">
+                    <button id="confirmDelete" class="delete-btn">Delete</button>
+                    <button class="cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="add-video-form">
+        <div id="addModal" class="modal">
+            <div class="modal-content" >
+                <a>
+                    <button class="back-list" id="cancelAdd">Back</button>
+                </a>
+                <h2>Add Video</h2>
+
+                <form action="add-course-videos" method="post" class="container">
+                    <input type="hidden" name="courseID" value="${CourseUpdate.courseID}">
+                    <input type="hidden" name="page" value="${currentPage}">
+                    <label for="instructor">URL</label>
+                    <input type="text" id="url" name="url" required>
+
+                    <label for="instructor">Title</label>
+                    <input type="text" id="title" name="title" required>
+
+                    <label for="instructor">Duration</label>
+                    <input type="number" id="duration" name="duration" required>
+
+                    <button class="choice" type="submit">Add Video</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
     <div class="sidebar" id="sidebar">
         <button class="menu-toggle" id="menuToggle">☰</button>
         <h2>Menu</h2>
@@ -44,11 +86,9 @@
                 <h2>Course</h2>
                 <form action="update-courses" method="post">
                     <c:set var="course" value="${CourseUpdate}" />
-                    <input type="hidden" name="courseID" value="${course.courseID}">
-                    <div style="display: flex">
-                        <label for="instructor">Title</label>
-                        <label style="color: red" for="course-name">${requestScope.errorTitleUpdate}</label> 
-                    </div>
+                    <input type="hidden" name="courseID" value="${CourseUpdate.courseID}">
+
+                    <label for="instructor">Title</label>
                     <input type="text" id="title" name="title" value="${course.title}" required>
 
                     <label for="instructor">Description</label>
@@ -80,8 +120,8 @@
 
             <div class="course-video">
                 <h2>List Videos</h2>
-                <a href="${pageContext.request.contextPath}/addcourse">
-                    <button>Add Videos</button>
+                <a>
+                    <button onclick="doAdd()">Add Video</button>
                 </a>
                 <table>
                     <thead>
@@ -102,8 +142,8 @@
                                 <td class="detail-text">${c.duration}</td>
                                 <td class="detail-text">${c.createdDate}</td>
                                 <td>
-                                    <button>Edit</button>
-                                    <a href="#" onclick="doDelete(${c.courseID})"><button>Delete</button></a>
+                                    <button>&#9998;</button>
+                                    <a href="#" onclick="doDelete(${c.videoID})"><button>&#128465;</button></a>
                                 </td>
                             </tr>
                         </c:forEach>
@@ -114,7 +154,7 @@
                     <c:if test="${currentPage > 1}">
                         <a href="update-courses?courseID=${CourseUpdate.courseID}&page=${currentPage - 1}"><</a>
                     </c:if>
-                    
+
                     <c:forEach begin="${beforePage}" end="${afterPage}" var="i">
                         <c:choose>
                             <c:when test="${i == currentPage}">
@@ -125,7 +165,7 @@
                             </c:otherwise>
                         </c:choose>
                     </c:forEach>
-                                
+
                     <c:if test="${currentPage < totalPages}">
                         <a href="update-courses?courseID=${CourseUpdate.courseID}&page=${currentPage + 1}">></a>
                     </c:if>
@@ -135,11 +175,42 @@
 
 
         <script>
-            function doDelete(courseID) {
-                if (confirm("Are you sure you want to delete the category with ID: " + courseID + "?")) {
-                    window.location.href = "deletecourse?courseID=" + courseID;
+
+            //Add video
+            function doAdd() {
+                let modal = document.getElementById("addModal");
+                if (modal) {
+                    modal.style.display = "flex";
                 }
             }
+            document.getElementById("cancelAdd").addEventListener("click", function () {
+                document.getElementById("addModal").style.display = "none";
+            });
+            //-------------//
+
+
+
+            //Delete video
+            let deleteVideoID = null;
+            function doDelete(videoID) {
+                deleteVideoID = videoID;
+                document.getElementById("deleteModal").style.display = "block";
+            }
+
+
+            document.querySelector(".cancel-btn").addEventListener("click", function () {
+                document.getElementById("deleteModal").style.display = "none";
+            });
+
+            document.getElementById("confirmDelete").addEventListener("click", function () {
+                if (deleteVideoID !== null) {
+                    window.location.href = "delete-course-videos?videoID=" + deleteVideoID;
+                }
+            });
+
+            //-------------//
+
+
 
             document.getElementById("menuToggle").addEventListener("click", function () {
                 var sidebar = document.getElementById("sidebar");
