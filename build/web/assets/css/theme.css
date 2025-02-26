@@ -7,7 +7,7 @@
  Version: 1.0
  License:
  License URI:
- */
+*/
 
 /*==================================
  [Table of contents]
@@ -121,7 +121,7 @@
     -moz-transition: all .3s ease-in-out 0s;
     -ms-transition: all .3s ease-in-out 0s;
     -o-transition: all .3s ease-in-out 0s;
-    
+
 }
 .navbar-expand-lg .navbar-nav li .sub-menu li{
     display: block;
@@ -998,12 +998,12 @@
     position: relative;
     z-index: 3;
     border-radius: 10px;
-/*
-    -webkit-box-shadow: 0px 50px 80px 0px rgba(11, 02, 55, 0.12);
-    -moz-box-shadow:    0px 50px 80px 0px rgba(11, 02, 55, 0.12);
-    box-shadow:         0px 50px 80px 0px rgba(11, 02, 55, 0.12);
-*/
-    
+    /*
+        -webkit-box-shadow: 0px 50px 80px 0px rgba(11, 02, 55, 0.12);
+        -moz-box-shadow:    0px 50px 80px 0px rgba(11, 02, 55, 0.12);
+        box-shadow:         0px 50px 80px 0px rgba(11, 02, 55, 0.12);
+    */
+
 }
 /*
 .pack-slider.slick-slider:after{
@@ -1052,7 +1052,7 @@
     -webkit-box-shadow: 0px 25px 80px 0px rgba(11, 02, 55, 0.05);
     -moz-box-shadow:    0px 25px 80px 0px rgba(11, 02, 55, 0.05);
     box-shadow:         0px 25px 80px 0px rgba(11, 02, 55, 0.05);
-    
+
 }
 
 .pack-slider .slick-list{
@@ -1374,16 +1374,16 @@ footer .widget ul li a:hover{
     padding: 0 20px;
 }
 .search-box input[type="search"]::-moz-placeholder{
-   color: #8f8d98;
-   opacity: 1; 
+    color: #8f8d98;
+    opacity: 1;
 }
 .search-box input[type="search"]::-ms-input-placeholder{
-   color: #8f8d98;
-   opacity: 1; 
+    color: #8f8d98;
+    opacity: 1;
 }
 .search-box input[type="search"]::-webkit-input-placeholder{
-   color: #8f8d98;
-   opacity: 1; 
+    color: #8f8d98;
+    opacity: 1;
 }
 .search-box button{
     font-size: 16px;
@@ -2204,16 +2204,16 @@ footer .widget ul li a:hover{
     padding: 0 30px;
 }
 .cta-mailchimp input[type="email"]::-moz-placeholder{
-   color: #797780;
-   opacity: 1; 
+    color: #797780;
+    opacity: 1;
 }
 .cta-mailchimp input[type="email"]::-ms-input-placeholder{
-   color: #797780;
-   opacity: 1; 
+    color: #797780;
+    opacity: 1;
 }
 .cta-mailchimp input[type="email"]::-webkit-input-placeholder{
-   color: #797780;
-   opacity: 1; 
+    color: #797780;
+    opacity: 1;
 }
 .cta-mailchimp input[type="submit"]{
     font-size: 13px;
@@ -2296,7 +2296,7 @@ footer .widget ul li a:hover{
     font-weight: 600;
     color: #3fb65f;
     line-height: 44px;
-    outline: none;    
+    outline: none;
     -webkit-user-select: none;
     user-select: none;
     -webkit-appearance: none;
@@ -2398,7 +2398,8 @@ footer .widget ul li a:hover{
     background: #3fb65f;
     color: #fff;
 }
-.hero-slider .owl-nav{}
+.hero-slider .owl-nav{
+}
 .hero-slider.owl-carousel .owl-nav button{
     right: 80px;
     left: auto;
@@ -2783,20 +2784,20 @@ footer .widget ul li a:hover{
 .registration-form input[type="text"]::-moz-placeholder,
 .registration-form input[type="number"]::-moz-placeholder,
 .registration-form input[type="email"]::-moz-placeholder{
-   color: #95929e;
-   opacity: 1; 
+    color: #95929e;
+    opacity: 1;
 }
 .registration-form input[type="text"]::-ms-input-placeholder,
 .registration-form input[type="number"]::-ms-input-placeholder,
 .registration-form input[type="email"]::-ms-input-placeholder{
-   color: #95929e;
-   opacity: 1; 
+    color: #95929e;
+    opacity: 1;
 }
 .registration-form input[type="text"]::-webkit-input-placeholder,
 .registration-form input[type="number"]::-webkit-input-placeholder,
 .registration-form input[type="email"]::-webkit-input-placeholder{
-   color: #95929e;
-   opacity: 1; 
+    color: #95929e;
+    opacity: 1;
 }
 .registration-form input[type="text"]:focus,
 .registration-form input[type="number"]:focus,
@@ -3234,7 +3235,8 @@ footer .widget ul li a:hover{
     color: inherit;
 }
 .bread-crumbs a:hover{
-    color: rgba(255, 255, 255, 1);;
+    color: rgba(255, 255, 255, 1);
+    ;
 }
 .bread-crumbs span{
     display: inline-block;
@@ -3424,22 +3426,22 @@ footer .widget ul li a:hover{
 .contact-form input[type="text"]::-moz-placeholder,
 .contact-form input[type="number"]::-moz-placeholder,
 .contact-form input[type="email"]::-moz-placeholder{
-   color: #7e7c87;
-   opacity: 1; 
+    color: #7e7c87;
+    opacity: 1;
 }
 .contact-form textarea::-ms-input-placeholder,
 .contact-form input[type="text"]::-ms-input-placeholder,
 .contact-form input[type="number"]::-ms-input-placeholder,
 .contact-form input[type="email"]::-ms-input-placeholder{
-   color: #7e7c87;
-   opacity: 1; 
+    color: #7e7c87;
+    opacity: 1;
 }
 .contact-form textarea::-webkit-input-placeholder,
 .contact-form input[type="text"]::-webkit-input-placeholder,
 .contact-form input[type="number"]::-webkit-input-placeholder,
 .contact-form input[type="email"]::-webkit-input-placeholder{
-   color: #7e7c87;
-   opacity: 1; 
+    color: #7e7c87;
+    opacity: 1;
 }
 .contact-form textarea:focus,
 .contact-form input[type="text"]:focus,
@@ -3706,16 +3708,16 @@ footer .widget ul li a:hover{
     padding: 0 25px;
 }
 .search-form input[type="search"]::-moz-placeholder{
-   color: #8f8d98;
-   opacity: 1; 
+    color: #8f8d98;
+    opacity: 1;
 }
 .search-form input[type="search"]::-ms-input-placeholder{
-   color: #8f8d98;
-   opacity: 1; 
+    color: #8f8d98;
+    opacity: 1;
 }
 .search-form input[type="search"]::-webkit-input-placeholder{
-   color: #8f8d98;
-   opacity: 1; 
+    color: #8f8d98;
+    opacity: 1;
 }
 .search-form button{
     font-size: 16px;
@@ -3893,7 +3895,7 @@ blockquote{
     margin: 41px 0;
     padding: 67px 50px 40px;
     background: #f8f8f8;
-    border-radius: 10px; 
+    border-radius: 10px;
     -webkit-box-shadow: -4px 0px 0px 0px rgba(88, 56, 252, 1);
     -moz-box-shadow:    -4px 0px 0px 0px rgba(88, 56, 252, 1);
     box-shadow:         -4px 0px 0px 0px rgba(88, 56, 252, 1);
@@ -4014,7 +4016,7 @@ blockquote cite{
     margin: 84px 0;
     padding: 44px 40px 55px 150px;
     background: transparent;
-    border-radius: 10px; 
+    border-radius: 10px;
     -webkit-box-shadow: -4px 0px 0px 0px rgba(88, 56, 252, 1);
     -moz-box-shadow:    -4px 0px 0px 0px rgba(88, 56, 252, 1);
     box-shadow:         -4px 0px 0px 0px rgba(88, 56, 252, 1);
@@ -4194,24 +4196,24 @@ blockquote cite{
 .comment-form input[type="url"]::-moz-placeholder,
 .comment-form input[type="number"]::-moz-placeholder,
 .comment-form input[type="email"]::-moz-placeholder{
-   color: #7e7c87;
-   opacity: 1; 
+    color: #7e7c87;
+    opacity: 1;
 }
 .comment-form textarea::-ms-input-placeholder,
 .comment-form input[type="text"]::-ms-input-placeholder,
 .comment-form input[type="url"]::-ms-input-placeholder,
 .comment-form input[type="number"]::-ms-input-placeholder,
 .comment-form input[type="email"]::-ms-input-placeholder{
-   color: #7e7c87;
-   opacity: 1; 
+    color: #7e7c87;
+    opacity: 1;
 }
 .comment-form textarea::-webkit-input-placeholder,
 .comment-form input[type="text"]::-webkit-input-placeholder,
 .comment-form input[type="url"]::-webkit-input-placeholder,
 .comment-form input[type="number"]::-webkit-input-placeholder,
 .comment-form input[type="email"]::-webkit-input-placeholder{
-   color: #7e7c87;
-   opacity: 1; 
+    color: #7e7c87;
+    opacity: 1;
 }
 .comment-form textarea:focus,
 .comment-form input[type="url"]:focus,
@@ -4732,7 +4734,7 @@ Profile Page
 .toolbar-wrapper-2 .toolbar-btn li a:after{
     display: none;
 }
-.toolbar-wrapper-2 .toolbar-btn li a:hover, 
+.toolbar-wrapper-2 .toolbar-btn li a:hover,
 .toolbar-wrapper-2 .toolbar-btn li a.active{
     color: #fff;
     background: #5838fc;
@@ -4740,7 +4742,7 @@ Profile Page
     -moz-box-shadow: 0px 20px 30px 0px rgba(26, 8, 119, 0.24);
     box-shadow: 0px 20px 30px 0px rgba(26, 8, 119, 0.24);
 }
-.toolbar-wrapper-2 .toolbar-btn li a:hover i, 
+.toolbar-wrapper-2 .toolbar-btn li a:hover i,
 .toolbar-wrapper-2 .toolbar-btn li a.active i{
     color: #fff;
 }
@@ -5331,7 +5333,7 @@ Profile Page
 }
 .course-tab-wrapper .tab-content{
     position: relative;
-    padding: 0 35px 30px; 
+    padding: 0 35px 30px;
 }
 .teacher-item-3{
     position: relative;
@@ -5716,6 +5718,7 @@ Profile Page
 .single-comment .ratings span i{
     color: #c4c2cb;
 }
+
 .review-form-area{
     position: relative;
     margin: 64px 0 28px;

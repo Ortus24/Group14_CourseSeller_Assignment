@@ -2,6 +2,11 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/F:/FPT_uni/Spring_25/PRJ301/Project/file/Ass_SellCourse/Group14_CourseSeller_Assignment/src/java/controller/course/SingleCourseServlet.java</file>
+            <file>file:/F:/FPT_uni/Spring_25/PRJ301/Project/file/Ass_SellCourse/Group14_CourseSeller_Assignment/src/java/dal/CoursesDAO.java</file>
+            <file>file:/F:/FPT_uni/Spring_25/PRJ301/Project/file/Ass_SellCourse/Group14_CourseSeller_Assignment/src/java/model/RatingPercent.java</file>
+            <file>file:/F:/FPT_uni/Spring_25/PRJ301/Project/file/Ass_SellCourse/Group14_CourseSeller_Assignment/web/views/courses/single-course.jsp</file>
+        </group>
     </open-files>
 </project-private>

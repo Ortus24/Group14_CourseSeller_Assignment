@@ -144,9 +144,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!--Category : hien ki may-->
-                        <h2 class="banner-title">${requestScope.category.categoryName}</h2>
+                        <h2 class="banner-title">${sessionScope.category.categoryName}</h2>
                         <div class="bread-crumbs">
-                            <a href="views/home/home.jsp">Home</a> <span></span> ${requestScope.category.categoryName}
+                            <a href="views/home/home.jsp">Home</a> <span></span> ${sessionScope.category.categoryName}
                         </div>
                     </div>
                 </div>
@@ -159,7 +159,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-9"> 
-                        <c:set value="${requestScope.course}" var="course"></c:set>
+                        <c:set value="${sessionScope.course}" var="course"></c:set>
                             <div class="single-course-area">
                                 <div class="course-top">
                                     <h4>${course.title}</h4>
@@ -169,7 +169,7 @@
                                                                             <span>Teacher</span>
                                                                             <a href="#">Anthony</a>
                                                                         </div>-->
-                                    <c:set value="${requestScope.category}" var="category"></c:set>
+                                    <c:set value="${sessionScope.category}" var="category"></c:set>
                                         <div class="categories">
                                             <span>Categories:</span>
                                             <a href="#">${category.categoryName}</a>
@@ -221,13 +221,13 @@
                                             </div>
                                             <div id="acc_1" class="collapse show" aria-labelledby="cc_1" data-parent="#id_1">
                                                 <div class="card-body">
-                                                    <c:forEach items="${requestScope.listCourseVideo}" var="courseVideo">
+                                                    <c:forEach items="${sessionScope.listCourseVideo}" var="courseVideo">
                                                         <div class="ci-item">
                                                             <h5>
                                                                 <i class="icon_menu-square_alt2"></i>
-                                                                <a href="#">${courseVideo.title}</a>
+                                                                <a href="lesson">${courseVideo.title}</a>
                                                             </h5>
-                                                            
+
                                                             <div class="ci-tools">
                                                                 <a href="#" class="time">${courseVideo.duration} minutes</a>
                                                                 <a href="#" class="lock"><i class="icon_lock_alt"></i></a>
@@ -251,61 +251,36 @@
                                                 <div class="average-rate">
                                                     <p>Average Rating</p>
                                                     <div class="rate-box">
-                                                        <h2>4.8</h2>
+                                                        <h2>${sessionScope.avgRating}</h2>
                                                         <div class="ratings">
                                                             <i class="icon_star"></i>
                                                             <i class="icon_star"></i>
                                                             <i class="icon_star"></i>
                                                             <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
+                                                            <i class="icon_star"></i> 
                                                         </div>
-                                                        <span>4 Reviews</span>
+                                                        <span>${sessionScope.totalReview} Reviews</span>
                                                     </div>
                                                 </div>
                                                 <div class="details-rate">
                                                     <p>Detailed Rating</p>
                                                     <div class="detail-rate-box">
-                                                        <div class="rate-item">
-                                                            <p>5</p>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <c:forEach items="${sessionScope.ratingPercent}" var="ratingPercent">
+                                                            <div class="rate-item">
+                                                                <p>${ratingPercent.rating}</p>
+                                                                <div class="progress">
+                                                                    <div class="progress-bar" role="progressbar" style="width: ${ratingPercent.percent}%;" aria-valuenow="${ratingPercent.percent}" aria-valuemin="0" aria-valuemax="100"></div>
+                                                                </div>
+                                                                <span>${ratingPercent.percent}%</span>
                                                             </div>
-                                                            <span>100%</span>
-                                                        </div>
-                                                        <div class="rate-item">
-                                                            <p>4</p>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="30"></div>
-                                                            </div>
-                                                            <span>30%</span>
-                                                        </div>
-                                                        <div class="rate-item">
-                                                            <p>3</p>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="20"></div>
-                                                            </div>
-                                                            <span>20%</span>
-                                                        </div>
-                                                        <div class="rate-item">
-                                                            <p>2</p>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="10"></div>
-                                                            </div>
-                                                            <span>10%</span>
-                                                        </div>
-                                                        <div class="rate-item">
-                                                            <p>1</p>
-                                                            <div class="progress">
-                                                                <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="0"></div>
-                                                            </div>
-                                                            <span>0%</span>
-                                                        </div>
+                                                        </c:forEach>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="review-rating">
-                                                <h5>Comments ( 3 )</h5>
+                                                <h5>Comments ( ${sessionScope.totalComment} )</h5>
                                                 <ol>
+
                                                     <li>
                                                         <div class="single-comment">
                                                             <img src="assets/images/single-course/r1.png" alt="">
@@ -326,47 +301,7 @@
                                                             <div class="c-border"></div>
                                                         </div>
                                                     </li>
-                                                    <li>
-                                                        <div class="single-comment">
-                                                            <img src="assets/images/single-course/r2.png" alt="">
-                                                            <h5><a href="#">Hugh Saturation</a></h5>
-                                                            <span>March 14, 2012 at 10:13 am</span>
-                                                            <div class="comment">
-                                                                <p>
-                                                                    Lavatory wind up twit haggle spiffing show off show off pick your nose and blow off spend a penny David zonked what a plonker are you taking.
-                                                                </p>
-                                                            </div>
-                                                            <div class="ratings">
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <span><i class="icon_star"></i></span>
-                                                            </div>
-                                                            <div class="c-border"></div>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="single-comment">
-                                                            <img src="assets/images/single-course/r3.png" alt="">
-                                                            <h5><a href="#">Jim Séchen</a></h5>
-                                                            <span>April 16, 2012 at 12:15 pm</span>
-                                                            <div class="comment">
-                                                                <p>
-                                                                    He lost his bottle cheeky bugger such fibber Harry porkies spiffing good time wind up argy bargy arse bite your arm off bugger.
-                                                                </p>
-                                                            </div>
-                                                            <div class="ratings">
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <span>
-                                                                    <i class="icon_star"></i>
-                                                                    <i class="icon_star"></i>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                    </li>
+
                                                 </ol>
                                             </div>
                                             <div class="review-form-area">
@@ -551,8 +486,8 @@
                             <aside class="widget">
                                 <div class="info-course">
                                     <ul>
-                                        <li><i class="icon_document_alt"></i><span>Lectures: </span> 14</li>
-                                        <li><i class="icon_clock_alt"></i><span>Duration: </span> 10 weeks</li>
+                                        <li><i class="icon_document_alt"></i><span>Lectures: </span> ${sessionScope.totalLesson}</li>
+                                        <li><i class="icon_clock_alt"></i><span>Duration: </span> ${sessionScope.totalDuration} Hours</li>
                                         <li><i class="icon_profile"></i><span>Enrolled: </span> </li>
                                         <li><i class="icon_cog"></i><span>Language: </span> Vietnamese</li>
                                     </ul>
@@ -561,7 +496,7 @@
                             </aside>
                             <aside class="widget">
                                 <h3 class="widget-title">Related Courses</h3>
-                                <c:forEach items="${requestScope.relatedCourses}" var="rc">
+                                <c:forEach items="${sessionScope.relatedCourses}" var="rc">
                                     <div class="latest-course">
                                         <a href="singlecourse?id=${rc.courseID}"><img src="${rc.thumbnail}" alt=""></a>
                                         <h5><a href="singlecourse?id=${rc.courseID}">${rc.title}</a></h5>

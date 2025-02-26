@@ -18,6 +18,7 @@ import java.util.List;
 import model.Category;
 import model.CourseVideo;
 import model.Courses;
+import model.RatingPercent;
 
 /**
  *
@@ -45,19 +46,36 @@ public class SingleCourseServlet extends HttpServlet {
             int courseId = Integer.parseInt(courseId_raw);
             
             Courses c = cd.getCourseById(courseId);
-            request.setAttribute("course", c);
+            session.setAttribute("course", c);
             
             List<CourseVideo> listCourseVideo = cd.getAllCourseVideoByCourseId(courseId);
-            request.setAttribute("listCourseVideo", listCourseVideo);
+            session.setAttribute("listCourseVideo", listCourseVideo);
             
             Category category = cd.getCategoryIdByCourseId(courseId);
-            request.setAttribute("category", category);
+            session.setAttribute("category", category);
             
             List<Courses> relatedCourses = cd.relatedCourses(category.getCategoryID(), courseId);
-            request.setAttribute("relatedCourses", relatedCourses);
+            session.setAttribute("relatedCourses", relatedCourses);
            
             //tong bai hoc
+            int totalLesson = cd.totalLesson(courseId);
+            session.setAttribute("totalLesson", totalLesson);
             
+            //tong duration
+            double totalDuration = (double)cd.totalDuration(courseId) / 60 ;
+            session.setAttribute("totalDuration", String.format("%.1f", totalDuration));
+            
+            //avg rating
+            float avgRating = cd.avgRating(courseId);
+            session.setAttribute("avgRating", String.format("%.1f", avgRating));
+            
+            //total review
+            int totalReview = cd.totalReview(courseId);
+            session.setAttribute("totalReview", totalReview);
+            
+            //review by percent
+            List<RatingPercent> ratingPercent = cd.avgRatingPercent(courseId);
+            session.setAttribute("ratingPercent", ratingPercent);
             
         } catch (NumberFormatException e) {
         } 
