@@ -7,7 +7,6 @@ package controller.course;
 
 import dal.CoursesDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -19,6 +18,7 @@ import model.Category;
 import model.CourseVideo;
 import model.Courses;
 import model.RatingPercent;
+import model.Review;
 
 /**
  *
@@ -77,6 +77,9 @@ public class SingleCourseServlet extends HttpServlet {
             List<RatingPercent> ratingPercent = cd.avgRatingPercent(courseId);
             session.setAttribute("ratingPercent", ratingPercent);
             
+            //get all review
+            List<Review> listReview = cd.getReviewByCourseId(courseId);
+            session.setAttribute("listReview", listReview);
         } catch (NumberFormatException e) {
         } 
         request.getRequestDispatcher("views/courses/single-course.jsp").forward(request, response);

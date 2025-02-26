@@ -1,0 +1,59 @@
+.review-ratings {
+    color: #FFD700; /* Màu vàng */
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.review-ratings .star {
+    color: #ccc; /* Màu xám cho sao chưa được chọn */
+}
+.review-ratings .star.filled {
+    color: #FFD700; /* Sao được chọn */
+}
+.single-comment span{
+    margin-bottom: 5px;
+}
+
+.comment-form-rating {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.comment-form-rating label {
+    font-size: 14px;
+    font-weight: 400;
+    color: #5d5a67;
+    margin: 0;
+}
+
+.ratings {
+    display: flex;
+    flex-direction: row-reverse;
+    /* Đảo ngược thứ tự để 5 sao nằm bên trái */
+    margin-left: 15px;
+}
+
+.ratings input {
+    display: none;
+}
+
+.ratings label {
+    font-size: 24px;
+    color: #c4c2cb;
+    cursor: pointer;
+    transition: color 0.3s;
+    margin-top: 10px;
+}
+
+/* Khi người dùng chọn radio */
+.ratings input:checked~label,
+.ratings label:hover,
+.ratings label:hover~label {
+    color: gold;
+}
+
+.comment-form review-name,
+.comment-form review-name{
+    margin-bottom: 0;
+}

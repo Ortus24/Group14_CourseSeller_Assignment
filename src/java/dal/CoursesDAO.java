@@ -11,6 +11,8 @@ import model.Category;
 import model.CourseVideo;
 import model.Courses;
 import model.RatingPercent;
+import model.Review;
+import model.User;
 
 /**
  *
@@ -237,11 +239,11 @@ public class CoursesDAO extends DBContext {
     public List<RatingPercent> avgRatingPercent(int courseId) {
         List<RatingPercent> list = new ArrayList<>();
         String sql = "SELECT Rating, \n"
-           + "ROUND((COUNT(*) * 100.0 / (SELECT COUNT(*) FROM Reviews WHERE CourseID = ?)), 1) AS Percentage\n"
-           + "FROM Reviews\n"
-           + "WHERE CourseID = ?\n"
-           + "GROUP BY Rating\n"
-           + "ORDER BY Rating DESC;";
+                + "ROUND((COUNT(*) * 100.0 / (SELECT COUNT(*) FROM Reviews WHERE CourseID = ?)), 1) AS Percentage\n"
+                + "FROM Reviews\n"
+                + "WHERE CourseID = ?\n"
+                + "GROUP BY Rating\n"
+                + "ORDER BY Rating DESC;";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -252,20 +254,55 @@ public class CoursesDAO extends DBContext {
                 RatingPercent rp = new RatingPercent(rs.getInt("Rating"), rs.getFloat("Percentage"));
                 list.add(rp);
             }
-            
+
         } catch (SQLException e) {
             System.out.println(e);
         }
         return list;
     }
 
-    //Total comment by course id
-    
-    //Get review by user name and by course id
+    //Get review by course id
+    public List<Review> getReviewByCourseId(int courseId) {
+        List<Review> list = new ArrayList<>();
+        String sql = "SELECT * \n"
+                + "FROM [ASSGINMENT_PRJ301].[dbo].[Reviews]\n"
+                + "WHERE CourseID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, courseId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User user = getUserByUserName(rs.getString("UserName"));
+                Review review = new Review(rs.getInt("ReviewID"), rs.getInt("CourseID"), user,
+                        rs.getFloat("Rating"), rs.getString("Comment"), rs.getString("ReviewDate"));
+                list.add(review);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return list;
+    }
+    public User getUserByUserName(String userName){
+        String sql = "SELECT * FROM Users WHERE UserName LIKE '" + userName +"'";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                User u = new User(rs.getString("UserName"), rs.getString("FullName"), rs.getString("Password"), 
+                        rs.getInt("RoleID"), rs.getString("Image"), rs.getString("Email"), rs.getString("BirthDay"),
+                        rs.getString("Address"), rs.getString("Phone"), rs.getInt("Status"));
+                return u;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
+    }
     //Get user by course id
     //Review end 
+            
     public static void main(String[] args) {
         CoursesDAO d = new CoursesDAO();
-        System.out.println(d.avgRatingPercent(1).get(0).getPercent());
+        System.out.println(d.getUserByUserName("alice_brown").getFullName());
     }
 }

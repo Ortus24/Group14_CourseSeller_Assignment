@@ -31,11 +31,14 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/preset.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/theme.css" />
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/responsive.css" />
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/starrating.css" />
         <!-- End Include All CSS -->
 
         <!-- Favicon Icon -->
         <link rel="icon"  type="image/png" href="${pageContext.request.contextPath}/assets/images/favicon.png">
         <!-- Favicon Icon -->
+
+
     </head>
     <body>
 
@@ -265,6 +268,7 @@
                                                 <div class="details-rate">
                                                     <p>Detailed Rating</p>
                                                     <div class="detail-rate-box">
+<!--                                                        sua lai -->
                                                         <c:forEach items="${sessionScope.ratingPercent}" var="ratingPercent">
                                                             <div class="rate-item">
                                                                 <p>${ratingPercent.rating}</p>
@@ -278,61 +282,58 @@
                                                 </div>
                                             </div>
                                             <div class="review-rating">
-                                                <h5>Comments ( ${sessionScope.totalComment} )</h5>
+                                                <h5>Comments:</h5>
                                                 <ol>
+                                                    <c:forEach items="${sessionScope.listReview}" var="review">
+                                                        <li>
+                                                            <div class="single-comment">
+                                                                <img src="assets/images/single-course/r1.png" alt="">
+                                                                <h5><a href="#">${review.user.fullName}</a></h5>
+                                                                <span>${review.date}</span>
+                                                                <div class="review-ratings">
+                                                                    <c:forEach var="i" begin="1" end="5">
+                                                                        <i class="star ${i <= review.rating ? 'filled' : ''}">&#9733;</i>
+                                                                    </c:forEach>
+                                                                </div>
+                                                                <div class="comment">
+                                                                    <p>${review.comment}</p>
+                                                                </div>
 
-                                                    <li>
-                                                        <div class="single-comment">
-                                                            <img src="assets/images/single-course/r1.png" alt="">
-                                                            <h5><a href="#">Dianne Ameter</a></h5>
-                                                            <span>August 8, 2012 at 9:22 am</span>
-                                                            <div class="comment">
-                                                                <p>
-                                                                    I don't want no agro car boot lavatory wind up twit haggle spiffing show off show off pick your nose and blow off spend a penny David zonked what a plonker are you taking.
-                                                                </p>
+                                                                <div class="c-border"></div>
                                                             </div>
-                                                            <div class="ratings">
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                                <i class="icon_star"></i>
-                                                            </div>
-                                                            <div class="c-border"></div>
-                                                        </div>
-                                                    </li>
-
+                                                        </li>
+                                                    </c:forEach>
                                                 </ol>
                                             </div>
                                             <div class="review-form-area">
                                                 <h5>Leave a Comment</h5>
                                                 <div class="comment-form">
                                                     <form class="row" action="#" method="post">
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 review-name">
                                                             <input type="text" name="name" placeholder="Name">
                                                         </div>
-                                                        <div class="col-md-6">
+                                                        <div class="col-md-6 review-email">
                                                             <input type="email" name="email" placeholder="Email">
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <input type="text" name="ttile" placeholder="Review Title">
-                                                        </div>
-                                                        <div class="col-md-12">
                                                             <div class="comment-form-rating">
-                                                                <label >Ratings:</label>
-                                                                <div class="ratings" id="rating">
-                                                                    <i class="icon_star"></i>
-                                                                    <i class="icon_star"></i>
-                                                                    <i class="icon_star"></i>
-                                                                    <span>
-                                                                        <i class="icon_star"></i>
-                                                                        <i class="icon_star"></i>
-                                                                    </span>
+                                                                <label>Ratings:</label>
+                                                                <div class="ratings">
+                                                                    <input type="radio" id="star5" name="rating" value="5">
+                                                                    <label for="star5">★</label>
+                                                                    <input type="radio" id="star4" name="rating" value="4">
+                                                                    <label for="star4">★</label>
+                                                                    <input type="radio" id="star3" name="rating" value="3">
+                                                                    <label for="star3">★</label>
+                                                                    <input type="radio" id="star2" name="rating" value="2">
+                                                                    <label for="star2">★</label>
+                                                                    <input type="radio" id="star1" name="rating" value="1">
+                                                                    <label for="star1">★</label>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-12">
-                                                            <textarea placeholder="Coment"></textarea>
+                                                            <textarea placeholder="Comment"></textarea>
                                                         </div>
                                                         <div class="col-md-12">
                                                             <button type="submit">Submit Review</button>
