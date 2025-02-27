@@ -236,29 +236,29 @@ public class CoursesDAO extends DBContext {
     }
 
     //Avg rating star (percent) by course id 
-    public List<RatingPercent> avgRatingPercent(int courseId) {
-        List<RatingPercent> list = new ArrayList<>();
+    public RatingPercent avgRatingPercent(int courseId, int rating) {
         String sql = "SELECT Rating, \n"
                 + "ROUND((COUNT(*) * 100.0 / (SELECT COUNT(*) FROM Reviews WHERE CourseID = ?)), 1) AS Percentage\n"
                 + "FROM Reviews\n"
                 + "WHERE CourseID = ?\n"
                 + "GROUP BY Rating\n"
-                + "ORDER BY Rating DESC;";
+                + "HAVING Rating = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, courseId);
             ps.setInt(2, courseId);
+            ps.setInt(3, rating);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 RatingPercent rp = new RatingPercent(rs.getInt("Rating"), rs.getFloat("Percentage"));
-                list.add(rp);
+                return rp;
             }
 
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return list;
+        return null;
     }
 
     //Get review by course id
@@ -282,13 +282,14 @@ public class CoursesDAO extends DBContext {
         }
         return list;
     }
-    public User getUserByUserName(String userName){
-        String sql = "SELECT * FROM Users WHERE UserName LIKE '" + userName +"'";
+
+    public User getUserByUserName(String userName) {
+        String sql = "SELECT * FROM Users WHERE UserName LIKE '" + userName + "'";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                User u = new User(rs.getString("UserName"), rs.getString("FullName"), rs.getString("Password"), 
+                User u = new User(rs.getString("UserName"), rs.getString("FullName"), rs.getString("Password"),
                         rs.getInt("RoleID"), rs.getString("Image"), rs.getString("Email"), rs.getString("BirthDay"),
                         rs.getString("Address"), rs.getString("Phone"), rs.getInt("Status"));
                 return u;
@@ -298,9 +299,17 @@ public class CoursesDAO extends DBContext {
         }
         return null;
     }
-    //Get user by course id
+
+    //Pagination review
+    public List<Review> getListReviewByPage(List<Review> list, int start, int end) {
+        List<Review> arr = new ArrayList<>();
+        for (int i = start; i < end; i++) {
+            arr.add(list.get(i));
+        }
+        return arr;
+    }
     //Review end 
-            
+
     public static void main(String[] args) {
         CoursesDAO d = new CoursesDAO();
         System.out.println(d.getUserByUserName("alice_brown").getFullName());

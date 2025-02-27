@@ -255,12 +255,10 @@
                                                     <p>Average Rating</p>
                                                     <div class="rate-box">
                                                         <h2>${sessionScope.avgRating}</h2>
-                                                        <div class="ratings">
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i>
-                                                            <i class="icon_star"></i> 
+                                                        <div class="rating-container">
+                                                            <div class="stars" >
+                                                                <div class="filled" style="width: calc(${sessionScope.avgRating} * 20%);"></div>
+                                                            </div>
                                                         </div>
                                                         <span>${sessionScope.totalReview} Reviews</span>
                                                     </div>
@@ -268,7 +266,6 @@
                                                 <div class="details-rate">
                                                     <p>Detailed Rating</p>
                                                     <div class="detail-rate-box">
-<!--                                                        sua lai -->
                                                         <c:forEach items="${sessionScope.ratingPercent}" var="ratingPercent">
                                                             <div class="rate-item">
                                                                 <p>${ratingPercent.rating}</p>
@@ -284,7 +281,7 @@
                                             <div class="review-rating">
                                                 <h5>Comments:</h5>
                                                 <ol>
-                                                    <c:forEach items="${sessionScope.listReview}" var="review">
+                                                    <c:forEach items="${requestScope.listPaninationReviews}" var="review">
                                                         <li>
                                                             <div class="single-comment">
                                                                 <img src="assets/images/single-course/r1.png" alt="">
@@ -298,13 +295,32 @@
                                                                 <div class="comment">
                                                                     <p>${review.comment}</p>
                                                                 </div>
-
                                                                 <div class="c-border"></div>
                                                             </div>
                                                         </li>
                                                     </c:forEach>
                                                 </ol>
                                             </div>
+                                                    
+                                            <div class="review-pagination">
+                                                <c:set var="page" value="${requestScope.page}"></c:set>
+                                                <ul class="pagination">
+                                                    <c:if test="${page > 1}">
+                                                        <li><a href="singlecourse?id=${param.id}&page=${page - 1}">Previous &laquo;</a></li>
+                                                        </c:if>
+
+                                                        <c:forEach var="i" begin="1" end="${requestScope.num}">
+                                                            <li class="${i == page ? "active" : ""}">
+                                                            <a href="singlecourse?id=${param.id}&page=${i}">${i}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                        
+                                                        <c:if test="${requestScope.page < requestScope.num}">
+                                                            <li><a href="singlecourse?id=${param.id}&page=${page + 1}">Next &raquo;</a></li>
+                                                        </c:if>
+                                                </ul>
+                                            </div>     
+
                                             <div class="review-form-area">
                                                 <h5>Leave a Comment</h5>
                                                 <div class="comment-form">

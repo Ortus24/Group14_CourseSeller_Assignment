@@ -1,18 +1,64 @@
+/*Average Rating start*/
+.rating-container {
+    display: flex;
+    font-family: Arial, sans-serif;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    width: 100%;
+    justify-content: center;
+}
+
+.stars {
+    position: relative;
+    font-size: 20px;
+    color: #ccc;
+}
+
+.stars::before {
+    content: "★★★★★";
+    letter-spacing: 3px;
+}
+
+.stars .filled {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    color: gold;
+}
+
+.stars .filled::before {
+    content: "★★★★★";
+    letter-spacing: 3px;
+}
+
+.rating-score {
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 8px;
+}
+/*Average Rating end*/
+
+/*Star in Comment start*/
 .review-ratings {
-    color: #FFD700; /* Màu vàng */
+    color: #FFD700;
     font-size: 20px;
     margin-bottom: 15px;
 }
 .review-ratings .star {
-    color: #ccc; /* Màu xám cho sao chưa được chọn */
+    color: #ccc;
 }
 .review-ratings .star.filled {
-    color: #FFD700; /* Sao được chọn */
+    color: #FFD700;
 }
 .single-comment span{
     margin-bottom: 5px;
 }
+/*Star in Comment end*/
 
+/*Rating form star start*/
 .comment-form-rating {
     display: flex;
     justify-content: flex-start;
@@ -30,7 +76,6 @@
 .ratings {
     display: flex;
     flex-direction: row-reverse;
-    /* Đảo ngược thứ tự để 5 sao nằm bên trái */
     margin-left: 15px;
 }
 
@@ -46,7 +91,6 @@
     margin-top: 10px;
 }
 
-/* Khi người dùng chọn radio */
 .ratings input:checked~label,
 .ratings label:hover,
 .ratings label:hover~label {
@@ -57,3 +101,44 @@
 .comment-form review-name{
     margin-bottom: 0;
 }
+/*Rating form star end*/
+
+/*Pagition Review start*/
+.review-pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination li {
+    display: inline;
+    margin: 0 5px;
+}
+
+.pagination li a {
+    color: #007bff;
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.pagination li a:hover {
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination li.active a {
+    background-color: #007bff !important;
+    color: white !important;
+    border: none;
+    font-weight: bold;
+}
+
+/*Pagition Review end*/
