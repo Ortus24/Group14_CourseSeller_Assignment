@@ -280,9 +280,9 @@
                                             </div>
                                             <div class="review-rating">
                                                 <h5>Comments:</h5>
-                                                <ol>
-                                                    <c:forEach items="${requestScope.listPaninationReviews}" var="review">
-                                                        <li>
+                                                <ol class="comment-list">
+                                                    <c:forEach items="${sessionScope.listReview}" var="review" varStatus="status">
+                                                        <li class="box" style="${status.index >= 3 ? 'display: none;' : ''}">
                                                             <div class="single-comment">
                                                                 <img src="assets/images/single-course/r1.png" alt="">
                                                                 <h5><a href="#">${review.user.fullName}</a></h5>
@@ -300,23 +300,26 @@
                                                         </li>
                                                     </c:forEach>
                                                 </ol>
+                                                <c:if test="${sessionScope.totalReview > 3}">
+                                                    <button id="load-more">Load More</button>
+                                                </c:if>
                                             </div>
-                                                    
+
                                             <div class="review-pagination">
                                                 <c:set var="page" value="${requestScope.page}"></c:set>
-                                                <ul class="pagination">
+                                                    <ul class="pagination">
                                                     <c:if test="${page > 1}">
                                                         <li><a href="singlecourse?id=${param.id}&page=${page - 1}">Previous &laquo;</a></li>
                                                         </c:if>
 
-                                                        <c:forEach var="i" begin="1" end="${requestScope.num}">
-                                                            <li class="${i == page ? "active" : ""}">
+                                                    <c:forEach var="i" begin="1" end="${requestScope.num}">
+                                                        <li class="${i == page ? "active" : ""}">
                                                             <a href="singlecourse?id=${param.id}&page=${i}">${i}</a>
                                                         </li>
                                                     </c:forEach>
-                                                        
-                                                        <c:if test="${requestScope.page < requestScope.num}">
-                                                            <li><a href="singlecourse?id=${param.id}&page=${page + 1}">Next &raquo;</a></li>
+
+                                                    <c:if test="${requestScope.page < requestScope.num}">
+                                                        <li><a href="singlecourse?id=${param.id}&page=${page + 1}">Next &raquo;</a></li>
                                                         </c:if>
                                                 </ul>
                                             </div>     
@@ -369,132 +372,6 @@
                                 <a class="twi" href="#"><i class="social_twitter"></i></a>
                                 <a class="goo" href="#"><i class="social_googleplus"></i></a>
                             </div>
-                            <!--                                <div class="related-course">
-                                                                <h3>Related Courses</h3>
-                                                                <div class="related-course-slider owl-carousel">
-                                                                    <div class="feature-course-item-4">
-                                                                        <div class="fcf-thumb">
-                                                                            <img src="assets/images/profile/1.jpg" alt="">
-                                                                            <a class="enroll" href="#">Enroll Now</a>
-                                                                        </div>
-                                                                        <div class="fci-details">
-                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Computer Science</a>
-                                                                            <h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
-                                                                            <div class="author">
-                                                                                <img src="assets/images/home3/course/a1.png" alt="">
-                                                                                <a href="#">Anthony</a>
-                                                                            </div>
-                                                                            <div class="price-rate">
-                                                                                <div class="course-price">
-                                                                                    Free
-                                                                                    <span>$42.85</span>
-                                                                                </div>
-                                                                                <div class="ratings">
-                                                                                    <i class="icon_star"></i>
-                                                                                    <span>4.5 (2,420)</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="feature-course-item-4">
-                                                                        <div class="fcf-thumb">
-                                                                            <img src="assets/images/profile/2.jpg" alt="">
-                                                                            <a class="enroll" href="#">Enroll Now</a>
-                                                                        </div>
-                                                                        <div class="fci-details">
-                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Art &amp; Design</a>
-                                                                            <h4><a href="single-course.html">The Art of Black and White Photography</a></h4>
-                                                                            <div class="author">
-                                                                                <img src="assets/images/home3/course/a2.png" alt="">
-                                                                                <a href="#">Giles Posture</a>
-                                                                            </div>
-                                                                            <div class="price-rate">
-                                                                                <div class="course-price">
-                                                                                    $75.00
-                                                                                    <span>$92.00</span>
-                                                                                </div>
-                                                                                <div class="ratings">
-                                                                                    <i class="icon_star"></i>
-                                                                                    <span>4.2 (1,203)</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="feature-course-item-4">
-                                                                        <div class="fcf-thumb">
-                                                                            <img src="assets/images/profile/3.jpg" alt="">
-                                                                            <a class="enroll" href="#">Enroll Now</a>
-                                                                        </div>
-                                                                        <div class="fci-details">
-                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Business Study</a>
-                                                                            <h4><a href="single-course.html">Learning jQuery mobile for Beginners</a></h4>
-                                                                            <div class="author">
-                                                                                <img src="assets/images/home3/course/a3.png" alt="">
-                                                                                <a href="#">Hans Down</a>
-                                                                            </div>
-                                                                            <div class="price-rate">
-                                                                                <div class="course-price">
-                                                                                    $53.00
-                                                                                    <span>$74.00</span>
-                                                                                </div>
-                                                                                <div class="ratings">
-                                                                                    <i class="icon_star"></i>
-                                                                                    <span>4.5 (2,420)</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="feature-course-item-4">
-                                                                        <div class="fcf-thumb">
-                                                                            <img src="assets/images/profile/4.jpg" alt="">
-                                                                            <a class="enroll" href="#">Enroll Now</a>
-                                                                        </div>
-                                                                        <div class="fci-details">
-                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Data Science</a>
-                                                                            <h4><a href="single-course.html">Buddhism and modern Psychology</a></h4>
-                                                                            <div class="author">
-                                                                                <img src="assets/images/home3/course/a4.png" alt="">
-                                                                                <a href="#">Richard Tea</a>
-                                                                            </div>
-                                                                            <div class="price-rate">
-                                                                                <div class="course-price">
-                                                                                    $62.00
-                                                                                    <span>$97.00</span>
-                                                                                </div>
-                                                                                <div class="ratings">
-                                                                                    <i class="icon_star"></i>
-                                                                                    <span>4.5 (2,420)</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="feature-course-item-4">
-                                                                        <div class="fcf-thumb">
-                                                                            <img src="assets/images/profile/5.jpg" alt="">
-                                                                            <a class="enroll" href="#">Enroll Now</a>
-                                                                        </div>
-                                                                        <div class="fci-details">
-                                                                            <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Web Development</a>
-                                                                            <h4><a href="single-course.html">Making music with Other people</a></h4>
-                                                                            <div class="author">
-                                                                                <img src="assets/images/home3/course/a6.png" alt="">
-                                                                                <a href="#">Hilary Ouse</a>
-                                                                            </div>
-                                                                            <div class="price-rate">
-                                                                                <div class="course-price">
-                                                                                    #34.00
-                                                                                    <span>$55.00</span>
-                                                                                </div>
-                                                                                <div class="ratings">
-                                                                                    <i class="icon_star"></i>
-                                                                                    <span>4.5 (2,420)</span>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>-->
                         </div>
 
                     </div>
@@ -622,7 +499,7 @@
         <script src="${pageContext.request.contextPath}/assets/js/jquery.countdown.min.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/jquery.easing.1.3.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/jquery.shuffle.min.js"></script>
-
+        <script src="${pageContext.request.contextPath}/assets/js/comment.js"></script>
         <script src="${pageContext.request.contextPath}/assets/js/theme.js"></script>
         <!-- End Include All JS -->
 

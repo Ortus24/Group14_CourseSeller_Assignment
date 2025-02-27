@@ -104,41 +104,28 @@
 /*Rating form star end*/
 
 /*Pagition Review start*/
-.review-pagination {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.pagination {
-    display: inline-block;
-    padding: 0;
-    margin: 0;
-}
-
-.pagination li {
-    display: inline;
-    margin: 0 5px;
-}
-
-.pagination li a {
-    color: #007bff;
-    text-decoration: none;
-    padding: 4px 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-
-.pagination li a:hover {
-    background-color: #007bff;
+#load-more {
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+    padding: 2px 15px;
+    background-color: #007bff; /* Màu xanh dương */
     color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
-.pagination li.active a {
-    background-color: #007bff !important;
-    color: white !important;
-    border: none;
-    font-weight: bold;
+#load-more:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
 }
+
+#load-more:active {
+    transform: scale(0.95); /* Hiệu ứng nhấn nút */
+}
+
 
 /*Pagition Review end*/

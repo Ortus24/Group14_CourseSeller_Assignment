@@ -79,24 +79,6 @@ public class SingleCourseServlet extends HttpServlet {
             //Get all review
             List<Review> listReview = cd.getReviewByCourseId(courseId);
             session.setAttribute("listReview", listReview);
-
-            //Pagination review
-            String xPage = request.getParameter("page");
-            int page;
-            int numberPage = 4;
-            int size = listReview.size();
-            int num = size % numberPage == 0 ? (size / numberPage) : ((size / numberPage) + 1);
-            if (xPage == null) {
-                page = 1;
-            } else {
-                page = Integer.parseInt(xPage);
-            }
-            int start = (page - 1) * numberPage;
-            int end = Math.min(page * numberPage, size);
-            List<Review> listPaninationReviews = cd.getListReviewByPage(listReview, start, end);
-            request.setAttribute("listPaninationReviews", listPaninationReviews);
-            request.setAttribute("page", page);
-            request.setAttribute("num", num);
         } catch (NumberFormatException e) {
         }
         request.getRequestDispatcher("views/courses/single-course.jsp").forward(request, response);
