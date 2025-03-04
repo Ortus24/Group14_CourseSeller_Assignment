@@ -13,6 +13,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
+import model.Lesson;
+import model.Section;
 
 /**
  *
@@ -27,10 +29,25 @@ public class LessonServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         CoursesDAO cd = new CoursesDAO();
         HttpSession session = request.getSession();
-        String courseId_raw = request.getParameter("id");
+        String courseId_raw = request.getParameter("courseId");
+        String lessonId_raw = request.getParameter("id");
         try {
             int courseId = Integer.parseInt(courseId_raw);
-
+            request.setAttribute("courseId", courseId);
+            int lessonId = Integer.parseInt(lessonId_raw);
+            request.setAttribute("lessonId", lessonId);
+            //Get list Section
+            List<Section> listSections = cd.getListSectionByCourseId(courseId);
+            for (Section section : listSections) {
+                List<Lesson> listLessons = cd.getListLessonBySectionId(section.getSectionId());
+                section.setListLesson(listLessons); 
+            }
+            session.setAttribute("listSections", listSections);
+            
+            //Get lesson by lesson id
+            Lesson lessonDetail = cd.getLessonByLessonId(lessonId);
+            session.setAttribute("lessonDetail", lessonDetail);
+            
         } catch (NumberFormatException e) {
         }
         request.getRequestDispatcher("views/courses/lesson.jsp").forward(request, response);

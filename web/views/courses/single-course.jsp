@@ -223,7 +223,7 @@
                                                             <div class="ci-item">
                                                                 <h5>
                                                                     <i class="icon_menu-square_alt2"></i>
-                                                                    <a href="lesson">${lesson.title}</a>
+                                                                    <a href="lesson?courseId=${section.course.courseID}&id=${lesson.lessonId}">${lesson.title}</a>
                                                                 </h5>
                                                                 <c:if test="${lesson.typeName == 'Video'}">
                                                                     <div class="ci-tools">

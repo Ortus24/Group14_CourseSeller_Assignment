@@ -168,8 +168,8 @@ public class CoursesDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Section section = getSectionBySectionId(sectionId);
-                Lesson lesson = new Lesson(rs.getInt("LessonID"), section, rs.getString("TypeName"), rs.getString("Title")
-                        , rs.getFloat("Duration"), rs.getString("ContentURL"), rs.getString("CreatedDate"));
+                Lesson lesson = new Lesson(rs.getInt("LessonID"), section, rs.getString("TypeName"), rs.getString("Title"),
+                         rs.getFloat("Duration"), rs.getString("ContentURL"), rs.getString("CreatedDate"));
                 list.add(lesson);
             }
         } catch (SQLException e) {
@@ -327,9 +327,25 @@ public class CoursesDAO extends DBContext {
     }
     //Course-tab: Review end 
 
-    public static void main(String[] args) {
-        CoursesDAO d = new CoursesDAO();
-        System.out.println(d.getUserByUserName("alice_brown").getFullName());
+    //Lesson Start
+    public Lesson getLessonByLessonId(int lessonId) {
+        String sql = "SELECT *\n"
+                + "  FROM [dbo].[Lessons]\n"
+                + "  WHERE [LessonID] = ?;";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, lessonId);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Section section = getSectionBySectionId(rs.getInt("SectionID"));
+                Lesson lesson = new Lesson(rs.getInt("LessonID"), section, rs.getString("TypeName"), rs.getString("Title"),
+                         rs.getFloat("Duration"), rs.getString("ContentURL"), rs.getString("CreatedDate"));
+                return lesson;
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return null;
     }
-
+    //Lesson End
 }

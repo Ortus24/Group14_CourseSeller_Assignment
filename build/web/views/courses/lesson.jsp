@@ -67,32 +67,40 @@
                         </div>
                         <h2 class="title">Course Content</h2>
                         <div class="accordion-common-style accordion-transparent">
-                            <div class="accordion" id="accordionExample">
-                                <!-- Section 1 -->
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingOne">
-                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                            <span>Q.</span> Introduction to Web Development
-                                        </button>
-                                    </h2>
-                                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <c:forEach items="${sessionScope.listCourseVideo}" var="courseVideo">
-                                                <a href="#" class="bd-course-curriculum-content d-flex-between">
-                                                    <div class="bd-course-curriculum-info d-flex-items gap-10">
-                                                        <div class="icon"><i class="fa-solid fa-video"></i></div>
-                                                        <p class="title" >${courseVideo.title}</p>
-                                                    </div>
-                                                    <div class="bd-course-curriculum-meta d-flex-items gap-10">
-                                                        <span class="duration">${courseVideo.duration}:00</span>
-                                                    </div>
-                                                </a>
-                                            </c:forEach>
+                            <c:forEach items="${sessionScope.listSections}" var="section" varStatus="sectionStatus">
+                                <div class="accordion" id="accordionExample${sectionStatus.index}">
 
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingOne${sectionStatus.index}">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne${sectionStatus.index}" aria-expanded="true" aria-controls="collapseOne">
+                                                <span>${sectionStatus.index+1}.</span> ${section.sectionTitle}
+                                            </button>
+                                        </h2>
+                                        <div id="collapseOne${sectionStatus.index}" class="accordion-collapse collapse show" aria-labelledby="headingOne${sectionStatus.index}" data-bs-parent="#accordionExample${sectionStatus.index}">
+                                            <div class="accordion-body">
+                                                <c:forEach items="${section.listLesson}" var="lesson">
+                                                    <a href="lesson?courseId=${section.course.courseID}&id=${lesson.lessonId}" class="bd-course-curriculum-content d-flex-between">
+                                                        <div class="bd-course-curriculum-info d-flex-items gap-10">
+                                                            <div class="icon"><i class="fa-solid fa-video"></i></div>
+                                                            <p class="title" >${lesson.title}</p>
+                                                        </div>
+                                                        <c:if test="${lesson.typeName == 'Video'}">
+                                                            <div class="bd-course-curriculum-meta d-flex-items gap-10">
+                                                                <span class="duration">${lesson.duration} minutes</span>
+                                                            </div>
+                                                        </c:if>
+                                                        <c:if test="${lesson.typeName != 'Video'}">
+                                                            <div class="bd-course-curriculum-meta d-flex-items gap-10">
+                                                                <span class="duration">${lesson.typeName}</span>
+                                                            </div>
+                                                        </c:if>
+                                                    </a>
+                                                </c:forEach>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </c:forEach>
                         </div>
                     </div>
                     <div class="app-offcanvas-overlay"></div>
@@ -101,17 +109,19 @@
                             <div class="bd-lesson-video-title-wrap">
                                 <div class="bd-lesson-video-title-wrap-left">
                                     <a id="sidebarActive" href="javascript:void(0)"><i class="fa-solid fa-list"></i></a>
-                                    <span>Complete Guide to Web Development: Beginner to Advanced</span>
+                                    <span>${sessionScope.lessonDetail.title}</span>
                                 </div>
                                 <div class="bd-lesson-video-title-wrap-right">
-                                    <a href="index-2.html"><i class="fas fa-times"></i></a>
+                                    <a href="singlecourse?id=${requestScope.courseId}"><i class="fas fa-times"></i></a>
                                 </div>
-                            </div>
-                            <!-- add video here system -->
-                            <img src="assets/images/course/lesson-prev.webp" alt="">
-
+                            </div>      
                         </div>
+                        <div class="video-lesson"">
+                            <!-- add video here system -->
+                            <iframe width="100%" height="850px" src="https://www.youtube.com/embed/Lz8rEuruO2w?si=2sjqMhL5Jt8z3Cf9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        </div>    
                     </div>
+
                 </div>
             </section>
             <!-- course lesson area end -->
