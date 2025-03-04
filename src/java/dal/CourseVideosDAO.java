@@ -36,7 +36,7 @@ public class CourseVideosDAO extends DBContext {
         }
         return list;
     }
-    
+
     public List<CourseVideos> getCourseVideosByCourseID(int id) {
         String sql = "SELECT * FROM [ASSGINMENT_PRJ301].[dbo].[CourseVideos] WHERE CourseID=?";
         List<CourseVideos> list = new ArrayList<>();
@@ -55,11 +55,10 @@ public class CourseVideosDAO extends DBContext {
         }
         return list;
     }
-    
-    
+
     public int getCourseVideosByVideoID(int id) {
         String sql = "SELECT * FROM [ASSGINMENT_PRJ301].[dbo].[CourseVideos] WHERE VideoID=?";
-        
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
@@ -72,8 +71,7 @@ public class CourseVideosDAO extends DBContext {
         }
         return -1;
     }
-    
-    
+
     public void insertCourseVideos(CourseVideos cv) {
         String sql = "INSERT INTO CourseVideos (CourseID, VideoURL, Title, Duration) VALUES (?, ?, ?, ?)";
 
@@ -87,8 +85,27 @@ public class CourseVideosDAO extends DBContext {
             Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    public void deleteCourseVideos(int videoID){
+
+    public void updateCourseVideos(CourseVideos cv) {
+        String sql = "UPDATE [ASSGINMENT_PRJ301].[dbo].[CourseVideos]\n"
+                + "SET \n"
+                + "    VideoURL = ?,\n"
+                + "    Title = ?,\n"
+                + "    Duration = ?\n"
+                + "WHERE VideoID = ?;";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {        
+            ps.setString(1, cv.getVideoURL());
+            ps.setString(2, cv.getTitle());
+            ps.setInt(3, cv.getDuration());
+            ps.setInt(4, cv.getVideoID());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void deleteCourseVideos(int videoID) {
         String sql = "DELETE FROM [dbo].[CourseVideos] WHERE VideoID = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, videoID);

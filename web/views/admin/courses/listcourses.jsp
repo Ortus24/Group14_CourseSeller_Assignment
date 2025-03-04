@@ -42,7 +42,7 @@
             <ul>
                 <a href="${pageContext.request.contextPath}/views/home/home.jsp"><li>Home</li></a>
                 <a href="${pageContext.request.contextPath}/listcourse"><li>Course</li></a>
-                <a href="${pageContext.request.contextPath}/views/home/home.jsp"><li>Student</li></a>
+                <a href="${pageContext.request.contextPath}/list-users"><li>Student</li></a>
                 <a href="${pageContext.request.contextPath}/views/home/home.jsp"><li>Statistical</li></a>
                 <a href="${pageContext.request.contextPath}/views/home/home.jsp"><li>Setting</li></a>
             </ul>
@@ -74,7 +74,7 @@
                                     <td>${c.courseID}</td>
                                     <td>${c.title}</td>
                                     <td class="des">${c.description}</td>
-                                    <td>${c.price}.000VNĐ</td>
+                                    <td>${c.price} USD</td>
                                     <td>${c.createdDate}</td>
                                     <td>
                                         <c:choose>

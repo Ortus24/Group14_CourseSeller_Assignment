@@ -29,6 +29,16 @@ public class CourseVideos {
         this.createdDate = createdDate;
     }
 
+    public CourseVideos(int videoID, int courseID, String videoURL, String title, int duration) {
+        this.videoID = videoID;
+        this.courseID = courseID;
+        this.videoURL = videoURL;
+        this.title = title;
+        this.duration = duration;
+    }
+    
+    
+
     public CourseVideos(int courseID, String videoURL, String title, int duration) {
         this.courseID = courseID;
         this.videoURL = videoURL;

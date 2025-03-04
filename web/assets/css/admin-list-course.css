@@ -50,7 +50,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .sidebar ul li:hover {
-    background: #6699ff;
+    background: #666666;
+    color: #cccccc;
     font-weight: bold;
 }
 .sidebar.closed~.content {
@@ -173,7 +174,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .menu-toggle {
     position: absolute;
     top: 10px;
-    left: 10px;
+    left: 20px;
     background: white;
     border: none;
     padding: 10px;

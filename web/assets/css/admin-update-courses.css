@@ -344,14 +344,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     cursor: pointer;
 }
 
-.add-video-form>div>div{
+.video-form>div>div{
     width: 35%;
     padding: 2% 20px;
     border-radius: 39px;
     height: 55%;
 }
 
-.add-video-form>div>div>a{
+.video-form>div>div>a{
     text-align: left;
     margin-left: 15px;
 }
