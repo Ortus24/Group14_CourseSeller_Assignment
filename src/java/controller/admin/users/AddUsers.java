@@ -76,8 +76,7 @@ public class AddUsers extends HttpServlet {
         String fullName = request.getParameter("first-name")+" "+request.getParameter("last-name");
         String email = request.getParameter("email");
         String phone =request.getParameter("phone");
-        Date birthDay = Date.valueOf(LocalDate.parse(request.getParameter("date")));
-
+  
 
 
     }
