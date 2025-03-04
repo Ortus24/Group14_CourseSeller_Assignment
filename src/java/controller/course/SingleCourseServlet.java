@@ -41,22 +41,18 @@ public class SingleCourseServlet extends HttpServlet {
 
             Course course = cd.getCourseById(courseId);
             session.setAttribute("course", course);
-            
+
             //Related course
             List<Course> relatedCourses = cd.relatedCourses(course.getCategory().getCategoryID(), courseId);
             session.setAttribute("relatedCourses", relatedCourses);
-            
+
             //Curriculum
-            
             List<Section> listSections = cd.getListSectionByCourseId(courseId);
-            session.setAttribute("listSections", listSections);
-            
-            List<Lesson> listLessons = new ArrayList<>();
             for (Section section : listSections) {
-                listLessons = cd.getListLessonBySectionId(section.getSectionId());
+                List<Lesson> listLessons = cd.getListLessonBySectionId(section.getSectionId());
+                section.setListLesson(listLessons); 
             }
-            
-            session.setAttribute("listLessons", listLessons);
+            session.setAttribute("listSections", listSections);
             //Total lesson
             int totalLesson = cd.totalLesson(courseId);
             session.setAttribute("totalLesson", totalLesson);
@@ -76,7 +72,7 @@ public class SingleCourseServlet extends HttpServlet {
             //Review by percent
             List<RatingPercent> listRatingPercent = new ArrayList<>();
             for (int i = 5; i > 0; i--) {
-                RatingPercent ratingPercent = cd.avgRatingPercent(courseId, i) != null 
+                RatingPercent ratingPercent = cd.avgRatingPercent(courseId, i) != null
                         ? cd.avgRatingPercent(courseId, i) : new RatingPercent(i, 0);
                 listRatingPercent.add(ratingPercent);
             }

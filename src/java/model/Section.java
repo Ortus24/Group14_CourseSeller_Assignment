@@ -1,11 +1,13 @@
 package model;
 
+import java.util.List;
+
 public class Section {
     private int sectionId;
     private Course course;
     private String sectionTitle;
     private String createdDate;
-
+    private List<Lesson> listLesson;
     public Section() {
     }
 
@@ -14,6 +16,14 @@ public class Section {
         this.course = course;
         this.sectionTitle = sectionTitle;
         this.createdDate = createdDate;
+    }
+
+    public Section(int sectionId, Course course, String sectionTitle, String createdDate, List<Lesson> listLesson) {
+        this.sectionId = sectionId;
+        this.course = course;
+        this.sectionTitle = sectionTitle;
+        this.createdDate = createdDate;
+        this.listLesson = listLesson;
     }
 
     public int getSectionId() {
@@ -48,7 +58,13 @@ public class Section {
         this.createdDate = createdDate;
     }
 
-    
+    public List<Lesson> getListLesson() {
+        return listLesson;
+    }
+
+    public void setListLesson(List<Lesson> listLesson) {
+        this.listLesson = listLesson;
+    }
     
     
 }

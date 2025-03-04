@@ -187,7 +187,7 @@ public class CoursesDAO extends DBContext {
             ps.setInt(1, sectionId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Course course = getCourseById(sectionId);
+                Course course = getCourseById(rs.getInt("CourseID"));
                 Section section = new Section(rs.getInt("SectionID"), course,
                         rs.getString("SectionTitle"), rs.getString("CreatedDate"));
                 return section;

@@ -219,17 +219,25 @@
                                                 </div>
                                                 <div id="acc_${sectionStatus.index}" class="collapse" aria-labelledby="cc_${sectionStatus.index}" data-parent="#id_${sectionStatus.index}">
                                                     <div class="card-body">
-                                                        <c:forEach items="${sessionScope.listLessons}" var="lesson" varStatus="lessonStatus">
+                                                        <c:forEach items="${section.listLesson}" var="lesson" varStatus="lessonStatus">
                                                             <div class="ci-item">
                                                                 <h5>
                                                                     <i class="icon_menu-square_alt2"></i>
                                                                     <a href="lesson">${lesson.title}</a>
                                                                 </h5>
-                                                                <div class="ci-tools">
-                                                                    <a href="#" class="time">${lesson.duration} minutes</a>
-                                                                    <a href="#" class="lock"><i class="icon_lock_alt"></i></a>
+                                                                <c:if test="${lesson.typeName == 'Video'}">
+                                                                    <div class="ci-tools">
+                                                                        <a href="#" class="time">${lesson.duration} minutes</a>
+                                                                        <a href="#" class="lock"><i class="icon_lock_alt"></i></a>
+                                                                    </div>
+                                                                </c:if>
+                                                                <c:if test="${lesson.typeName != 'Video'}">
+                                                                    <div class="ci-tools">
+                                                                        <a href="#" class="time">${lesson.typeName}</a>
+                                                                        <a href="#" class="lock"><i class="icon_lock_alt"></i></a>
+                                                                    </div>
+                                                                </c:if>
                                                                 </div>
-                                                            </div>
                                                         </c:forEach>
                                                     </div>
                                                 </div>
