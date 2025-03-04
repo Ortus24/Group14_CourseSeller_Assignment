@@ -6,6 +6,7 @@
 package controller.admin;
 
 import dal.CategoryDAO;
+import dal.CoursesDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -58,7 +59,7 @@ public class ListCourse extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        CategoryDAO d = new  CategoryDAO();
+         CoursesDAO d = new CoursesDAO();
         List<Courses> listCourses = d.getCourses();
         request.setAttribute("listcourse", listCourses);
         request.getRequestDispatcher("views/admin/listcourses.jsp").forward(request, response);

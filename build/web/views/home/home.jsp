@@ -5,12 +5,13 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
-    
-<!-- Mirrored from quomodosoft.com/html/bisy/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:18 GMT -->
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
+
+    <!-- Mirrored from quomodosoft.com/html/bisy/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:18 GMT -->
+    <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+    <head>
         <title>Bisylms - Education HTML5 Responsive Template</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
@@ -68,17 +69,7 @@
                             <!-- logo End-->
 
                             <!-- Select Cate Box -->
-                            <div class="catecories-box">
-                               <div class="select-item">
-                                <select name="categories">
-                                    <option value="1" selected="selected">Explore</option>
-                                    <option value="2">Option 01</option>
-                                    <option value="3">Option 02</option>
-                                    <option value="4">Option 03</option>
-                                    <option value="5">Option 04</option>
-                                </select>
-                               </div>
-                            </div>
+                        
                             <!-- Select Cate Box -->
 
                             <!-- Search Box -->
@@ -99,42 +90,19 @@
                                 <ul class="navbar-nav">
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Home</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index-2.html">Home One</a></li>
-                                            <li><a href="index-3.html">Home Two</a></li>
-                                            <li><a href="index-4.html">Home Three</a></li>
-                                        </ul>
+
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Courses</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="course-1.html">Course 01</a></li>
-                                            <li><a href="course-2.html">Course 02</a></li>
-                                            <li><a href="course-3.html">Course 03</a></li>
-                                            <li><a href="single-course.html">Course Details</a></li>
-                                        </ul>
+
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Pages</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item-has-children">
-                                                <a href="javascript:void(0);">About Pages</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="about-1.html">About 01</a></li>
-                                                    <li><a href="about-2.html">About 02</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="instructor.html">Instructor Page</a></li>
-                                            <li><a href="profile.html">Instructor Profile</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
+
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog.html">Blog Page</a></li>
-                                            <li><a href="single-post.html">Blog Details</a></li>
-                                        </ul>
+
                                     </li>
                                     <li>
                                         <a href="contact.html">Contact</a>
@@ -142,13 +110,19 @@
                                 </ul>
                             </div>
                             <!-- Nav Menu End -->
-
+                            <c:if test="${sessionScope.user == null}">
+                                <a href="/project/login" class="join-btn">Login</a>
+                                <a href="/project/register" class="join-btn">Sign Up</a>
+                            </c:if>
+                            <c:if test="${sessionScope.user != null}">
+                                <a href="#" class="user-btn"><i class="ti-user"></i></a>
+                                </c:if>
                             <!-- User Btn -->
-                            <a href="#" class="user-btn"><i class="ti-user"></i></a>
+                            
                             <!-- User Btn -->
 
                             <!-- Join Btn -->
-                            <a href="#" class="join-btn">Join for Free</a>
+                      
                             <!-- Join Btn -->
                         </nav>
                     </div>
@@ -195,21 +169,8 @@
                 </div>
                 <!-- Single Slider item  -->
                 <!-- Single Slider item  -->
-                <div class="single-slide bg-img d-flex align-items-center" data-bg-image="${pageContext.request.contextPath}/assets/images/home3/slider-4.jpg">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="slider-content">
-                                    <div class="sub animated">Superior Acodemic Achievement & Mastery</div>
-                                    <h3 class="animated">
-                                        An education product<br> like on other
-                                    </h3>
-                                    <a href="#" class="animated bisylms-btn-3">Let's Go</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
                 <!-- Single Slider item  -->
                 <!-- Single Slider item  -->
                 <div class="single-slide bg-img d-flex align-items-center" data-bg-image="${pageContext.request.contextPath}/assets/images/home3/slider-3.jpg">
@@ -271,115 +232,46 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="popular-course-slider owl-carousel">
-                            <div class="course-item-3">
-                                <div class="ci-thumb">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/p1.jpg" alt="">
-                                    <a href="#" class="c-cate">Software</a>
-                                </div>
-                                <div class="course-details">
-                                    <img class="line-bg" src="assets/images/home3/line.jpg" alt="">
-                                    <div class="fcf-bottom">
-                                        <a href="#"><i class="icon_book_alt"></i>14 Lessons</a>
-                                        <a href="#"><i class="icon_profile"></i>203</a>
+                            <c:forEach var="c" items="${listC}">
+                                <div class="course-item-3">
+                                    <div class="ci-thumb">
+                                        <img src="${c.thumbnail}">
+                                        <a href="#" class="c-cate">Software</a>
                                     </div>
-                                    <h4><a href="#">The Art of Black and White Photography</a></h4>
-                                    <p>
-                                        Discover how to become a successful Project Manager with this free online introductory course.
-                                    </p>
-                                    <div class="author">
-                                        <img src="${pageContext.request.contextPath}/assets/images/home3/author.png" alt="">
-                                        <a href="#">Anthony</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            $42.76
-                                            <span>$250.85</span>
+                                    <div class="course-details">
+                                        <img class="line-bg" src="assets/images/home3/line.jpg" alt="">
+                                        <div class="fcf-bottom">
+                                            <a href="#"><i class="icon_book_alt"></i>14 Lessons</a>
+                                            <a href="#"><i class="icon_profile"></i>203</a>
                                         </div>
-                                        <div class="ratings">
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <span>4.5 (2 Reviews)</span>
+                                        <h4><a href="#">${c.description}</a></h4>
+                                        <p>
+                                            Keep learning to achieve success
+                                        </p>
+                                        <div class="author">
+                                            <a href="#">Dute Academy</a>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="course-item-3">
-                                <div class="ci-thumb">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/p2.jpg" alt="">
-                                    <a href="#" class="c-cate">Data Science</a>
-                                </div>
-                                <div class="course-details">
-                                    <img class="line-bg" src="assets/images/home3/line.jpg" alt="">
-                                    <div class="fcf-bottom">
-                                        <a href="#"><i class="icon_book_alt"></i>18 Lessons</a>
-                                        <a href="#"><i class="icon_profile"></i>228</a>
-                                    </div>
-                                    <h4><a href="#">Buddhism and Modern Psychology</a></h4>
-                                    <p>
-                                        Discover how to become a successful Project Manager with this free online introductory course.
-                                    </p>
-                                    <div class="author">
-                                        <img src="${pageContext.request.contextPath}/assets/images/home3/author.png" alt="">
-                                        <a href="#">Anthony</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            $65.50
-                                            <span>$220.65</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <span>4.5 (2 Reviews)</span>
+                                        <div class="price-rate">
+                                            <div class="course-price">
+                                                ${c.price}
+                                                <span>$250.85</span>
+                                            </div>
+                                            <div class="ratings">
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <i class="icon_star"></i>
+                                                <span>4.5 (2 Reviews)</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="course-item-3">
-                                <div class="ci-thumb">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/p1.jpg" alt="">
-                                    <a href="#" class="c-cate">Software</a>
-                                </div>
-                                <div class="course-details">
-                                    <img class="line-bg" src="assets/images/home3/line.jpg" alt="">
-                                    <div class="fcf-bottom">
-                                        <a href="#"><i class="icon_book_alt"></i>10 Lessons</a>
-                                        <a href="#"><i class="icon_profile"></i>199</a>
-                                    </div>
-                                    <h4><a href="#">Learning jQuery Mobile for Beginners</a></h4>
-                                    <p>
-                                        Discover how to become a successful Project Manager with this free online introductory course.
-                                    </p>
-                                    <div class="author">
-                                        <img src="${pageContext.request.contextPath}/assets/images/home3/author.png" alt="">
-                                        <a href="#">Anthony</a>
-                                    </div>
-                                    <div class="price-rate">
-                                        <div class="course-price">
-                                            $42.76
-                                            <span>$250.85</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <i class="icon_star"></i>
-                                            <span>4.5 (2 Reviews)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </c:forEach>
+
                         </div>
                     </div>
                 </div>
-            </div>
         </section>
         <!-- Course End -->
 
@@ -397,162 +289,36 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-course-item-3">
-                            <div class="fcf-thumb">
-                                <img src="${pageContext.request.contextPath}/assets/images/home3/course/1.jpg" alt="">
-                                <a class="enroll" href="#">Enroll Now</a>
-                            </div>
-                            <div class="fci-details">
-                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Computer Science</a>
-                                <h4><a href="#">Using Creative Problem Solving</a></h4>
-                                <div class="author">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a1.png" alt="">
-                                    <a href="#">Anthony</a>
+                    <c:forEach var="c" items="${listP}">
+                        <div class="col-lg-4 col-md-6">
+
+                            <div class="feature-course-item-3">
+                                <div class="fcf-thumb">
+                                    <img src="${c.thumbnail}">
+                                    <a class="enroll" href="#">Enroll Now</a>
                                 </div>
-                                <div class="price-rate">
-                                    <div class="course-price">
-                                        Free
-                                        <span>$42.85</span>
+                                <div class="fci-details">
+                                    <a href="#" class="c-cate"><i class="icon_tag_alt"></i>SoftWare</a>
+                                    <h4><a href="#">${c.description}</a></h4>
+                                    <div class="author">
+                                        <img src="${pageContext.request.contextPath}/assets/images/home3/course/a1.png" alt="">
+                                        <a href="#">DUTE ACADEMY</a>
                                     </div>
-                                    <div class="ratings">
-                                        <i class="icon_star"></i>
-                                        <span>4.5 (2,420)</span>
+                                    <div class="price-rate">
+                                        <div class="course-price">
+                                            <span>$${c.price}</span>
+                                        </div>
+                                        <div class="ratings">
+                                            <i class="icon_star"></i>
+                                            <span>4.5 (2,420)</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-course-item-3">
-                            <div class="fcf-thumb">
-                                <img src="${pageContext.request.contextPath}/assets/images/home3/course/2.jpg" alt="">
-                                <a class="enroll" href="#">Enroll Now</a>
-                            </div>
-                            <div class="fci-details">
-                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Art & Design</a>
-                                <h4><a href="#">The Art of Black and White Photography</a></h4>
-                                <div class="author">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a2.png" alt="">
-                                    <a href="#">Giles Posture</a>
-                                </div>
-                                <div class="price-rate">
-                                    <div class="course-price">
-                                        $75.00
-                                        <span>$92.00</span>
-                                    </div>
-                                    <div class="ratings">
-                                        <i class="icon_star"></i>
-                                        <span>4.2 (1,203)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-course-item-3">
-                            <div class="fcf-thumb">
-                                <img src="${pageContext.request.contextPath}/assets/images/home3/course/3.jpg" alt="">
-                                <a class="enroll" href="#">Enroll Now</a>
-                            </div>
-                            <div class="fci-details">
-                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Business Study</a>
-                                <h4><a href="#">Learning jQuery mobile for Beginners</a></h4>
-                                <div class="author">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a3.png" alt="">
-                                    <a href="#">Hans Down</a>
-                                </div>
-                                <div class="price-rate">
-                                    <div class="course-price">
-                                        $53.00
-                                        <span>$74.00</span>
-                                    </div>
-                                    <div class="ratings">
-                                        <i class="icon_star"></i>
-                                        <span>4.5 (2,420)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-course-item-3">
-                            <div class="fcf-thumb">
-                                <img src="${pageContext.request.contextPath}/assets/images/home3/course/4.jpg" alt="">
-                                <a class="enroll" href="#">Enroll Now</a>
-                            </div>
-                            <div class="fci-details">
-                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Data Science</a>
-                                <h4><a href="#">Buddhism and modern Psychology</a></h4>
-                                <div class="author">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a4.png" alt="">
-                                    <a href="#">Richard Tea</a>
-                                </div>
-                                <div class="price-rate">
-                                    <div class="course-price">
-                                        $62.00
-                                        <span>$97.00</span>
-                                    </div>
-                                    <div class="ratings">
-                                        <i class="icon_star"></i>
-                                        <span>4.5 (2,420)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-course-item-3">
-                            <div class="fcf-thumb">
-                                <img src="${pageContext.request.contextPath}/assets/images/home3/course/5.jpg" alt="">
-                                <a class="enroll" href="#">Enroll Now</a>
-                            </div>
-                            <div class="fci-details">
-                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>UI/UXDesign</a>
-                                <h4><a href="#">Fundamentals of<br> UI Design</a></h4>
-                                <div class="author">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a5.png" alt="">
-                                    <a href="#">Weir Doe</a>
-                                </div>
-                                <div class="price-rate">
-                                    <div class="course-price">
-                                        Free
-                                        <span>$76.00</span>
-                                    </div>
-                                    <div class="ratings">
-                                        <i class="icon_star"></i>
-                                        <span>4.5 (2,420)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="feature-course-item-3">
-                            <div class="fcf-thumb">
-                                <img src="${pageContext.request.contextPath}/assets/images/home3/course/6.jpg" alt="">
-                                <a class="enroll" href="#">Enroll Now</a>
-                            </div>
-                            <div class="fci-details">
-                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Web Development</a>
-                                <h4><a href="#">Making music with Other people</a></h4>
-                                <div class="author">
-                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a6.png" alt="">
-                                    <a href="#">Hilary Ouse</a>
-                                </div>
-                                <div class="price-rate">
-                                    <div class="course-price">
-                                        $34.00
-                                        <span>$55.00</span>
-                                    </div>
-                                    <div class="ratings">
-                                        <i class="icon_star"></i>
-                                        <span>4.5 (2,420)</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </section>
@@ -812,5 +578,5 @@
 
     </body>
 
-<!-- Mirrored from quomodosoft.com/html/bisy/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:36 GMT -->
+    <!-- Mirrored from quomodosoft.com/html/bisy/index-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:36 GMT -->
 </html>

@@ -59,8 +59,6 @@ public class Courses {
         this.createdDate = createdDate;
         this.status = status;
     }
-    
-    
 
     public int getCourseID() {
         return courseID;

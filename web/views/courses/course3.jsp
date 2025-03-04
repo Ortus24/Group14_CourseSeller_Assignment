@@ -80,42 +80,15 @@
                                 <ul class="navbar-nav">
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Home</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index-2.html">Home One</a></li>
-                                            <li><a href="index-3.html">Home Two</a></li>
-                                            <li><a href="index-4.html">Home Three</a></li>
-                                        </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Courses</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="course-1.html">Course 01</a></li>
-                                            <li><a href="course-2.html">Course 02</a></li>
-                                            <li><a href="course-3.html">Course 03</a></li>
-                                            <li><a href="single-course.html">Course Details</a></li>
-                                        </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Pages</a>
-                                        <ul class="sub-menu">
-                                            <li class="menu-item-has-children">
-                                                <a href="javascript:void(0);">About Pages</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="about-1.html">About 01</a></li>
-                                                    <li><a href="about-2.html">About 02</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="instructor.html">Instructor Page</a></li>
-                                            <li><a href="profile.html">Instructor Profile</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                        </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Blog</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="blog.html">Blog Page</a></li>
-                                            <li><a href="single-post.html">Blog Details</a></li>
-                                        </ul>
                                     </li>
                                     <li>
                                         <a href="contact.html">Contact</a>
@@ -143,9 +116,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="banner-title">Courses Grid</h2>
+                        <h2 class="banner-title">DUTE ACADEMY</h2>
                         <div class="bread-crumbs">
-                            <a href="index-2.html">Home</a> <span></span> Courses Grid
+                            <a href="index-2.html">HOME</a> <span></span> COURSES MAIN
                         </div>
                     </div>
                 </div>
@@ -161,21 +134,23 @@
                         <div class="toolbar-wrapper-2">
                             <ul class="toolbar-btn nav nav-tabs">
                                 <li><a class="active" href="#grid" data-toggle="tab"><i class="icon_grid-2x2"></i>Grid</a></li>
-                                <li><a href="#list" data-toggle="tab"><i class="icon_menu"></i>List</a></li>
                             </ul>
-                            <div class="sorting">
-                                <p>Sort by:</p>
-                                <select name="orderby" class="orderby">
-                                    <option value="menu_order" selected="selected">Default</option>
-                                    <option value="new">Newest Course</option>
-                                    <option value="popular">Popular Course</option>
-                                    <option value="rating">Average Rating</option>
-                                    <option value="price">Low to High</option>
-                                    <option value="price-desc">High to Low</option>
-                                </select>
-                            </div>
-                            <form class="search-box" method="post" action="#">
-                                <input type="search" name="s" placeholder="Search Courses...">
+
+                            <form id="sortForm">
+                                <div class="sorting">
+                                    <p>Sort by:</p>
+                                    <select id="sortOption" name="sort" class="orderby" onchange="updateFilter()">
+                                        <option value="default" ${sortType == 'default' ? 'selected' : ''}>Default</option>
+                                        <option value="newest" ${sortType == 'newest' ? 'selected' : ''}>Newest Course</option>
+                                        <option value="popular" ${sortType == 'popular' ? 'selected' : ''}>Popular Course</option>
+                                        <option value="rating" ${sortType == 'rating' ? 'selected' : ''}>Average Rating</option>
+                                        <option value="lowtohigh" ${sortType == 'lowtohigh' ? 'selected' : ''}>Low to High</option>
+                                        <option value="hightolow" ${sortType == 'hightolow' ? 'selected' : ''}>High to Low</option>
+                                    </select>
+                                </div>
+                            </form>
+                            <form class="search-box" method="get" action="homepage">
+                                <input type="search" name="s" placeholder="Search Courses..." value="${strSearch}">
                                 <button type="submit"><i class="ti-search"></i></button>
                             </form>
                         </div>
@@ -193,7 +168,7 @@
                                             <div class="feature-course-item-4">
                                                 <div class="fcf-thumb">
                                                     <img src="${c.thumbnail}"/>
-                                                    <a class="enroll" href="#">Enroll Now</a>
+                                                    <a class="enroll" href="courses-detail?courseId=${c.courseID}">Enroll Now</a>
                                                 </div>
                                                 <div class="fci-details">
                                                     <h4 class="title"><a href="single-course.html">${c.description}</a></h4>
@@ -210,178 +185,15 @@
                                             </div>
                                         </div>
                                     </c:forEach>
-
-
                                 </div>
-                                <!-- Pagination -->
+                                <!-- Pagination -->         
                                 <div class="row">
                                     <div class="col-lg-12">
+
                                         <div class="bisylms-pagination">
-                                            <span class="current">01</span>
-                                            <a href="#">02</a>
-                                            <a class="next" href="#">next<i class="arrow_right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Pagination -->
-                            </div>
-                            <!-- Grid Tab -->
-
-                            <!-- List Tab -->
-                            <div class="tab-pane fade in" id="list" role="tabpanel">
-
-                                <div class="course-item-4">
-                                    <div class="ci-thumb">
-                                        <img src="${pageContext.request.contextPath}/assets/images/course/l1.jpg" alt="">
-                                        <a class="enroll" href="single-course.html">Enroll Now</a>
-                                    </div>
-                                    <div class="course-details">
-                                        <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Computer Science</a>
-                                        <h4><a href="single-course.html">Using creative problem Solving</a></h4>
-                                        <div class="author">
-                                            <img src="${pageContext.request.contextPath}/assets/images/home3/course/a1.png" alt="">
-                                            <a href="#">Anthony</a>
-                                        </div>
-                                        <div class="price-rate">
-                                            <div class="course-price">
-                                                Free
-                                                <span>$42.85</span>
-                                            </div>
-                                            <div class="ratings">
-                                                <i class="icon_star"></i>
-                                                <span>4.5 (2,420)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-item-4">
-                                    <div class="ci-thumb">
-                                        <img src="${pageContext.request.contextPath}/assets/images/course/l2.jpg" alt="">
-                                        <a class="enroll" href="single-course.html">Enroll Now</a>
-                                    </div>
-                                    <div class="course-details">
-                                        <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Art & Design</a>
-                                        <h4><a href="single-course.html">The Art of Black and White Photography</a></h4>
-                                        <div class="author">
-                                            <img src="${pageContext.request.contextPath}/assets/images/home3/course/a2.png" alt="">
-                                            <a href="#">Giles Posture</a>
-                                        </div>
-                                        <div class="price-rate">
-                                            <div class="course-price">
-                                                $75.00
-                                                <span>$92.00</span>
-                                            </div>
-                                            <div class="ratings">
-                                                <i class="icon_star"></i>
-                                                <span>4.5 (2,420)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-item-4">
-                                    <div class="ci-thumb">
-                                        <img src="${pageContext.request.contextPath}/assets/images/course/l3.jpg" alt="">
-                                        <a class="enroll" href="single-course.html">Enroll Now</a>
-                                    </div>
-                                    <div class="course-details">
-                                        <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Business Study</a>
-                                        <h4><a href="single-course.html">Learning jQuery mobile for Beginners</a></h4>
-                                        <div class="author">
-                                            <img src="${pageContext.request.contextPath}/assets/images/home3/course/a3.png" alt="">
-                                            <a href="#">Hans Down</a>
-                                        </div>
-                                        <div class="price-rate">
-                                            <div class="course-price">
-                                                $53.00
-                                                <span>$74.00</span>
-                                            </div>
-                                            <div class="ratings">
-                                                <i class="icon_star"></i>
-                                                <span>4.5 (2,420)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-item-4">
-                                    <div class="ci-thumb">
-                                        <img src="${pageContext.request.contextPath}/assets/images/course/l4.jpg" alt="">
-                                        <a class="enroll" href="single-course.html">Enroll Now</a>
-                                    </div>
-                                    <div class="course-details">
-                                        <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Data Science</a>
-                                        <h4><a href="single-course.html">Buddhism and modern Psychology</a></h4>
-                                        <div class="author">
-                                            <img src="${pageContext.request.contextPath}/assets/images/home3/course/a4.png" alt="">
-                                            <a href="#">Richard Tea</a>
-                                        </div>
-                                        <div class="price-rate">
-                                            <div class="course-price">
-                                                $62.00
-                                                <span>$97.00</span>
-                                            </div>
-                                            <div class="ratings">
-                                                <i class="icon_star"></i>
-                                                <span>4.5 (2,420)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-item-4">
-                                    <div class="ci-thumb">
-                                        <img src="${pageContext.request.contextPath}/assets/images/course/l5.jpg" alt="">
-                                        <a class="enroll" href="single-course.html">Enroll Now</a>
-                                    </div>
-                                    <div class="course-details">
-                                        <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Web Development</a>
-                                        <h4><a href="single-course.html">Making music with Other people</a></h4>
-                                        <div class="author">
-                                            <img src="${pageContext.request.contextPath}/assets/images/home3/course/a5.png" alt="">
-                                            <a href="#">Hilary Ouse</a>
-                                        </div>
-                                        <div class="price-rate">
-                                            <div class="course-price">
-                                                $34.00
-                                                <span>$55.00</span>
-                                            </div>
-                                            <div class="ratings">
-                                                <i class="icon_star"></i>
-                                                <span>4.5 (2,420)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-item-4">
-                                    <div class="ci-thumb">
-                                        <img src="${pageContext.request.contextPath}/assets/images/course/l6.jpg" alt="">
-                                        <a class="enroll" href="single-course.html">Enroll Now</a>
-                                    </div>
-                                    <div class="course-details">
-                                        <a href="#" class="c-cate"><i class="icon_tag_alt"></i>UI/UX Design</a>
-                                        <h4><a href="single-course.html">Fundamentals of <br>UI Design</a></h4>
-                                        <div class="author">
-                                            <img src="${pageContext.request.contextPath}/assets/images/home3/course/a6.png" alt="">
-                                            <a href="#">Weir Doe</a>
-                                        </div>
-                                        <div class="price-rate">
-                                            <div class="course-price">
-                                                Free
-                                                <span>$76.85</span>
-                                            </div>
-                                            <div class="ratings">
-                                                <i class="icon_star"></i>
-                                                <span>4.5 (2,420)</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Pagination -->
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="bisylms-pagination">
-                                            <span class="current">01</span>
-                                            <a href="#">02</a>
-                                            <a class="next" href="#">next<i class="arrow_right"></i></a>
+                                            <c:forEach begin="1" end="${endP}" var="i">
+                                                <a class="${i == currentPage ? 'active' : ''}" href="homepage?index=${i}">${i}</a>
+                                            </c:forEach>
                                         </div>
                                     </div>
                                 </div>
@@ -394,17 +206,47 @@
                     <div class="col-lg-3">
                         <div class="course-sidebar">
                             <aside class="widget">
-                                <h3 class="widget-title">Course Categories</h3>
-                                <ul>
-                                    <li><a href="#">Web Design</a></li>
-                                    <li><a href="#">Marketing</a></li>
-                                    <li><a href="#">Frontend</a></li>
-                                    <li><a href="#">IT &amp; Software</a></li>
-                                    <li><a href="#">Photography</a></li>
-                                    <li><a href="#">Technology</a></li>
-                                    <li><a href="#">General</a></li>
-                                </ul>
+                                <h3 class="widget-title">Categories</h3>
+                                <form id="categoryForm">
+                                    <!-- ALL Categories -->
+                                    <label>
+                                        <input type="radio" name="categoryId" value="0" 
+                                               onchange="updateFilter()" ${empty categoriesId || categoriesId == '0' ? 'checked' : ''}>
+                                        All
+                                    </label><br>
+
+                                    <!-- Software Engineering -->
+                                    <h3 class="widget-title">Software Engineering</h3>
+                                    <c:forEach var="c" items="${listSE}">
+                                        <label>
+                                            <input type="radio" name="categoryId" value="${c.categoryID}" 
+                                                   onchange="updateFilter()" ${categoriesId == c.categoryID ? 'checked' : ''}>
+                                            ${c.categoryName}
+                                        </label><br>
+                                    </c:forEach>
+
+                                    <!-- Business -->
+                                    <h3 class="widget-title">Business</h3>
+                                    <c:forEach var="c" items="${listHS}">
+                                        <label>
+                                            <input type="radio" name="categoryId" value="${c.categoryID}" 
+                                                   onchange="updateFilter()" ${categoriesId == c.categoryID ? 'checked' : ''}>
+                                            ${c.categoryName}
+                                        </label><br>
+                                    </c:forEach>
+
+                                    <!-- Linguistics -->
+                                    <h3 class="widget-title">Linguistics</h3>
+                                    <c:forEach var="c" items="${listNN}">
+                                        <label>
+                                            <input type="radio" name="categoryId" value="${c.categoryID}" 
+                                                   onchange="updateFilter()" ${categoriesId == c.categoryID ? 'checked' : ''}>
+                                            ${c.categoryName}
+                                        </label><br>
+                                    </c:forEach>
+                                </form>
                             </aside>
+
                             <aside class="widget widget-filter">
                                 <h3 class="widget-title">Price Filter</h3>
                                 <form action="#" method="get" class="clearfix">
@@ -434,38 +276,18 @@
                                 </form>
                             </aside>
                             <aside class="widget">
-                                <h3 class="widget-title">Latest Courses</h3>
-                                <div class="latest-course">
-                                    <a href="single-course.html"><img src="${pageContext.request.contextPath}/assets/images/course/1.jpg" alt=""></a>
-                                    <h5><a href="single-course.html">Using creative problem Solving</a></h5>
-                                    <div class="course-price">
-                                        $24.00
+                                <h3 class="widget-title">New Courses</h3>
+                                <c:forEach items="${newCourse}" var="c">
+                                    <div class="latest-course">
+                                        <a href="single-course.html">
+                                            <img src="${c.thumbnail}" alt="">  
+                                        </a>
+                                        <h5><a href="single-course.html">${c.title}</a></h5>
+                                        <div class="course-price">
+                                            ${c.price}.000VND
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="latest-course">
-                                    <a href="single-course.html"><img src="${pageContext.request.contextPath}/assets/images/course/2.jpg" alt=""></a>
-                                    <h5><a href="single-course.html">Fundamentals of UI Design</a></h5>
-                                    <div class="course-price">
-                                        Free
-                                        <span>$76.00</span>
-                                    </div>
-                                </div>
-                                <div class="latest-course">
-                                    <a href="single-course.html"><img src="${pageContext.request.contextPath}/assets/images/course/3.jpg" alt=""></a>
-                                    <h5><a href="single-course.html">Making music Other people</a></h5>
-                                    <div class="course-price">
-                                        $46
-                                        <span>$76.00</span>
-                                    </div>
-                                </div>
-                                <div class="latest-course">
-                                    <a href="single-course.html"><img src="${pageContext.request.contextPath}/assets/images/course/4.jpg" alt=""></a>
-                                    <h5><a href="single-course.html">Learning jQuery mobile.</a></h5>
-                                    <div class="course-price">
-                                        $74
-                                        <span>$94.00</span>
-                                    </div>
-                                </div>
+                                </c:forEach>
                             </aside>
                         </div>
                     </div>
@@ -581,6 +403,32 @@
         <!-- End Include All JS -->
 
     </body>
+    <script>
+                           function updateFilter() {
+                               let selectedCategory = document.querySelector('input[name="categoryId"]:checked');
+                               let sortOption = document.getElementById("sortOption").value;
+
+                               let url = "homepage?";
+                               let params = [];
+
+                               // Nếu có category được chọn, thêm categoryId vào danh sách tham số
+                               if (selectedCategory) {
+                                   params.push("categoryId=" + selectedCategory.value);
+                               }
+
+                               // Nếu có sort được chọn (không phải "default"), thêm sort vào danh sách tham số
+                               if (sortOption && sortOption !== "default") {
+                                   params.push("sort=" + sortOption);
+                               }
+
+                               // Nối tất cả tham số lại với nhau và điều hướng
+                               if (params.length > 0) {
+                                   url += params.join("&");
+                               }
+
+                               window.location.href = url;
+                           }
+    </script>
 
     <!-- Mirrored from quomodosoft.com/html/bisy/course-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:46 GMT -->
 </html>

@@ -3,8 +3,28 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="LAB211">
-            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/assets/css/theme.css</file>
-            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/home/HomeController.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/courses/course3.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/web/login/RegisterServlet.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/web/login/RequestPasswordServlet.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/util/SendMailService.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/home/home.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/web/login/ResetPasswordServlet.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/assets/css/responsive.css</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/model/Token.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/dal/TokenDAO.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/instructor/instructor.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/WEB-INF/web.xml</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/dal/DBContext.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/dal/CartDAO.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/courses/single-course.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/login/register.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/login/login.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/login/reset-password.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/web/login/LoginServlet.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/views/login/request-password.jsp</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/web/login/LogoutServlet.java</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/dal/CategoryDAO.java</file>
         </group>
         <group>
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/DeleteCourse.java</file>
