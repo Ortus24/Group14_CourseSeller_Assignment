@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.Courses;
+import model.Course;
 
 /**
  *
@@ -62,7 +62,7 @@ public class TestList extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         CoursesDAO cd = new CoursesDAO();
-        List<Courses> listCourse = cd.getAllCourse();
+        List<Course> listCourse = cd.getAllCourse();
         request.setAttribute("listCourse", listCourse);
         request.getRequestDispatcher("views/courses/course3.jsp").forward(request, response);
     }

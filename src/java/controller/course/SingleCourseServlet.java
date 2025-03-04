@@ -16,11 +16,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import model.Category;
-import model.CourseVideo;
-import model.Courses;
+import model.Course;
+import model.Lesson;
 import model.RatingPercent;
 import model.Review;
+import model.Section;
 
 /**
  *
@@ -39,19 +39,25 @@ public class SingleCourseServlet extends HttpServlet {
         try {
             int courseId = Integer.parseInt(courseId_raw);
 
-            Courses c = cd.getCourseById(courseId);
-            session.setAttribute("course", c);
-
-            List<CourseVideo> listCourseVideo = cd.getAllCourseVideoByCourseId(courseId);
-            session.setAttribute("listCourseVideo", listCourseVideo);
-
-            Category category = cd.getCategoryIdByCourseId(courseId);
-            session.setAttribute("category", category);
-
-            List<Courses> relatedCourses = cd.relatedCourses(category.getCategoryID(), courseId);
+            Course course = cd.getCourseById(courseId);
+            session.setAttribute("course", course);
+            
+            //Related course
+            List<Course> relatedCourses = cd.relatedCourses(course.getCategory().getCategoryID(), courseId);
             session.setAttribute("relatedCourses", relatedCourses);
-
-            //Total leson
+            
+            //Curriculum
+            
+            List<Section> listSections = cd.getListSectionByCourseId(courseId);
+            session.setAttribute("listSections", listSections);
+            
+            List<Lesson> listLessons = new ArrayList<>();
+            for (Section section : listSections) {
+                listLessons = cd.getListLessonBySectionId(section.getSectionId());
+            }
+            
+            session.setAttribute("listLessons", listLessons);
+            //Total lesson
             int totalLesson = cd.totalLesson(courseId);
             session.setAttribute("totalLesson", totalLesson);
 
@@ -70,7 +76,8 @@ public class SingleCourseServlet extends HttpServlet {
             //Review by percent
             List<RatingPercent> listRatingPercent = new ArrayList<>();
             for (int i = 5; i > 0; i--) {
-                RatingPercent ratingPercent = cd.avgRatingPercent(courseId, i) != null ? cd.avgRatingPercent(courseId, i) : new RatingPercent(i, 0);
+                RatingPercent ratingPercent = cd.avgRatingPercent(courseId, i) != null 
+                        ? cd.avgRatingPercent(courseId, i) : new RatingPercent(i, 0);
                 listRatingPercent.add(ratingPercent);
             }
             sortByRating(listRatingPercent);
@@ -80,6 +87,7 @@ public class SingleCourseServlet extends HttpServlet {
             List<Review> listReview = cd.getReviewByCourseId(courseId);
             session.setAttribute("listReview", listReview);
         } catch (NumberFormatException e) {
+            response.sendRedirect("views/errors/404.jsp");
         }
         request.getRequestDispatcher("views/courses/single-course.jsp").forward(request, response);
     }

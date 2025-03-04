@@ -147,9 +147,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!--Category : hien ki may-->
-                        <h2 class="banner-title">${sessionScope.category.categoryName}</h2>
+                        <h2 class="banner-title">${sessionScope.course.category.categoryName}</h2>
                         <div class="bread-crumbs">
-                            <a href="views/home/home.jsp">Home</a> <span></span> ${sessionScope.category.categoryName}
+                            <a href="views/home/home.jsp">Home</a> <span></span> ${sessionScope.course.category.categoryName}
                         </div>
                     </div>
                 </div>
@@ -167,32 +167,25 @@
                                 <div class="course-top">
                                     <h4>${course.title}</h4>
                                 <div class="course-meta">
-                                    <!--                                    <div class="author">
-                                                                            <img src="${course.thumbnail}" alt="">
-                                                                            <span>Teacher</span>
-                                                                            <a href="#">Anthony</a>
-                                                                        </div>-->
-                                    <c:set value="${sessionScope.category}" var="category"></c:set>
-                                        <div class="categories">
-                                            <span>Categories:</span>
-                                            <a href="#">${category.categoryName}</a>
+                                    <div class="categories" style="border-left: none; padding-left: 0; margin-left: 0;">
+                                        <span>Categories:</span>
+                                        <a href="#">${sessionScope.course.category.categoryName}</a>
                                     </div>
-                                    <!--                                    <div class="ratings">
-                                                                            <span>4.5 (9 Reviews)</span>
-                                                                            <i class="icon_star"></i>
-                                                                            <i class="icon_star"></i>
-                                                                            <i class="icon_star"></i>
-                                                                            <i class="icon_star"></i>
-                                                                            <i class="icon_star"></i>
-                                                                        </div>-->
+                                    <div class="ratings">
+                                        <span>${sessionScope.avgRating} (${sessionScope.totalReview} Reviews)</span>
+                                        <div class="rating-container" style="padding: 0;">
+                                            <div class="stars" >
+                                                <div class="filled" style="width: calc(${sessionScope.avgRating} * 20%);"></div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="course-price">
                                     ${course.price*1000}VND
-                                    <!--                                        <span>$92.00</span>-->
                                 </div>
                             </div>
                             <div class="sc-thumb">
-                                <img src="${course.thumbnail}" alt="">
+                                <img src="${pageContext.request.contextPath}/images/${course.thumbnail}" alt="">
                             </div>
                             <div class="course-tab-wrapper">
                                 <ul class="course-tab-btn nav nav-tabs">
@@ -214,34 +207,34 @@
                                     <!-- Overview Tab -->
                                     <!-- Curriculum Tab -->
                                     <div class="tab-pane fade in" id="curriculum" role="tabpanel">
-                                        <div class="curriculum-item" id="id_1">
-                                            <div class="card-header" id="cc_1">
-                                                <h5 class="mb-0">
-                                                    <button class="btn btn-link" data-toggle="collapse" data-target="#acc_1" aria-expanded="true" aria-controls="acc_1">
-                                                        Understanding Customer Service
-                                                    </button>
-                                                </h5>
-                                            </div>
-                                            <div id="acc_1" class="collapse show" aria-labelledby="cc_1" data-parent="#id_1">
-                                                <div class="card-body">
-                                                    <c:forEach items="${sessionScope.listCourseVideo}" var="courseVideo">
-                                                        <div class="ci-item">
-                                                            <h5>
-                                                                <i class="icon_menu-square_alt2"></i>
-                                                                <a href="lesson">${courseVideo.title}</a>
-                                                            </h5>
-
-                                                            <div class="ci-tools">
-                                                                <a href="#" class="time">${courseVideo.duration} minutes</a>
-                                                                <a href="#" class="lock"><i class="icon_lock_alt"></i></a>
+                                        <c:forEach items="${sessionScope.listSections}" var="section" varStatus="sectionStatus">
+                                            <div class="curriculum-item" id="id_${sectionStatus.index}">
+                                                <div class="card-header" id="cc_${sectionStatus.index}">
+                                                    <h5 class="mb-0">
+                                                        <button class="btn btn-link" data-toggle="collapse" data-target="#acc_${sectionStatus.index}"
+                                                                aria-expanded="true" aria-controls="acc_${sectionStatus.index}">
+                                                            ${section.sectionTitle}
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="acc_${sectionStatus.index}" class="collapse" aria-labelledby="cc_${sectionStatus.index}" data-parent="#id_${sectionStatus.index}">
+                                                    <div class="card-body">
+                                                        <c:forEach items="${sessionScope.listLessons}" var="lesson" varStatus="lessonStatus">
+                                                            <div class="ci-item">
+                                                                <h5>
+                                                                    <i class="icon_menu-square_alt2"></i>
+                                                                    <a href="lesson">${lesson.title}</a>
+                                                                </h5>
+                                                                <div class="ci-tools">
+                                                                    <a href="#" class="time">${lesson.duration} minutes</a>
+                                                                    <a href="#" class="lock"><i class="icon_lock_alt"></i></a>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </c:forEach>
+                                                        </c:forEach>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-
+                                        </c:forEach>
                                     </div>
                                     <!-- Curriculum Tab -->
                                     <!-- Instructors Tab -->
@@ -383,7 +376,7 @@
                                         <li><i class="icon_document_alt"></i><span>Lectures: </span> ${sessionScope.totalLesson}</li>
                                         <li><i class="icon_clock_alt"></i><span>Duration: </span> ${sessionScope.totalDuration} Hours</li>
                                         <li><i class="icon_profile"></i><span>Enrolled: </span> </li>
-                                        <li><i class="icon_cog"></i><span>Language: </span> Vietnamese</li>
+                                        <li><i class="icon_cog"></i><span>Language: </span> English</li>
                                     </ul>
                                     <a class="bisylms-btn" href="#">Enroll Course</a>
                                 </div>
@@ -392,7 +385,7 @@
                                 <h3 class="widget-title">Related Courses</h3>
                                 <c:forEach items="${sessionScope.relatedCourses}" var="rc">
                                     <div class="latest-course">
-                                        <a href="singlecourse?id=${rc.courseID}"><img src="${rc.thumbnail}" alt=""></a>
+                                        <a href="singlecourse?id=${rc.courseID}"><img src="${pageContext.request.contextPath}/images/${rc.thumbnail}" alt=""></a>
                                         <h5><a href="singlecourse?id=${rc.courseID}">${rc.title}</a></h5>
                                         <div class="course-price">
                                             ${rc.price * 1000}VND

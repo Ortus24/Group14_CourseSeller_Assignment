@@ -4,29 +4,25 @@
  */
 package model;
 
-public class Courses {
+public class Course {
     private int courseID;
     private String title;
     private String description;
     private double price;
-    private int duration;
     private String thumbnail;
-    private int categoryID;
+    private Category category;
     private String createdDate;
-    
-    
-
-    public Courses() {
+   
+    public Course() {
     }
 
-    public Courses(int courseID, String title, String description, double price, int duration, String thumbnail, int categoryID, String createdDate) {
+    public Course(int courseID, String title, String description, double price, String thumbnail, Category category, String createdDate) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
         this.price = price;
-        this.duration = duration;
         this.thumbnail = thumbnail;
-        this.categoryID = categoryID;
+        this.category = category;
         this.createdDate = createdDate;
     }
 
@@ -62,20 +58,20 @@ public class Courses {
         this.price = price;
     }
 
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
-    }
-
     public String getThumbnail() {
         return thumbnail;
     }
 
     public void setThumbnail(String thumbnail) {
         this.thumbnail = thumbnail;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getCreatedDate() {
@@ -85,12 +81,6 @@ public class Courses {
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
-    
-    public int getCategoryID() {
-        return categoryID;
-    }
 
-    public void setCategoryID(int categoryID) {
-        this.categoryID = categoryID;
-    }
+    
 }

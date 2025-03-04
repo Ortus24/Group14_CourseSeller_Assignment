@@ -6,7 +6,6 @@ package controller.course;
 
 import dal.CoursesDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,7 +13,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.CourseVideo;
 
 /**
  *
@@ -32,11 +30,7 @@ public class LessonServlet extends HttpServlet {
         String courseId_raw = request.getParameter("id");
         try {
             int courseId = Integer.parseInt(courseId_raw);
-            List<CourseVideo> listCourseVideo = cd.getAllCourseVideoByCourseId(courseId);
-            session.setAttribute("listCourseVideo", listCourseVideo);
-            
-            CourseVideo cv = cd.getLessonByCourseVideoId(courseId);
-            session.setAttribute("cv", cv);
+
         } catch (NumberFormatException e) {
         }
         request.getRequestDispatcher("views/courses/lesson.jsp").forward(request, response);
