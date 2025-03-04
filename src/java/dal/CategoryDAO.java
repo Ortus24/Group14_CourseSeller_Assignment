@@ -19,8 +19,6 @@ import model.Courses;
  */
 public class CategoryDAO extends DBContext {
 
-<<<<<<< HEAD
-=======
     public List<Courses> getCourses() {
         String sql = "SELECT *\n"
                 + "  FROM [dbo].[Courses]";
@@ -30,7 +28,7 @@ public class CategoryDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getString("createdDate"), rs.getInt("status"));
+                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getString("createdDate"), rs.getBoolean("status"));
                 list.add(c);
             }
         } catch (SQLException ex) {
@@ -43,7 +41,7 @@ public class CategoryDAO extends DBContext {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
->>>>>>> ducday
+
     public List<Category> getCategory() {
         String sql = "SELECT *\n"
                 + "  FROM [dbo].[Categories]";
@@ -61,8 +59,7 @@ public class CategoryDAO extends DBContext {
         }
         return list;
     }
-<<<<<<< HEAD
-=======
+
 
     public void insertCourse(Courses c) {
         String sql = "INSERT INTO Courses (Title, Description, Price, Duration, Thumbnail, CategoryID) VALUES (?, ?, ?, ?, ?, ?)";
@@ -90,7 +87,7 @@ public class CategoryDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"), rs.getInt("status"));
+                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"), rs.getBoolean("status"));
                 return c;
             }
         } catch (SQLException ex) {
@@ -106,5 +103,4 @@ public class CategoryDAO extends DBContext {
             System.out.println(listCouse.getTitle());
         }
     }
->>>>>>> ducday
 }

@@ -18,21 +18,14 @@ public class Courses {
     private String thumbnail;
     private int categoryID;
     private String createdDate;
-<<<<<<< HEAD
     private boolean status;
-=======
-    private int status;
-    
-//    dang do minh duc
->>>>>>> ducday
+   
 
     public Courses() {
     }
 
-<<<<<<< HEAD
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate, boolean status) {
-=======
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, String createdDate, int status) {
+
+    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, String createdDate, boolean status) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
@@ -44,7 +37,6 @@ public class Courses {
     }
 
     public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate) {
->>>>>>> ducday
         this.courseID = courseID;
         this.title = title;
         this.description = description;
@@ -53,7 +45,6 @@ public class Courses {
         this.thumbnail = thumbnail;
         this.categoryID = categoryID;
         this.createdDate = createdDate;
-        this.status = status;
     }
 
     public boolean isStatus() {
@@ -64,7 +55,7 @@ public class Courses {
         this.status = status;
     }
 
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate, int status) {
+    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate, boolean status) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
@@ -141,14 +132,6 @@ public class Courses {
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
     }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
-    }
-    
+  
     
 }

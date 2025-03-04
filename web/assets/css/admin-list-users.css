@@ -323,6 +323,8 @@ th {
 
 .search-users input{
     background: white;
+    color: black;
+    font-weight: normal;
 }
 
 .content-left{
