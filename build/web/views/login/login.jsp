@@ -198,7 +198,7 @@
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" placeholder="Mật khẩu" required>
-                            <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                            <a href="/project/requestpassword" class="forgot-password">Quên mật khẩu?</a>
                         </div>
 
                         <!-- Hiển thị thông báo lỗi nếu có -->
