@@ -2,10 +2,27 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group name="LAB211">
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/web/assets/css/theme.css</file>
+            <file>file:/D:/FPT%20UNIVERSITY/SPRING_2025_SEASON4/PRJ301/JAVA_WEB/project/src/java/controller/home/HomeController.java</file>
+        </group>
         <group>
+<<<<<<< HEAD
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/users/AddUsers.java</file>
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/dal/UserDAO.java</file>
             <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/web/views/admin/users/addusers.jsp</file>
+=======
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/DeleteCourse.java</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/ListCourse.java</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/home/HomeController.java</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/model/Category.java</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/web/views/admin/listcourses.jsp</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/model/Courses.java</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/AddCourseForm.java</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/controller/admin/AddCourse.java</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/web/views/admin/addcourse.jsp</file>
+            <file>file:/D:/FptUniversity/25-SP/PRJ301/Assigment/Group14_CourseSeller_Assignment/src/java/dal/CategoryDAO.java</file>
+>>>>>>> ducday
         </group>
     </open-files>
 </project-private>

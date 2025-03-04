@@ -83,9 +83,14 @@ public class AddCourses extends HttpServlet {
         String thumbnail = request.getParameter("thumbnail");
         int categoryID = Integer.parseInt(request.getParameter("categoryID"));
         String createdDate = request.getParameter("createdDate");
+<<<<<<< HEAD:src/java/controller/admin/courses/AddCourses.java
         boolean status = Boolean.parseBoolean(request.getParameter("status"));
 
         CourseDAO d = new CourseDAO();
+=======
+  
+        CategoryDAO d = new CategoryDAO();
+>>>>>>> ducday:src/java/controller/admin/AddCourse.java
 
         
 
