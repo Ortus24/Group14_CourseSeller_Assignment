@@ -28,6 +28,8 @@
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lesson/spacing.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lesson/apexcharts.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lesson/main.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/lesson/lesson.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/themify-icons.css">
     </head>
 
     <body>
@@ -79,9 +81,9 @@
                                         <div id="collapseOne${sectionStatus.index}" class="accordion-collapse collapse show" aria-labelledby="headingOne${sectionStatus.index}" data-bs-parent="#accordionExample${sectionStatus.index}">
                                             <div class="accordion-body">
                                                 <c:forEach items="${section.listLesson}" var="lesson">
-                                                    <a href="lesson?courseId=${section.course.courseID}&id=${lesson.lessonId}" class="bd-course-curriculum-content d-flex-between">
+                                                    <a href="lesson?courseId=${section.course.courseID}&id=${lesson.lessonId}" class="bd-course-curriculum-content d-flex-between ${lesson.lessonId == requestScope.lessonId ? 'active' : ''}" >
                                                         <div class="bd-course-curriculum-info d-flex-items gap-10">
-                                                            <div class="icon"><i class="fa-solid fa-video"></i></div>
+                                                            <div class="ti-bookmark"></i></div>
                                                             <p class="title" >${lesson.title}</p>
                                                         </div>
                                                         <c:if test="${lesson.typeName == 'Video'}">

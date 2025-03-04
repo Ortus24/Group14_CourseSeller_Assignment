@@ -1,0 +1,4 @@
+.bd-course-curriculum-content.active p{
+    font-weight: bold; /* In đậm chữ */
+    color: #5838FC; /* Màu chữ xanh */
+}
