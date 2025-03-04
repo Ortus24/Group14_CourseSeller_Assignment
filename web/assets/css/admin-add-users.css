@@ -1,0 +1,329 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Feb 28, 2025, 6:07:44 PM
+    Author     : Nhat
+*/
+
+.bd {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.create {
+    display: block;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 900px;
+    height: 540px;
+
+
+}
+
+.create h2 {
+    text-align: center;
+    margin: 80px 0px 110px 0px;
+    font-size: 50px;
+}
+
+.container {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 1100px;
+    height: 680px;
+}
+
+.title {
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.lab {
+    font-weight: bold;
+    width: 200px;
+    text-align: left;
+}
+
+.inp {
+    flex: 1;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.roll {
+    width: 418px;
+    padding: 10px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.roll>button{
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: white;
+    padding: 0;
+}
+
+.sel {
+    flex: 0.3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.btn {
+    background-color: #007bff;
+    color: white;
+    padding: 6px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    /* margin-top: 10px; */
+    float: right;
+    font-size: 18px;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.pre {
+    background-color: rgba(55, 125, 255, 0.1);
+    color: #377dff;
+    padding: 6px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    float: left;
+    font-size: 18px;
+}
+
+.pre:hover {
+    background-color: rgba(0, 89, 255, 0.308);
+}
+
+.btn-1 {
+    background-color: #007bff;
+    color: white;
+    padding: 6px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 90px;
+    float: right;
+    font-size: 18px;
+}
+
+.btn-1:hover {
+    background-color: #0056b3;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.avatar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    object-fit: cover;
+}
+
+.avatar input[type="file"] {
+    display: none;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-footer-1 {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.input-container {
+    display: flex;
+    position: relative;
+    margin: 20px 0;
+}
+
+.input-container input {
+    margin-left: 25%;
+    width: 50%;
+    padding: 10px;
+    font-size: 36px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.input-container input:focus{
+    border-color: #1a73e8;
+}
+
+.input-container label {
+    margin-left: 25%;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 16px;
+    transition: 0.3s;
+    background: white;
+    padding: 0 5px;
+    pointer-events: none;
+}
+
+.input-container input:focus + label,
+.input-container input:valid + label {
+    top: 0;
+    left: 8px;
+    font-size: 12px;
+    color: #1a73e8;
+}
+
+
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 800px;
+    margin-bottom: 40px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.step-circle {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+}
+
+.step.active .step-circle {
+    background-color: #007bff;
+}
+
+.step.inactive .step-circle {
+    background-color: #e0e0e0;
+    color: black;
+}
+
+.step-text {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.step.active .step-text {
+    color: #007bff;
+}
+
+.step.inactive .step-text {
+    color: black;
+}
+
+.progress-line {
+    flex: 1;
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: 0 10px;
+}
+
+.step-1{
+    border: none;
+    background: none;
+}
+
+.conf {
+    display: none;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    text-align: center;
+}
+
+.header {
+    background: linear-gradient(45deg, #ff7f50, #4169e1, #40e0d0);
+    padding: 50px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: relative;
+}
+.avatar-1 {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -50px;
+}
+.profile-details {
+    margin-top: 60px;
+    text-align: left;
+    display: inline-block;
+}
+
+.span-value{
+    color: red;
+}
+.span-title {
+    font-weight: bold;
+    display: inline-block;
+    min-width: 120px;
+}
+.buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
