@@ -80,40 +80,23 @@
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Home</a>
                                         <ul class="sub-menu">
-                                            <li><a href="index-2.html">Home One</a></li>
-                                            <li><a href="index-3.html">Home Two</a></li>
-                                            <li><a href="index-4.html">Home Three</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Courses</a>
                                         <ul class="sub-menu">
-                                            <li><a href="course-1.html">Course 01</a></li>
-                                            <li><a href="course-2.html">Course 02</a></li>
-                                            <li><a href="course-3.html">Course 03</a></li>
-                                            <li><a href="single-course.html">Course Details</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Pages</a>
                                         <ul class="sub-menu">
-                                            <li class="menu-item-has-children">
-                                                <a href="javascript:void(0);">About Pages</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="about-1.html">About 01</a></li>
-                                                    <li><a href="about-2.html">About 02</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="instructor.html">Instructor Page</a></li>
-                                            <li><a href="profile.html">Instructor Profile</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li class="menu-item-has-children">
                                         <a href="javascript:void(0);">Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog.html">Blog Page</a></li>
-                                            <li><a href="single-post.html">Blog Details</a></li>
+                                         
                                         </ul>
                                     </li>
                                     <li>
@@ -142,9 +125,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2 class="banner-title">Courses Single</h2>
+                        <h2 class="banner-title">${course.getTitle()}</h2>
                         <div class="bread-crumbs">
-                            <a href="index-2.html">Home</a> <span></span> Courses Single
+                            <a href="index-2.html">Home</a> <span></span> ${course.getTitle()}
                         </div>
                     </div>
                 </div>
@@ -159,7 +142,7 @@
                     <div class="col-lg-9">
                         <div class="single-course-area">
                             <div class="course-top">
-                                <h4>Using Creative Problem Solving</h4>
+                                <h4>${course.getDescription()}</h4>
                                 <div class="course-meta">
                                     <div class="author">
                                         <img src="${pageContext.request.contextPath}/assets/images/home3/course/a1.png" alt="">
@@ -185,7 +168,7 @@
                                 </div>
                             </div>
                             <div class="sc-thumb">
-                                <img src="${pageContext.request.contextPath}/assets/images/single-course/1.jpg" alt="">
+                                <img src="${course.thumbnail}" alt="">
                             </div>
                             <div class="course-tab-wrapper">
                                 <ul class="course-tab-btn nav nav-tabs">

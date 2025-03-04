@@ -19,24 +19,6 @@ import model.Courses;
  */
 public class CategoryDAO extends DBContext {
 
-    public List<Courses> getCourses() {
-        String sql = "SELECT *\n"
-                + "  FROM [dbo].[Courses]";
-        List<Courses> list = new ArrayList<>();
-        try {
-            PreparedStatement ps = connection.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getString("createdDate"), rs.getInt("status"));
-                list.add(c);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return list;
-    }
-
     private Connection getConnection() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
@@ -93,12 +75,34 @@ public class CategoryDAO extends DBContext {
         }
         return null;
     }
+    //Phần bên trên trở đi là phần của nhật làm 
 
+    public List<Category> getCategoryByMajor(String major) {
+        String sql = "SELECT * FROM Categories\n"
+                + "WHERE CategoryName LIKE ?";
+        List<Category> listC = new ArrayList<>();
+        try {
+            PreparedStatement st = connection.prepareStatement(sql);
+            st.setString(1, "%"+major);
+            ResultSet rs = st.executeQuery();
+            while(rs.next()){
+                Category e = new Category();
+                e.setCategoryID(rs.getInt(1));
+                e.setCategoryName(rs.getString(2));
+                e.setDescription(rs.getString(3));
+                listC.add(e);
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return listC;
+    }
+    
     public static void main(String[] args) {
-        CategoryDAO categoryDAO = new CategoryDAO();
-        List<Courses> listCouses = categoryDAO.getCourses();
-        for (Courses listCouse : listCouses) {
-            System.out.println(listCouse.getTitle());
+        CategoryDAO cdao = new CategoryDAO();
+        List<Category> listC = cdao.getCategoryByMajor("SE");
+        for (Category category : listC) {
+            System.out.println(category.getDescription());
         }
     }
 }
