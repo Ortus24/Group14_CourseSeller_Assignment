@@ -659,6 +659,7 @@
 .course-price span{
     display: block;
     font-size: 14px;
+    text-decoration: line-through;
     margin: 6px 0 0;
 }
 .author{
@@ -2349,26 +2350,7 @@ footer .widget ul li a:hover{
     -moz-box-shadow:    0px 14px 20px 0px rgba(8, 120, 38, 0.24);
     box-shadow:         0px 14px 20px 0px rgba(8, 120, 38, 0.24);
 }
-.feature-course-item-4 .fci-details .title{
-    display: block!important;
-    display: -webkit-box!important;
-    -webkit-line-clamp: 1;
-    -moz-line-clamp: 1;
-    -ms-line-clamp: 1;
-    -o-line-clamp: 1;
-    line-clamp: 1;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -ms-box-orient: vertical;
-    -o-box-orient: vertical;
-    box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: normal;
-    font-size: 16px;
-    font-weight: 700;
-    color: #000;
-}
+
 
 /*---- Hero Slider Section ------*/
 .hero-slider-section{

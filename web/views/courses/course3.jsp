@@ -5,13 +5,12 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
-
-    <!-- Mirrored from quomodosoft.com/html/bisy/course-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:39 GMT -->
-    <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-    <head>
+    
+<!-- Mirrored from quomodosoft.com/html/bisy/course-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:39 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
         <title>Bisylms - Education HTML5 Responsive Template</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
@@ -188,30 +187,240 @@
                             <!-- Grid Tab -->
                             <div class="tab-pane fade show in active" id="grid" role="tabpanel">
                                 <div class="row">
-                                    <c:forEach items="${requestScope.listcourse}" var="c"><tr>
-                                        <div class="col-lg-4 col-md-6">
-                                            <div class="feature-course-item-4">
-                                                <div class="fcf-thumb">
-                                                    <img src="${c.thumbnail}"/>
-                                                    <a class="enroll" href="#">Enroll Now</a>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/1.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Computer Science</a>
+                                                <h4><a href="single-course.html">Using Creative Problem Solving</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a1.png" alt="">
+                                                    <a href="#">Anthony</a>
                                                 </div>
-                                                <div class="fci-details">
-                                                    <h4 class="title"><a href="single-course.html">${c.description}</a></h4>
-                                                    <div class="price-rate">
-                                                        <div class="course-price">
-                                                            <span>${c.price}.000VND</span>
-                                                        </div>
-                                                        <div class="ratings">
-                                                            <i class="icon_star"></i>
-                                                            <span>4.5 (2,420)</span>
-                                                        </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        Free
+                                                        <span>$42.85</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </c:forEach>
-
-
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/2.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Art &amp; Design</a>
+                                                <h4><a href="single-course.html">The Art of Black and White Photography</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a2.png" alt="">
+                                                    <a href="#">Giles Posture</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        $75.00
+                                                        <span>$92.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.2 (1,203)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/3.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Business Study</a>
+                                                <h4><a href="single-course.html">Learning jQuery mobile for Beginners</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a3.png" alt="">
+                                                    <a href="#">Hans Down</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        $53.00
+                                                        <span>$74.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/4.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Data Science</a>
+                                                <h4><a href="single-course.html">Buddhism and modern Psychology</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a4.png" alt="">
+                                                    <a href="#">Richard Tea</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        $62.00
+                                                        <span>$97.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/6.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>UI/UX Design</a>
+                                                <h4><a href="single-course.html">Fundamentals of UI Design</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a5.png" alt="">
+                                                    <a href="#">Weir Doe</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        Free
+                                                        <span>$76.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/5.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Web Development</a>
+                                                <h4><a href="single-course.html">Making music with Other people</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a6.png" alt="">
+                                                    <a href="#">Hilary Ouse</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        $34.00
+                                                        <span>$55.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/7.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>It Solution</a>
+                                                <h4><a href="single-course.html">How to Make Beautiful Landscape Photos?</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a7.png" alt="">
+                                                    <a href="#">Jake Weary</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        Free
+                                                        <span>$42.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/8.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>App Design</a>
+                                                <h4><a href="single-course.html">Adobe XD: Prototyping Tips and Tricks</a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a8.png" alt="">
+                                                    <a href="#">Hanson Deck</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        $47.00
+                                                        <span>$76.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6">
+                                        <div class="feature-course-item-4">
+                                            <div class="fcf-thumb">
+                                                <img src="${pageContext.request.contextPath}/assets/images/profile/9.jpg" alt="">
+                                                <a class="enroll" href="#">Enroll Now</a>
+                                            </div>
+                                            <div class="fci-details">
+                                                <a href="#" class="c-cate"><i class="icon_tag_alt"></i>Learning</a>
+                                                <h4><a href="single-course.html">Fundamental basic of earning english </a></h4>
+                                                <div class="author">
+                                                    <img src="${pageContext.request.contextPath}/assets/images/home3/course/a9.png" alt="">
+                                                    <a href="#">Jackson Pot</a>
+                                                </div>
+                                                <div class="price-rate">
+                                                    <div class="course-price">
+                                                        $74.00
+                                                        <span>$99.00</span>
+                                                    </div>
+                                                    <div class="ratings">
+                                                        <i class="icon_star"></i>
+                                                        <span>4.5 (2,420)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- Pagination -->
                                 <div class="row">
@@ -473,7 +682,7 @@
             </div>
         </section>
         <!-- Course Section End -->
-
+        
         <!-- Footer Section Start -->
         <footer class="footer-1">
             <div class="container">
@@ -582,5 +791,5 @@
 
     </body>
 
-    <!-- Mirrored from quomodosoft.com/html/bisy/course-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:46 GMT -->
+<!-- Mirrored from quomodosoft.com/html/bisy/course-3.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 13 Jan 2025 07:14:46 GMT -->
 </html>

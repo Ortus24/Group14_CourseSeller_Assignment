@@ -19,40 +19,8 @@ public class Courses {
     private int categoryID;
     private String createdDate;
     private boolean status;
-   
 
     public Courses() {
-    }
-
-
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, String createdDate, boolean status) {
-        this.courseID = courseID;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.duration = duration;
-        this.thumbnail = thumbnail;
-        this.createdDate = createdDate;
-        this.status = status;
-    }
-
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate) {
-        this.courseID = courseID;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.duration = duration;
-        this.thumbnail = thumbnail;
-        this.categoryID = categoryID;
-        this.createdDate = createdDate;
-    }
-
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
     }
 
     public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate, boolean status) {
@@ -66,8 +34,14 @@ public class Courses {
         this.createdDate = createdDate;
         this.status = status;
     }
-    
-    
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 
     public int getCourseID() {
         return courseID;
@@ -132,6 +106,4 @@ public class Courses {
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
     }
-  
-    
 }

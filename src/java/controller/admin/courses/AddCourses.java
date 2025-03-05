@@ -86,7 +86,6 @@ public class AddCourses extends HttpServlet {
         boolean status = Boolean.parseBoolean(request.getParameter("status"));
 
         CourseDAO d = new CourseDAO();
-        CategoryDAO caDAO = new CategoryDAO();
 
         
 
