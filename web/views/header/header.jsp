@@ -71,6 +71,8 @@
                                 <button type="submit"><i class="ti-search"></i></button>
                             </form>
                             <!-- Search Box -->
+                            
+                            
 
                             <!-- Moblie Btn Start -->
                             <button class="navbar-toggler" type="button">
@@ -122,6 +124,12 @@
                                     </li>
                                     <li>
                                         <a style="color: white" href="contact.html">Contact</a>
+                                    </li>
+                                    <li>
+                                        <a href="viewCart">
+                                            <i class="ti-shopping-cart"></i>
+                                            <span class="badge bg-danger">${cartSize}</span>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>

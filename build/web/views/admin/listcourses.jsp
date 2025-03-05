@@ -128,6 +128,7 @@
                             <th>CreatedDate</th>
                             <th>Status</th>
                             <th>Action</th>
+                            <th>Buy</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -142,6 +143,10 @@
                                     <button class="choice">Edit</button>
                                     
                                     <a href="#" onclick="doDelete(${c.courseID})"><button class="choice">Delete</button></a>
+                                </td>
+                                <td>
+                                    <c:set var="course" value="${c}" scope="request"/>
+                                    <%@ include file="/views/order/addToCart.jsp" %>
                                 </td>
                             </tr>
                         </c:forEach>

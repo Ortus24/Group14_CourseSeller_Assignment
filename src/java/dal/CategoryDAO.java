@@ -27,8 +27,14 @@ public class CategoryDAO extends DBContext {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getString("createdDate"));
+                Courses c = new Courses(rs.getInt("courseID"), 
+                                        rs.getString("title"), 
+                                        rs.getString("description"), 
+                                        rs.getInt("price"), 
+                                        rs.getInt("duration"), 
+                                        rs.getString("thumbnail"),
+                                        rs.getInt("categoryID"),
+                                        rs.getString("createdDate"));
                 list.add(c);
             }
         } catch (SQLException ex) {
@@ -60,8 +66,7 @@ public class CategoryDAO extends DBContext {
     }
 
     public void insertCourse(Courses c) {
-        String sql = "INSERT INTO Courses (Title, Description, Price, Duration, Thumbnail, CategoryID) VALUES (?, ?, ?, ?, ?, ?)";
-
+        String sql = "INSERT INTO Courses (Title, Description, Price, Duration, Thumbnail, CategoryID, CreatedDate, Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, c.getTitle());
             ps.setString(2, c.getDescription());
@@ -86,8 +91,14 @@ public class CategoryDAO extends DBContext {
             ps.setString(1, title);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"));
+                Courses c = new Courses(rs.getInt("courseID"), 
+                                        rs.getString("title"), 
+                                        rs.getString("description"), 
+                                        rs.getInt("price"), 
+                                        rs.getInt("duration"), 
+                                        rs.getString("thumbnail"),
+                                        rs.getInt("categoryID"),
+                                        rs.getString("createdDate"));
                 return c;
             }
         } catch (SQLException ex) {

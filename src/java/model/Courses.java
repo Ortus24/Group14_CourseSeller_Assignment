@@ -4,6 +4,8 @@
  */
 package model;
 
+import java.util.Date;
+
 /**
  *
  * @author Nhat
@@ -17,21 +19,11 @@ public class Courses {
     private String thumbnail;
     private int categoryID;
     private String createdDate;
-    
-    
+    private boolean status;
 
     public Courses() {
-    }
-
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, String createdDate) {
-        this.courseID = courseID;
-        this.title = title;
-        this.description = description;
-        this.price = price;
-        this.duration = duration;
-        this.thumbnail = thumbnail;
-        this.createdDate = createdDate;
-    }
+        
+    }    
 
     public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate) {
         this.courseID = courseID;
@@ -42,9 +34,8 @@ public class Courses {
         this.thumbnail = thumbnail;
         this.categoryID = categoryID;
         this.createdDate = createdDate;
+        this.status = status;
     }
-    
-    
 
     public int getCourseID() {
         return courseID;
@@ -94,14 +85,6 @@ public class Courses {
         this.thumbnail = thumbnail;
     }
 
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
-    }
-    
     public int getCategoryID() {
         return categoryID;
     }
@@ -109,4 +92,23 @@ public class Courses {
     public void setCategoryID(int categoryID) {
         this.categoryID = categoryID;
     }
+
+    public String getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(String createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    
+    
 }
