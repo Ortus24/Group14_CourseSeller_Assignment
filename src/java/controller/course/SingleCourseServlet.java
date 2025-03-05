@@ -12,14 +12,17 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import model.Course;
-import model.Lesson;
+import model.Category;
+import model.Courses;
+import model.Lessons;
 import model.RatingPercent;
-import model.Review;
+import model.Reviews;
 import model.Section;
 
 /**
@@ -39,18 +42,21 @@ public class SingleCourseServlet extends HttpServlet {
         try {
             int courseId = Integer.parseInt(courseId_raw);
 
-            Course course = cd.getCourseById(courseId);
+            Courses course = cd.getCourseById(courseId);
             session.setAttribute("course", course);
-
+            
+            Category category = cd.getCategoryIdByCourseId(courseId);
+            session.setAttribute("category", category);
+            
             //Related course
-            List<Course> relatedCourses = cd.relatedCourses(course.getCategory().getCategoryID(), courseId);
+            List<Courses> relatedCourses = cd.relatedCourses(category.getCategoryID(), courseId);
             session.setAttribute("relatedCourses", relatedCourses);
 
             //Curriculum
             List<Section> listSections = cd.getListSectionByCourseId(courseId);
             for (Section section : listSections) {
-                List<Lesson> listLessons = cd.getListLessonBySectionId(section.getSectionId());
-                section.setListLesson(listLessons); 
+                List<Lessons> listLessons = cd.getListLessonBySectionId(section.getSectionId());
+                section.setListLessons(listLessons);
             }
             session.setAttribute("listSections", listSections);
             //Total lesson
@@ -80,7 +86,7 @@ public class SingleCourseServlet extends HttpServlet {
             session.setAttribute("ratingPercent", listRatingPercent);
 
             //Get all review
-            List<Review> listReview = cd.getReviewByCourseId(courseId);
+            List<Reviews> listReview = cd.getReviewByCourseId(courseId);
             session.setAttribute("listReview", listReview);
         } catch (NumberFormatException e) {
             response.sendRedirect("views/errors/404.jsp");
@@ -91,7 +97,13 @@ public class SingleCourseServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        //Add review
+        CoursesDAO cd = new CoursesDAO();
+        HttpSession session = request.getSession();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String date = now.format(formatter);
+        
     }
 
     @Override

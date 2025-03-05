@@ -80,8 +80,8 @@
                                         </h2>
                                         <div id="collapseOne${sectionStatus.index}" class="accordion-collapse collapse show" aria-labelledby="headingOne${sectionStatus.index}" data-bs-parent="#accordionExample${sectionStatus.index}">
                                             <div class="accordion-body">
-                                                <c:forEach items="${section.listLesson}" var="lesson">
-                                                    <a href="lesson?courseId=${section.course.courseID}&id=${lesson.lessonId}" class="bd-course-curriculum-content d-flex-between ${lesson.lessonId == requestScope.lessonId ? 'active' : ''}" >
+                                                <c:forEach items="${section.listLessons}" var="lesson">
+                                                    <a href="lesson?courseId=${section.courseId}&id=${lesson.lessonId}" class="bd-course-curriculum-content d-flex-between ${lesson.lessonId == requestScope.lessonId ? 'active' : ''}" >
                                                         <div class="bd-course-curriculum-info d-flex-items gap-10">
                                                             <div class="ti-bookmark"></i></div>
                                                             <p class="title" >${lesson.title}</p>

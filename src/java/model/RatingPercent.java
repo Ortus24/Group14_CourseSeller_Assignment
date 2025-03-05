@@ -4,10 +4,6 @@
  */
 package model;
 
-/**
- *
- * @author admin
- */
 public class RatingPercent {
     private int rating;
     private float percent;

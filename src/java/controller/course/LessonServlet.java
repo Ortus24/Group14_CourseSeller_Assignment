@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.Lesson;
+import model.Lessons;
 import model.Section;
 
 /**
@@ -39,13 +39,13 @@ public class LessonServlet extends HttpServlet {
             //Get list Section
             List<Section> listSections = cd.getListSectionByCourseId(courseId);
             for (Section section : listSections) {
-                List<Lesson> listLessons = cd.getListLessonBySectionId(section.getSectionId());
-                section.setListLesson(listLessons); 
+                List<Lessons> listLessons = cd.getListLessonBySectionId(section.getSectionId());
+                section.setListLessons(listLessons); 
             }
             session.setAttribute("listSections", listSections);
             
             //Get lesson by lesson id
-            Lesson lessonDetail = cd.getLessonByLessonId(lessonId);
+            Lessons lessonDetail = cd.getLessonByLessonId(lessonId);
             session.setAttribute("lessonDetail", lessonDetail);
             
         } catch (NumberFormatException e) {

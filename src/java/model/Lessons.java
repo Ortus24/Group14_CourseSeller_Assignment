@@ -1,22 +1,20 @@
 package model;
 
-import java.time.Duration;
+public class Lessons {
+   private int lessonId;
+   private int sectionId;
+   private String typeName;
+   private String title;
+   private double duration;
+   private String contentURL;
+   private String createdDate;
 
-public class Lesson {
-    private int lessonId;
-    private Section section;
-    private String typeName;
-    private String title;
-    private float duration;
-    private String contentURL;
-    private String createdDate;
-
-    public Lesson() {
+    public Lessons() {
     }
 
-    public Lesson(int lessonId, Section section, String typeName, String title, float duration, String contentURL, String createdDate) {
+    public Lessons(int lessonId, int sectionId, String typeName, String title, double duration, String contentURL, String createdDate) {
         this.lessonId = lessonId;
-        this.section = section;
+        this.sectionId = sectionId;
         this.typeName = typeName;
         this.title = title;
         this.duration = duration;
@@ -32,12 +30,12 @@ public class Lesson {
         this.lessonId = lessonId;
     }
 
-    public Section getSection() {
-        return section;
+    public int getSectionId() {
+        return sectionId;
     }
 
-    public void setSection(Section section) {
-        this.section = section;
+    public void setSectionId(int sectionId) {
+        this.sectionId = sectionId;
     }
 
     public String getTypeName() {
@@ -56,11 +54,11 @@ public class Lesson {
         this.title = title;
     }
 
-    public float getDuration() {
+    public double getDuration() {
         return duration;
     }
 
-    public void setDuration(float duration) {
+    public void setDuration(double duration) {
         this.duration = duration;
     }
 
@@ -79,5 +77,5 @@ public class Lesson {
     public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
-    
 }
+ 

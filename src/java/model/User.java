@@ -1,29 +1,21 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-/**
- *
- * @author admin
- */
 public class User {
-    private String userName;
-    private String fullName;
-    private String passWord;
-    private int roleId;
-    private String image;
-    private String email;
-    private String birthDay;
-    private String address;
-    private String phone;
-    private int status;
+     private String userName;
+     private String fullName;
+     private String passWord;
+     private int roleId;
+     private String image;
+     private String email;
+     private String birthDay;
+     private String address;
+     private String phoneNumber;
+     private boolean status;
 
     public User() {
     }
 
-    public User(String userName, String fullName, String passWord, int roleId, String image, String email, String birthDay, String address, String phone, int status) {
+    public User(String userName, String fullName, String passWord, int roleId, String image, String email, String birthDay, String address, String phoneNumber, boolean status) {
         this.userName = userName;
         this.fullName = fullName;
         this.passWord = passWord;
@@ -32,7 +24,7 @@ public class User {
         this.email = email;
         this.birthDay = birthDay;
         this.address = address;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
         this.status = status;
     }
 
@@ -100,21 +92,22 @@ public class User {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public int getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
-    
-    
+
+  
+     
 }

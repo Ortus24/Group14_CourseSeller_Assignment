@@ -3,27 +3,28 @@ package model;
 import java.util.List;
 
 public class Section {
+
     private int sectionId;
-    private Course course;
+    private int courseId;
     private String sectionTitle;
     private String createdDate;
-    private List<Lesson> listLesson;
+    private List<Lessons> listLessons;
     public Section() {
     }
 
-    public Section(int sectionId, Course course, String sectionTitle, String createdDate) {
+    public Section(int sectionId, int courseId, String sectionTitle, String createdDate) {
         this.sectionId = sectionId;
-        this.course = course;
+        this.courseId = courseId;
         this.sectionTitle = sectionTitle;
         this.createdDate = createdDate;
     }
 
-    public Section(int sectionId, Course course, String sectionTitle, String createdDate, List<Lesson> listLesson) {
+    public Section(int sectionId, int courseId, String sectionTitle, String createdDate, List<Lessons> listLessons) {
         this.sectionId = sectionId;
-        this.course = course;
+        this.courseId = courseId;
         this.sectionTitle = sectionTitle;
         this.createdDate = createdDate;
-        this.listLesson = listLesson;
+        this.listLessons = listLessons;
     }
 
     public int getSectionId() {
@@ -34,12 +35,12 @@ public class Section {
         this.sectionId = sectionId;
     }
 
-    public Course getCourse() {
-        return course;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse(Course course) {
-        this.course = course;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
     public String getSectionTitle() {
@@ -58,13 +59,12 @@ public class Section {
         this.createdDate = createdDate;
     }
 
-    public List<Lesson> getListLesson() {
-        return listLesson;
+    public List<Lessons> getListLessons() {
+        return listLessons;
     }
 
-    public void setListLesson(List<Lesson> listLesson) {
-        this.listLesson = listLesson;
+    public void setListLessons(List<Lessons> listLessons) {
+        this.listLessons = listLessons;
     }
-    
-    
+
 }

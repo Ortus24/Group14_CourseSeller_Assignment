@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.*;
 import model.Category;
-import model.Course;
-import model.Lesson;
+import model.Courses;
+import model.Lessons;
 import model.RatingPercent;
-import model.Review;
+import model.Reviews;
 import model.Section;
 import model.User;
 
@@ -22,17 +22,16 @@ import model.User;
 public class CoursesDAO extends DBContext {
 
     //Get all course
-    public List<Course> getAllCourse() {
-        List<Course> list = new ArrayList<>();
+    public List<Courses> getAllCourse() {
+        List<Courses> list = new ArrayList<>();
         String sql = "SELECT * FROM [dbo].[Courses]";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Category category = getCategoryIdByCourseId(rs.getInt("CategoryID"));
-                Course c = new Course(rs.getInt("CourseID"), rs.getString("Title"), rs.getString("Description"),
+                Courses c = new Courses(rs.getInt("CourseID"), rs.getString("Title"), rs.getString("Description"),
                         rs.getDouble("Price"), rs.getString("Thumbnail"),
-                        category, rs.getString("CreatedDate"));
+                        rs.getInt("CategoryID"), rs.getString("CreatedDate"), rs.getBoolean("Status"));
                 list.add(c);
             }
         } catch (SQLException e) {
@@ -42,7 +41,7 @@ public class CoursesDAO extends DBContext {
     }
 
     //Get course by course id
-    public Course getCourseById(int id) {
+    public Courses getCourseById(int id) {
         String sql = "SELECT *\n"
                 + "  FROM [dbo].[Courses]\n"
                 + "  WHERE [CourseID] = ?;";
@@ -51,10 +50,9 @@ public class CoursesDAO extends DBContext {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Category category = getCategoryIdByCourseId(rs.getInt("CategoryID"));
-                Course c = new Course(rs.getInt("CourseID"), rs.getString("Title"), rs.getString("Description"),
+                Courses c = new Courses(rs.getInt("CourseID"), rs.getString("Title"), rs.getString("Description"),
                         rs.getDouble("Price"), rs.getString("Thumbnail"),
-                        category, rs.getString("CreatedDate"));
+                        rs.getInt("CategoryID"), rs.getString("CreatedDate"), rs.getBoolean("Status"));
                 return c;
             }
         } catch (SQLException e) {
@@ -66,15 +64,15 @@ public class CoursesDAO extends DBContext {
     //Get category by course id
     public Category getCategoryIdByCourseId(int courseId) {
         String sql = "SELECT CAT.*\n"
-                + "FROM Categories CAT\n"
-                + "JOIN Courses C ON CAT.CategoryID = C.CategoryID\n"
-                + "WHERE C.CourseID = ?;";
+                + "  FROM [Categories] CAT\n"
+                + "  JOIN Courses C ON CAT.CategoryID = C.CategoryID\n"
+                + "  WHERE C.CourseID = ?;";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, courseId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Category c = new Category(rs.getInt("CategoryId"), rs.getString("CategoryName"), rs.getString("Description"));
+                Category c = new Category(rs.getInt("CategoryID"), rs.getString("CategoryName"), rs.getString("Description"));
                 return c;
             }
         } catch (SQLException e) {
@@ -85,8 +83,8 @@ public class CoursesDAO extends DBContext {
 
     //Widget start
     //Related course
-    public List<Course> relatedCourses(int categoryId, int courseId) {
-        List<Course> list = new ArrayList<>();
+    public List<Courses> relatedCourses(int categoryId, int courseId) {
+        List<Courses> list = new ArrayList<>();
         String sql = "SELECT *\n"
                 + "FROM Courses C\n"
                 + "WHERE C.CategoryID = ? and C.CourseID != ?";
@@ -96,17 +94,15 @@ public class CoursesDAO extends DBContext {
             ps.setInt(2, courseId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Category category = getCategoryIdByCourseId(rs.getInt("CategoryID"));
-                Course c = new Course(rs.getInt("CourseID"), rs.getString("Title"), rs.getString("Description"),
+                Courses c = new Courses(rs.getInt("CourseID"), rs.getString("Title"), rs.getString("Description"),
                         rs.getDouble("Price"), rs.getString("Thumbnail"),
-                        category, rs.getString("CreatedDate"));
+                        rs.getInt("CategoryID"), rs.getString("CreatedDate"), rs.getBoolean("Status"));
                 list.add(c);
             }
-            return list;
         } catch (SQLException e) {
             System.out.println(e);
         }
-        return null;
+        return list;
     }
 
     //Total duration
@@ -157,8 +153,8 @@ public class CoursesDAO extends DBContext {
     //Widget end
 
     //Course-tab: Curriculum start
-    public List<Lesson> getListLessonBySectionId(int sectionId) {
-        List<Lesson> list = new ArrayList<>();
+    public List<Lessons> getListLessonBySectionId(int sectionId) {
+        List<Lessons> list = new ArrayList<>();
         String sql = "SELECT *\n"
                 + "  FROM [dbo].[Lessons]\n"
                 + "  WHERE [SectionID] = ?;";
@@ -167,9 +163,8 @@ public class CoursesDAO extends DBContext {
             ps.setInt(1, sectionId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Section section = getSectionBySectionId(sectionId);
-                Lesson lesson = new Lesson(rs.getInt("LessonID"), section, rs.getString("TypeName"), rs.getString("Title"),
-                         rs.getFloat("Duration"), rs.getString("ContentURL"), rs.getString("CreatedDate"));
+                Lessons lesson = new Lessons(rs.getInt("LessonID"), rs.getInt("SectionID"), rs.getString("TypeName"), rs.getString("Title"),
+                        rs.getDouble("Duration"), rs.getString("ContentURL"), rs.getString("CreatedDate"));
                 list.add(lesson);
             }
         } catch (SQLException e) {
@@ -187,8 +182,7 @@ public class CoursesDAO extends DBContext {
             ps.setInt(1, sectionId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Course course = getCourseById(rs.getInt("CourseID"));
-                Section section = new Section(rs.getInt("SectionID"), course,
+                Section section = new Section(rs.getInt("SectionID"), rs.getInt("CourseID"),
                         rs.getString("SectionTitle"), rs.getString("CreatedDate"));
                 return section;
             }
@@ -208,8 +202,7 @@ public class CoursesDAO extends DBContext {
             ps.setInt(1, courseId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Course course = getCourseById(courseId);
-                Section section = new Section(rs.getInt("SectionID"), course,
+                Section section = new Section(rs.getInt("SectionID"), rs.getInt("CourseID"),
                         rs.getString("SectionTitle"), rs.getString("CreatedDate"));
                 list.add(section);
             }
@@ -288,8 +281,8 @@ public class CoursesDAO extends DBContext {
     }
 
     //Get review by course id
-    public List<Review> getReviewByCourseId(int courseId) {
-        List<Review> list = new ArrayList<>();
+    public List<Reviews> getReviewByCourseId(int courseId) {
+        List<Reviews> list = new ArrayList<>();
         String sql = "SELECT * \n"
                 + "FROM [Reviews]\n"
                 + "WHERE CourseID = ?";
@@ -298,8 +291,7 @@ public class CoursesDAO extends DBContext {
             ps.setInt(1, courseId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                User user = getUserByUserName(rs.getString("UserName"));
-                Review review = new Review(rs.getInt("ReviewID"), rs.getInt("CourseID"), user,
+                Reviews review = new Reviews(rs.getInt("ReviewID"), rs.getInt("CourseID"), rs.getString("UserName"),
                         rs.getFloat("Rating"), rs.getString("Comment"), rs.getString("ReviewDate"));
                 list.add(review);
             }
@@ -317,7 +309,7 @@ public class CoursesDAO extends DBContext {
             while (rs.next()) {
                 User u = new User(rs.getString("UserName"), rs.getString("FullName"), rs.getString("Password"),
                         rs.getInt("RoleID"), rs.getString("Image"), rs.getString("Email"), rs.getString("BirthDay"),
-                        rs.getString("Address"), rs.getString("Phone"), rs.getInt("Status"));
+                        rs.getString("Address"), rs.getString("Phone"), rs.getBoolean("Status"));
                 return u;
             }
         } catch (SQLException e) {
@@ -325,10 +317,37 @@ public class CoursesDAO extends DBContext {
         }
         return null;
     }
-    //Course-tab: Review end 
 
+    //Add review 
+    public void addReview(int courseId, User user, float rating, String comment, String date) {
+        String sql = "INSERT INTO [dbo].[Reviews]\n"
+                + "           ([CourseID]\n"
+                + "           ,[UserName]\n"
+                + "           ,[Rating]\n"
+                + "           ,[Comment]\n"
+                + "           ,[ReviewDate])\n"
+                + "     VALUES\n"
+                + "           (?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?\n"
+                + "           ,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setInt(1, courseId);
+            ps.setString(2, user.getUserName());
+            ps.setFloat(3, rating);
+            ps.setString(4, comment);
+            ps.setString(5, date);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+    }
+
+    //Course-tab: Review end 
     //Lesson Start
-    public Lesson getLessonByLessonId(int lessonId) {
+    public Lessons getLessonByLessonId(int lessonId) {
         String sql = "SELECT *\n"
                 + "  FROM [dbo].[Lessons]\n"
                 + "  WHERE [LessonID] = ?;";
@@ -337,9 +356,8 @@ public class CoursesDAO extends DBContext {
             ps.setInt(1, lessonId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                Section section = getSectionBySectionId(rs.getInt("SectionID"));
-                Lesson lesson = new Lesson(rs.getInt("LessonID"), section, rs.getString("TypeName"), rs.getString("Title"),
-                         rs.getFloat("Duration"), rs.getString("ContentURL"), rs.getString("CreatedDate"));
+                Lessons lesson = new Lessons(rs.getInt("LessonID"), rs.getInt("SectionID"), rs.getString("TypeName"), rs.getString("Title"),
+                        rs.getDouble("Duration"), rs.getString("ContentURL"), rs.getString("CreatedDate"));
                 return lesson;
             }
         } catch (SQLException e) {
@@ -348,4 +366,9 @@ public class CoursesDAO extends DBContext {
         return null;
     }
     //Lesson End
+    
+    public static void main(String[] args) {
+        CoursesDAO cd = new CoursesDAO();
+        System.out.println(cd.getUserByUserName("alice_brown"));
+    }
 }

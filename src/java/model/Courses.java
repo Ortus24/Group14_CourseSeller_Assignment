@@ -4,26 +4,34 @@
  */
 package model;
 
-public class Course {
+/**
+ *
+ * @author Nhat
+ */
+public class Courses {
     private int courseID;
     private String title;
     private String description;
     private double price;
     private String thumbnail;
-    private Category category;
+    private int categoryID;
     private String createdDate;
-   
-    public Course() {
+    private boolean status; 
+    
+//    dang do minh duc
+
+    public Courses() {
     }
 
-    public Course(int courseID, String title, String description, double price, String thumbnail, Category category, String createdDate) {
+    public Courses(int courseID, String title, String description, double price, String thumbnail, int categoryID, String createdDate, boolean status) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
         this.price = price;
         this.thumbnail = thumbnail;
-        this.category = category;
+        this.categoryID = categoryID;
         this.createdDate = createdDate;
+        this.status = status;
     }
 
     public int getCourseID() {
@@ -66,12 +74,12 @@ public class Course {
         this.thumbnail = thumbnail;
     }
 
-    public Category getCategory() {
-        return category;
+    public int getCategoryID() {
+        return categoryID;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryID(int categoryID) {
+        this.categoryID = categoryID;
     }
 
     public String getCreatedDate() {
@@ -82,5 +90,13 @@ public class Course {
         this.createdDate = createdDate;
     }
 
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+     
     
 }

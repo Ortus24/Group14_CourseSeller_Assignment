@@ -147,9 +147,9 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!--Category : hien ki may-->
-                        <h2 class="banner-title">${sessionScope.course.category.categoryName}</h2>
+                        <h2 class="banner-title">${sessionScope.category.categoryName}</h2>
                         <div class="bread-crumbs">
-                            <a href="views/home/home.jsp">Home</a> <span></span> ${sessionScope.course.category.categoryName}
+                            <a href="views/home/home.jsp">Home</a> <span></span> ${sessionScope.category.categoryName}
                         </div>
                     </div>
                 </div>
@@ -169,7 +169,7 @@
                                 <div class="course-meta">
                                     <div class="categories" style="border-left: none; padding-left: 0; margin-left: 0;">
                                         <span>Categories:</span>
-                                        <a href="#">${sessionScope.course.category.categoryName}</a>
+                                        <a href="#">${sessionScope.category.categoryName}</a>
                                     </div>
                                     <div class="ratings">
                                         <span>${sessionScope.avgRating} (${sessionScope.totalReview} Reviews)</span>
@@ -185,7 +185,7 @@
                                 </div>
                             </div>
                             <div class="sc-thumb">
-                                <img src="${pageContext.request.contextPath}/images/${course.thumbnail}" alt="">
+                                <img src="${course.thumbnail}" alt="">
                             </div>
                             <div class="course-tab-wrapper">
                                 <ul class="course-tab-btn nav nav-tabs">
@@ -219,11 +219,11 @@
                                                 </div>
                                                 <div id="acc_${sectionStatus.index}" class="collapse" aria-labelledby="cc_${sectionStatus.index}" data-parent="#id_${sectionStatus.index}">
                                                     <div class="card-body">
-                                                        <c:forEach items="${section.listLesson}" var="lesson" varStatus="lessonStatus">
+                                                        <c:forEach items="${section.listLessons}" var="lesson" varStatus="lessonStatus">
                                                             <div class="ci-item">
                                                                 <h5>
                                                                     <i class="icon_menu-square_alt2"></i>
-                                                                    <a href="lesson?courseId=${section.course.courseID}&id=${lesson.lessonId}">${lesson.title}</a>
+                                                                    <a href="lesson?courseId=${section.courseId}&id=${lesson.lessonId}">${lesson.title}</a>
                                                                 </h5>
                                                                 <c:if test="${lesson.typeName == 'Video'}">
                                                                     <div class="ci-tools">
@@ -286,8 +286,9 @@
                                                         <li class="box" style="${status.index >= 3 ? 'display: none;' : ''}">
                                                             <div class="single-comment">
                                                                 <img src="assets/images/single-course/r1.png" alt="">
-                                                                <h5><a href="#">${review.user.fullName}</a></h5>
-                                                                <span>${review.date}</span>
+                                                                <h5><a href="#">${review.userName}</a></h5> 
+<!--                                                                can sua-->
+                                                                <span>${review.reviewDate}</span>
                                                                 <div class="review-ratings">
                                                                     <c:forEach var="i" begin="1" end="5">
                                                                         <i class="star ${i <= review.rating ? 'filled' : ''}">&#9733;</i>
@@ -304,26 +305,7 @@
                                                 <c:if test="${sessionScope.totalReview > 3}">
                                                     <button id="load-more">Load More</button>
                                                 </c:if>
-                                            </div>
-
-                                            <div class="review-pagination">
-                                                <c:set var="page" value="${requestScope.page}"></c:set>
-                                                    <ul class="pagination">
-                                                    <c:if test="${page > 1}">
-                                                        <li><a href="singlecourse?id=${param.id}&page=${page - 1}">Previous &laquo;</a></li>
-                                                        </c:if>
-
-                                                    <c:forEach var="i" begin="1" end="${requestScope.num}">
-                                                        <li class="${i == page ? "active" : ""}">
-                                                            <a href="singlecourse?id=${param.id}&page=${i}">${i}</a>
-                                                        </li>
-                                                    </c:forEach>
-
-                                                    <c:if test="${requestScope.page < requestScope.num}">
-                                                        <li><a href="singlecourse?id=${param.id}&page=${page + 1}">Next &raquo;</a></li>
-                                                        </c:if>
-                                                </ul>
-                                            </div>     
+                                            </div>        
 
                                             <div class="review-form-area">
                                                 <h5>Leave a Comment</h5>
@@ -393,7 +375,7 @@
                                 <h3 class="widget-title">Related Courses</h3>
                                 <c:forEach items="${sessionScope.relatedCourses}" var="rc">
                                     <div class="latest-course">
-                                        <a href="singlecourse?id=${rc.courseID}"><img src="${pageContext.request.contextPath}/images/${rc.thumbnail}" alt=""></a>
+                                        <a href="singlecourse?id=${rc.courseID}"><img src="${rc.thumbnail}" alt=""></a>
                                         <h5><a href="singlecourse?id=${rc.courseID}">${rc.title}</a></h5>
                                         <div class="course-price">
                                             ${rc.price * 1000}VND
