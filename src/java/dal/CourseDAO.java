@@ -28,8 +28,9 @@ public class CourseDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"),
-                        rs.getString("description"), rs.getInt("price"), rs.getInt("duration"),
-                        rs.getString("thumbnail"), rs.getInt("categoryID"), rs.getString("createdDate"),
+                        rs.getString("description"), rs.getInt("price"),
+                        rs.getString("thumbnail"), rs.getInt("categoryID"),
+                        rs.getString("createdDate"),
                         rs.getBoolean("status"));
                 list.add(c);
             }
@@ -44,16 +45,15 @@ public class CourseDAO extends DBContext {
     }
 
     public void insertCourse(Courses c) {
-        String sql = "INSERT INTO Courses (Title, Description, Price, Duration, Thumbnail, CategoryID, Status) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Courses (Title, Description, Price, Thumbnail, CategoryID, Status) VALUES (?, ?,  ?, ?, ?, ?)";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, c.getTitle());
             ps.setString(2, c.getDescription());
-            ps.setInt(3, c.getPrice());
-            ps.setInt(4, c.getDuration());
-            ps.setString(5, c.getThumbnail());
-            ps.setInt(6, c.getCategoryID());
-            ps.setBoolean(7, c.isStatus());
+            ps.setDouble(3, c.getPrice());
+            ps.setString(4, c.getThumbnail());
+            ps.setInt(5, c.getCategoryID());
+            ps.setBoolean(6, c.isStatus());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,11 +61,10 @@ public class CourseDAO extends DBContext {
     }
 
     public void updateCourse(Courses c) {
-        String sql = "UPDATE [ASSGINMENT_PRJ301].[dbo].[Courses] SET \n"
+        String sql = "UPDATE [dbo].[Courses] SET \n"
                 + "    Title = ?,\n"
                 + "    Description = ?,\n"
                 + "    Price = ?,\n"
-                + "    Duration = ?,\n"
                 + "    Thumbnail = ?,\n"
                 + "    CategoryID = ?,\n"
                 + "    Status = ?\n"
@@ -74,12 +73,11 @@ public class CourseDAO extends DBContext {
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, c.getTitle());
             ps.setString(2, c.getDescription());
-            ps.setInt(3, c.getPrice());
-            ps.setInt(4, c.getDuration());
-            ps.setString(5, c.getThumbnail());
-            ps.setInt(6, c.getCategoryID());
-            ps.setBoolean(7, c.isStatus());
-            ps.setInt(8, c.getCourseID());
+            ps.setDouble(3, c.getPrice());
+            ps.setString(4, c.getThumbnail());
+            ps.setInt(5, c.getCategoryID());
+            ps.setBoolean(6, c.isStatus());
+            ps.setInt(7, c.getCourseID());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -113,7 +111,7 @@ public class CourseDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"),
+                        rs.getInt("price"),  rs.getString("thumbnail"),
                         rs.getInt("categoryID"), rs.getString("createdDate"), rs.getBoolean("status"));
                 return c;
             }
@@ -124,14 +122,14 @@ public class CourseDAO extends DBContext {
     }
 
     public Courses getCourseByCourseID(int id) {
-        String sql = "SELECT * FROM [ASSGINMENT_PRJ301].[dbo].[Courses] WHERE CourseID = ?";
+        String sql = "SELECT * FROM [dbo].[Courses] WHERE CourseID = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"), rs.getInt("duration"), rs.getString("thumbnail"),
+                        rs.getInt("price"),  rs.getString("thumbnail"),
                         rs.getInt("categoryID"), rs.getString("createdDate"), rs.getBoolean("status"));
                 return c;
             }
@@ -143,6 +141,6 @@ public class CourseDAO extends DBContext {
 
 //    public static void main(String[] args) {
 //        CourseDAO d = new CourseDAO();
-//        System.out.println(d.getCourseByCourseID(2).isStatus());
+//        System.out.println(d.getCourses().get(35).getTitle());
 //    }
 }

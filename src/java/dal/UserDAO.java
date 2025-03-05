@@ -10,24 +10,28 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import model.Users;
+import model.User;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.sql.Date;
 /**
  *
  * @author Nhat
  */
 public class UserDAO extends DBContext {
 
-    public List<Users> getUsers() {
-        String sql = "SELECT * FROM [ASSGINMENT_PRJ301].[dbo].[Users]";
-        List<Users> list = new ArrayList<>();
+    public List<User> getUsers() {
+        String sql = "SELECT * FROM dbo.Users;";
+        List<User> list = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Users(rs.getString("userName"), rs.getString("fullName"),
+                list.add(new User(rs.getString("userName"), rs.getString("fullName"),
                         rs.getString("password"), rs.getInt("roleID"), rs.getString("image"),
-                        rs.getString("email"), rs.getDate("birthDay"), rs.getString("address"),
+                        rs.getString("email"), rs.getString("birthDay"), rs.getString("address"),
                         rs.getString("phone"), rs.getBoolean("status")));
             }
         } catch (SQLException ex) {
@@ -36,22 +40,21 @@ public class UserDAO extends DBContext {
         return list;
     }
 
-    public void addUsers(Users user) {
-        String sql = "INSERT INTO [ASSGINMENT_PRJ301].[dbo].[Users] (UserName, FullName, Password, RoleID, Image, Email, BirthDay, Address, Phone, Status)\n"
+    public void addUsers(User user) {
+        String sql = "INSERT INTO [dbo].[Users] (UserName, FullName, Password, RoleID, Image, Email, BirthDay, Address, Phone, Status)\n"
                 + "VALUES \n"
                 + "(?, ?, ?, ?, ?, ?, ?, ?, ?, 0);\n"+
-                "insert into [ASSGINMENT_PRJ301].[dbo].[Wallets] (UserName, Balance) Values (?,0.00);\n";
-        try (PreparedStatement ps = connection.prepareStatement(sql)) {
-            
+                "insert into [dbo].[Wallets] (UserName, Balance) Values (?,0.00);\n";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {  
             ps.setString(1, user.getUserName());
             ps.setString(2, user.getFullName());
-            ps.setString(3, user.getPassword());
-            ps.setInt(4, user.getRoleID());
+            ps.setString(3, user.getPassWord());
+            ps.setInt(4, user.getRoleId());
             ps.setString(5, user.getImage());
             ps.setString(6, user.getEmail());
-            ps.setDate(7, (Date) user.getBirthDay());
+            ps.setDate(7,  convertStringToDate(user.getBirthDay()));
             ps.setString(8, user.getAddress());
-            ps.setString(9, user.getPhone());
+            ps.setString(9, user.getPhoneNumber());
             ps.setString(10, user.getUserName());
             ps.executeUpdate();
         } catch (SQLException ex) {
@@ -59,22 +62,22 @@ public class UserDAO extends DBContext {
         }
     }
 
-    public List<Users> searchUsers(String keyword) {
-        String sql = "SELECT * FROM [ASSGINMENT_PRJ301].[dbo].[Users] WHERE FullName like ?";
-        List<Users> list = new ArrayList<>();
+    public List<User> searchUsers(String keyword) {
+        String sql = "SELECT * FROM [dbo].[Users] WHERE FullName like ?";
+        List<User> list = new ArrayList<>();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, "%" + keyword + "%");
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                list.add(new Users(rs.getString("userName"), rs.getString("fullName"),
+                list.add(new User(rs.getString("userName"), rs.getString("fullName"),
                         rs.getString("password"), rs.getInt("roleID"), rs.getString("image"),
-                        rs.getString("email"), rs.getDate("birthDay"), rs.getString("address"),
+                        rs.getString("email"), rs.getString("birthDay"), rs.getString("address"),
                         rs.getString("phone"), rs.getBoolean("status")));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -100,14 +103,28 @@ public class UserDAO extends DBContext {
                 ps.executeUpdate();
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public static void main(String[] args) {
-        UserDAO u =new UserDAO();
-        Date d = new Date(2005, 3, 6);
-        u.addUsers(new Users("test", "thu lan 2", "123123", 0, "adabndbas", "asd@gmail.com",d , "123123", "123", true));
+    public static Date convertStringToDate(String dateStr) {
+        try {
+            // Định dạng phù hợp với chuỗi "24/11/2006"
+            SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date parsedDate = format.parse(dateStr);
+            
+            // Chuyển đổi sang java.sql.Date để sử dụng với database
+            return new java.sql.Date(parsedDate.getTime());
+        } catch (ParseException e) {
+            System.out.println("Lỗi chuyển đổi ngày: " + e.getMessage());
+            return null; // Hoặc ném exception tùy theo cách xử lý
+        }
     }
+    
+//    public static void main(String[] args) {
+//        UserDAO u =new UserDAO();
+//        u.addUsers(new User("nhathe186939", "nguyen nhat", "123", 0, "null", "nhatnlhe186939@gmail.com", "24/11/2006", "Lao Cai", "0369880798", true));
+//        
+//    }
 
 }

@@ -79,7 +79,6 @@ public class AddCourses extends HttpServlet {
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         int price = Integer.parseInt(request.getParameter("price"));
-        int duration = Integer.parseInt(request.getParameter("duration"));
         String thumbnail = request.getParameter("thumbnail");
         int categoryID = Integer.parseInt(request.getParameter("categoryID"));
         String createdDate = request.getParameter("createdDate");
@@ -91,7 +90,7 @@ public class AddCourses extends HttpServlet {
 
         Courses courses = d.getCourseByTitle(title);
         if (courses == null) {
-            Courses newCourses = new Courses(32, title, description, price, duration, thumbnail, categoryID, createdDate,status);
+            Courses newCourses = new Courses(32, title, description, price,  thumbnail, categoryID, createdDate,status);
             d.insertCourse(newCourses);
             response.sendRedirect("listcourse");
         } else {

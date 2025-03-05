@@ -108,7 +108,7 @@
                                     <td>${c.fullName}</td>
                                     <td>
                                         <c:choose>
-                                            <c:when test="${c.roleID == 2   }">
+                                            <c:when test="${c.roleId == 2   }">
                                                 <p>Admin</p>
                                             </c:when>
                                             <c:otherwise>

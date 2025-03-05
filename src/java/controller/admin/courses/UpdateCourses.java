@@ -16,7 +16,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Category;
-import model.CourseVideos;
 import model.Courses;
 
 /**
@@ -59,7 +58,7 @@ public class UpdateCourses extends HttpServlet {
         Courses c = coDAO.getCourseByCourseID(courseID);
 
         CourseVideosDAO cv = new CourseVideosDAO();
-        List<CourseVideos> listCourseVideos = cv.getCourseVideosByCourseID(courseID);
+        List<Courses> listCourseVideos ;
 
         //Category
         CategoryDAO caDAO = new CategoryDAO();
@@ -84,34 +83,34 @@ public class UpdateCourses extends HttpServlet {
         //-----------//
         
         
-        //paging
-        int pageSize = 10;
-        int totalCourseVideos = listCourseVideos.size();
-        int totalPages = (int) Math.ceil((double) totalCourseVideos / pageSize);
-
-        String pageStr = request.getParameter("page");
-        int currentPage = (pageStr != null) ? Integer.parseInt(pageStr) : 1;
-
-        if (currentPage < 1) {
-            currentPage = 1;
-        }
-        if (currentPage > totalPages) {
-            currentPage = totalPages;
-        }
-
-        if (totalCourseVideos > 0) {
-            int start = (currentPage - 1) * pageSize;
-            int end = Math.min(start + pageSize, totalCourseVideos);
-            List<CourseVideos> paginatedCourseVideos = listCourseVideos.subList(start, end);
-            request.setAttribute("listCourseVideos", paginatedCourseVideos);
-        }
-        int beforePage = Math.max(1, currentPage - 2);
-        int afterPage = Math.min(totalPages, currentPage + 2);
-        request.setAttribute("beforePage", beforePage);
-        request.setAttribute("currentPage", currentPage);
-        request.setAttribute("afterPage", afterPage);
-        request.setAttribute("totalPages", totalPages);
-        //------------//
+//        //paging
+//        int pageSize = 10;
+//        int totalCourseVideos = listCourseVideos.size();
+//        int totalPages = (int) Math.ceil((double) totalCourseVideos / pageSize);
+//
+//        String pageStr = request.getParameter("page");
+//        int currentPage = (pageStr != null) ? Integer.parseInt(pageStr) : 1;
+//
+//        if (currentPage < 1) {
+//            currentPage = 1;
+//        }
+//        if (currentPage > totalPages) {
+//            currentPage = totalPages;
+//        }
+//
+//        if (totalCourseVideos > 0) {
+//            int start = (currentPage - 1) * pageSize;
+//            int end = Math.min(start + pageSize, totalCourseVideos);
+//            List<Courses> paginatedCourseVideos = listCourseVideos.subList(start, end);
+//            request.setAttribute("listCourseVideos", paginatedCourseVideos);
+//        }
+//        int beforePage = Math.max(1, currentPage - 2);
+//        int afterPage = Math.min(totalPages, currentPage + 2);
+//        request.setAttribute("beforePage", beforePage);
+//        request.setAttribute("currentPage", currentPage);
+//        request.setAttribute("afterPage", afterPage);
+//        request.setAttribute("totalPages", totalPages);
+//        //------------//
         
         request.setAttribute("CourseUpdate", c);
         request.getRequestDispatcher("views/admin/courses/updatecourses.jsp").forward(request, response);
@@ -136,7 +135,7 @@ public class UpdateCourses extends HttpServlet {
         String thumbnail = request.getParameter("thumbnail");
         int categoryID = Integer.parseInt(request.getParameter("categoryID"));
         boolean status = Boolean.parseBoolean(request.getParameter("status"));
-        Courses update = new Courses(courseID, title, description, price, duration, thumbnail, categoryID, title, status);
+        Courses update = new Courses(courseID, title, description, price, thumbnail, categoryID, title, status);
 
         //update-course
         CourseDAO coDAO = new CourseDAO();

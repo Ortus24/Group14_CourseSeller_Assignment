@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 import model.Courses;
-import model.Users;
+import model.User;
 
 /**
  *
@@ -62,7 +62,7 @@ public class ListUsers extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();
-        List<Users> listUsers = userDAO.getUsers();
+        List<User> listUsers = userDAO.getUsers();
 
         //paging
         int pageSize = 7;
@@ -82,7 +82,7 @@ public class ListUsers extends HttpServlet {
         int start = (currentPage - 1) * pageSize;
         int end = Math.min(start + pageSize, totalUsers);
 
-        List<Users> paginatedUsers = null;
+        List<User> paginatedUsers = null;
         if (totalUsers > 0) {
             paginatedUsers = listUsers.subList(start, end);
         }
@@ -116,7 +116,7 @@ public class ListUsers extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         UserDAO userDAO = new UserDAO();
-        List<Users> listUsers;
+        List<User> listUsers;
         String searchQuery = request.getParameter("searchQuery");
 
         if (searchQuery != null && !searchQuery.trim().isEmpty()) {
@@ -141,7 +141,7 @@ public class ListUsers extends HttpServlet {
 
         int start = (currentPage - 1) * pageSize;
         int end = Math.min(start + pageSize, totalUsers);
-        List<Users> paginatedUsers = null;
+        List<User> paginatedUsers = null;
         if (totalUsers > 0) {
             paginatedUsers = listUsers.subList(start, end);
         }

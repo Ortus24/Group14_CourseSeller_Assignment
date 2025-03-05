@@ -53,9 +53,6 @@
                 <label for="fee">Price</label>
                 <input type="number" id="price" name="price" required>
 
-                <label for="instructor">Duration</label>
-                <input type="number" id="duration" name="duration" required>
-
                 <label for="instructor">Thumbnail</label>
                 <input type="text" id="thumbnail" name="thumbnail" required>
 
