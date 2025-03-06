@@ -16,6 +16,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Cart;
 import model.Courses;
+import model.Item;
 
 
 /**
@@ -89,9 +90,16 @@ public class AddToCartServlet extends HttpServlet {
         Courses course = new CourseDAO().getCourseById(courseId);
         HttpSession session = request.getSession();
         Cart cart = (Cart) session.getAttribute("cart");
-        if (cart == null) cart = new Cart();
+        if (cart == null) {
+            cart = new Cart();
+        }
+        
+        Item item = new Item();
+        item.setCourses(course);
+        item.setQuantity(quantity);
+        item.setPrice(course.getPrice());
 
-        cart.addItem(course, quantity);
+        cart.addItem(item);
         session.setAttribute("cart", cart);
 
         // Cập nhật số lượng sản phẩm

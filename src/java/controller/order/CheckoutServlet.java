@@ -22,6 +22,7 @@ import model.Cart;
 import model.Order;
 import model.User;
 import java.sql.*;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -92,8 +93,10 @@ public class CheckoutServlet extends HttpServlet {
             OrderDAO orderDAO = new OrderDAO();
             Order order = new Order();
             order.setUserName(user.getUserName());
-            order.setOrderDate(new Date());
-            order.setTotalAmount(cart.getTotalPrice());
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            String currentDate = dateFormat.format(new Date());
+            order.setOrderDate(currentDate);
+            order.setTotalAmount(cart.getTotalMoney());
             order.setStatus(true); // Ví dụ: đã thanh toán
             
             int orderId = orderDAO.insertOrder(order);

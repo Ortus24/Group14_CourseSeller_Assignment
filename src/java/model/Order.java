@@ -1,39 +1,29 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import java.util.Date;
-
-/**
- *
- * @author TRAN ANH HAI
- */
 public class Order {
-    private int orderID;
-    private String userName;
-    private Date orderDate;
-    private double totalAmount;
-    private boolean status;
+   private int orderId;
+   private String userName;
+   private String orderDate;
+   private double totalAmount;
+   private boolean status;// đổi boolean
 
     public Order() {
     }
 
-    public Order(int orderID, String userName, Date orderDate, double totalAmount, boolean status) {
-        this.orderID = orderID;
+    public Order(int orderId, String userName, String orderDate, double totalAmount, boolean status) {
+        this.orderId = orderId;
         this.userName = userName;
         this.orderDate = orderDate;
         this.totalAmount = totalAmount;
         this.status = status;
     }
 
-    public int getOrderID() {
-        return orderID;
+    public int getOrderId() {
+        return orderId;
     }
 
-    public void setOrderID(int orderID) {
-        this.orderID = orderID;
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
     }
 
     public String getUserName() {
@@ -44,11 +34,11 @@ public class Order {
         this.userName = userName;
     }
 
-    public Date getOrderDate() {
+    public String getOrderDate() {
         return orderDate;
     }
 
-    public void setOrderDate(Date orderDate) {
+    public void setOrderDate(String orderDate) {
         this.orderDate = orderDate;
     }
 
@@ -67,5 +57,7 @@ public class Order {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
+   
+   
 }

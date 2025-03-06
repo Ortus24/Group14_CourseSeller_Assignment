@@ -136,7 +136,7 @@
                                 <td>${c.courseID}</td>
                                 <td>${c.title}</td>
                                 <td>${c.description}</td>
-                                <td>${c.price}.000VNĐ</td>
+                                <td>${c.price}VNĐ</td>
                                 <td>${c.createdDate}</td>
                                 <td class="status">Đang mở</td>
                                 <td>

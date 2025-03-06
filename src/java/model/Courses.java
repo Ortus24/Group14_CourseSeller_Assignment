@@ -4,8 +4,6 @@
  */
 package model;
 
-import java.util.Date;
-
 /**
  *
  * @author Nhat
@@ -14,23 +12,22 @@ public class Courses {
     private int courseID;
     private String title;
     private String description;
-    private int price;
-    private int duration;
+    private double price;
     private String thumbnail;
-    private int categoryID;
+    private int categoryID;// Để int
     private String createdDate;
-    private boolean status;
+    private boolean status; //đổi boolean
+    
+//    dang do minh duc
 
     public Courses() {
-        
-    }    
+    }
 
-    public Courses(int courseID, String title, String description, int price, int duration, String thumbnail, int categoryID, String createdDate) {
+    public Courses(int courseID, String title, String description, double price, String thumbnail, int categoryID, String createdDate, boolean status) {
         this.courseID = courseID;
         this.title = title;
         this.description = description;
         this.price = price;
-        this.duration = duration;
         this.thumbnail = thumbnail;
         this.categoryID = categoryID;
         this.createdDate = createdDate;
@@ -61,20 +58,12 @@ public class Courses {
         this.description = description;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
     }
 
     public String getThumbnail() {
@@ -108,7 +97,6 @@ public class Courses {
     public void setStatus(boolean status) {
         this.status = status;
     }
-
-    
+     
     
 }

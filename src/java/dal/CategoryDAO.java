@@ -30,11 +30,11 @@ public class CategoryDAO extends DBContext {
                 Courses c = new Courses(rs.getInt("courseID"), 
                                         rs.getString("title"), 
                                         rs.getString("description"), 
-                                        rs.getInt("price"), 
-                                        rs.getInt("duration"), 
+                                        rs.getDouble("price"), 
                                         rs.getString("thumbnail"),
                                         rs.getInt("categoryID"),
-                                        rs.getString("createdDate"));
+                                        rs.getString("createdDate"),
+                                        rs.getBoolean("status"));
                 list.add(c);
             }
         } catch (SQLException ex) {
@@ -66,14 +66,14 @@ public class CategoryDAO extends DBContext {
     }
 
     public void insertCourse(Courses c) {
-        String sql = "INSERT INTO Courses (Title, Description, Price, Duration, Thumbnail, CategoryID, CreatedDate, Status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO Courses (Title, Description, Price, Thumbnail, CategoryID, CreatedDate, Status) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, c.getTitle());
             ps.setString(2, c.getDescription());
-            ps.setInt(3, c.getPrice());
-            ps.setInt(4, c.getDuration());
-            ps.setString(5, c.getThumbnail());
-            ps.setInt(6, c.getCategoryID());
+            ps.setDouble(3, c.getPrice());
+            ps.setString(4, c.getThumbnail());
+            ps.setInt(5, c.getCategoryID());
+            ps.setBoolean(6, c.isStatus());
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,11 +94,11 @@ public class CategoryDAO extends DBContext {
                 Courses c = new Courses(rs.getInt("courseID"), 
                                         rs.getString("title"), 
                                         rs.getString("description"), 
-                                        rs.getInt("price"), 
-                                        rs.getInt("duration"), 
+                                        rs.getInt("price"),  
                                         rs.getString("thumbnail"),
                                         rs.getInt("categoryID"),
-                                        rs.getString("createdDate"));
+                                        rs.getString("createdDate"),
+                                        rs.getBoolean("status"));
                 return c;
             }
         } catch (SQLException ex) {

@@ -12,7 +12,7 @@ public class Category {
     private int categoryID;
     private String categoryName;
     private String description;
-
+    
     public Category() {
     }
 

@@ -1,40 +1,30 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import java.util.Date;
-
-/**
- *
- * @author TRAN ANH HAI
- */
 public class User {
-    private String userName;    
-    private String fullName;    
-    private String password;   
-    private int roleID;        
-    private String image;       
-    private String email;       
-    private Date birthDay;      
-    private String address;  
-    private String phone;       
-    private boolean status;
+     private String userName;
+     private String fullName;
+     private String passWord;
+     private int roleId;
+     private String image;
+     private String email;
+     private String birthDay;
+     private String address;
+     private String phoneNumber;
+     private boolean status;
 
     public User() {
     }
 
-    public User(String userName, String fullName, String password, int roleID, String image, String email, Date birthDay, String address, String phone, boolean status) {
+    public User(String userName, String fullName, String passWord, int roleId, String image, String email, String birthDay, String address, String phoneNumber, boolean status) {
         this.userName = userName;
         this.fullName = fullName;
-        this.password = password;
-        this.roleID = roleID;
+        this.passWord = passWord;
+        this.roleId = roleId;
         this.image = image;
         this.email = email;
         this.birthDay = birthDay;
         this.address = address;
-        this.phone = phone;
+        this.phoneNumber = phoneNumber;
         this.status = status;
     }
 
@@ -54,20 +44,20 @@ public class User {
         this.fullName = fullName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 
-    public int getRoleID() {
-        return roleID;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRoleID(int roleID) {
-        this.roleID = roleID;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     public String getImage() {
@@ -86,11 +76,11 @@ public class User {
         this.email = email;
     }
 
-    public Date getBirthDay() {
+    public String getBirthDay() {
         return birthDay;
     }
 
-    public void setBirthDay(Date birthDay) {
+    public void setBirthDay(String birthDay) {
         this.birthDay = birthDay;
     }
 
@@ -102,12 +92,12 @@ public class User {
         this.address = address;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public boolean isStatus() {
@@ -117,5 +107,7 @@ public class User {
     public void setStatus(boolean status) {
         this.status = status;
     }
-    
+
+  
+     
 }

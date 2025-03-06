@@ -12,6 +12,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Cart;
 
 /**
  *
@@ -56,6 +58,14 @@ public class ViewCartServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
 //        processRequest(request, response);
+        HttpSession session = request.getSession();
+        Cart cart = (Cart) session.getAttribute("cart");
+
+        // Nếu giỏ hàng chưa tồn tại, tạo mới
+        if (cart == null) {
+            cart = new Cart();
+            session.setAttribute("cart", cart);
+        }
         request.getRequestDispatcher("views/order/cart.jsp").forward(request, response);
     } 
 

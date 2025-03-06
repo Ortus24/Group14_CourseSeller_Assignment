@@ -27,7 +27,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Thông tin đơn hàng</h5>
-                    <p class="card-text">Tổng tiền: ${cart.totalPrice}00VNĐ</p>
+                    <p class="card-text">Tổng tiền: ${cart.totalMoney}00VNĐ</p>
                     <form action="checkout" method="post">
                         <div class="mb-3">
                             <label class="form-label">Họ tên:</label>

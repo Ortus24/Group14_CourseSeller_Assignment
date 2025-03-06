@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,11 +38,15 @@
                     <tbody>
                         <c:forEach items="${cart.items}" var="item">
                             <tr>
-                                <td>${item.course.title}</td>
-                                <td>${item.unitPrice}00VNĐ</td>
-                                <td>${item.unitPrice * item.quantity}00VNĐ</td>
+                                <td>${item.courses.title}</td>
                                 <td>
-                                    <a href="removeFromCart?id=${item.course.courseID}" 
+                                    <fmt:formatNumber value="${item.price}" type="number" minFractionDigits="2" maxFractionDigits="2"/> VNĐ
+                                </td>
+                                <td>
+                                    <fmt:formatNumber value="${item.price * item.quantity}" type="number" minFractionDigits="2" maxFractionDigits="2"/> VNĐ
+                                </td>
+                                <td>
+                                    <a href="removeFromCart?id=${item.courses.courseID}" 
                                        class="btn btn-danger">Xóa</a>
                                 </td>
                             </tr>
@@ -49,7 +55,9 @@
                     <tfoot>
                         <tr>
                             <td colspan="3" class="text-end"><strong>Tổng cộng:</strong></td>
-                            <td colspan="2">${cart.totalPrice}00VNĐ</td>
+                            <td colspan="2">
+                                <fmt:formatNumber value="${cart.totalMoney}" type="number" minFractionDigits="2" maxFractionDigits="2"/> VNĐ
+                            </td>
                         </tr>
                     </tfoot>
                 </table>

@@ -22,9 +22,9 @@ public class OrderDAO extends DBContext{
             PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             // Set parameters
             ps.setString(1, order.getUserName());
-            ps.setDate(2, new java.sql.Date(order.getOrderDate().getTime())); // OrderDate là java.util.Date
+            ps.setString(2, order.getOrderDate());
             ps.setDouble(3, order.getTotalAmount());
-            ps.setBoolean(4, order.isStatus()); // Status (BIT trong SQL ~ boolean trong Java)
+            ps.setBoolean(4, order.isStatus());
             
             int affectedRows = ps.executeUpdate();
             
