@@ -120,10 +120,8 @@
                 <button type="button" class="pre" id="pre-1">< Previous step</button>
                 <button type="submit" class="btn">Add user</button>
             </div>
-            
-            
         </div>
-        
+
         <script>
             function previewAvatar(event) {
                 const reader = new FileReader();

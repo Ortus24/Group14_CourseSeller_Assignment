@@ -52,37 +52,35 @@ public class UpdateCourses extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         int courseID = Integer.parseInt(request.getParameter("courseID"));
-       
 
         CourseDAO coDAO = new CourseDAO();
         Courses c = coDAO.getCourseByCourseID(courseID);
-
-        CourseVideosDAO cv = new CourseVideosDAO();
-        List<Courses> listCourseVideos ;
+//
+//        CourseVideosDAO cv = new CourseVideosDAO();
+//        List<Courses> listCourseVideos ;
 
         //Category
         CategoryDAO caDAO = new CategoryDAO();
         List<Category> listCategory = caDAO.getCategory();
         request.setAttribute("listCourse", listCategory);
         //---------//
-        
-        
-        //return page
-        List<Courses> listCourses = coDAO.getCourses();
-        int totalPage = 0;
-        for (int i = 0; i < listCourses.size(); i++) {
-            if(listCourses.get(i).getCourseID()==courseID){
-                totalPage = i+1;
-            }
-        }
-        int returnPage = totalPage/8+1;
-        if (totalPage % 8 == 0) {
-            returnPage--;
-        }
-        request.setAttribute("returnPage", returnPage);
-        //-----------//
-        
-        
+//        
+//        
+//        //return page
+//        List<Courses> listCourses = coDAO.getCourses();
+//        int totalPage = 0;
+//        for (int i = 0; i < listCourses.size(); i++) {
+//            if(listCourses.get(i).getCourseID()==courseID){
+//                totalPage = i+1;
+//            }
+//        }
+//        int returnPage = totalPage/8+1;
+//        if (totalPage % 8 == 0) {
+//            returnPage--;
+//        }
+//        request.setAttribute("returnPage", returnPage);
+//        //-----------//
+
 //        //paging
 //        int pageSize = 10;
 //        int totalCourseVideos = listCourseVideos.size();
@@ -111,7 +109,6 @@ public class UpdateCourses extends HttpServlet {
 //        request.setAttribute("afterPage", afterPage);
 //        request.setAttribute("totalPages", totalPages);
 //        //------------//
-        
         request.setAttribute("CourseUpdate", c);
         request.getRequestDispatcher("views/admin/courses/updatecourses.jsp").forward(request, response);
     }
@@ -127,11 +124,10 @@ public class UpdateCourses extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        int courseID = Integer.parseInt(request.getParameter("courseID")); 
+        int courseID = Integer.parseInt(request.getParameter("courseID"));
         String title = request.getParameter("title");
         String description = request.getParameter("description");
         int price = (int) Double.parseDouble(request.getParameter("price"));
-        int duration = Integer.parseInt(request.getParameter("duration"));
         String thumbnail = request.getParameter("thumbnail");
         int categoryID = Integer.parseInt(request.getParameter("categoryID"));
         boolean status = Boolean.parseBoolean(request.getParameter("status"));
@@ -141,23 +137,21 @@ public class UpdateCourses extends HttpServlet {
         CourseDAO coDAO = new CourseDAO();
         coDAO.updateCourse(update);
         //----------------//
-        
+
         List<Courses> listCourses = coDAO.getCourses();
-        
+
         int totalPage = 0;
         for (int i = 0; i < listCourses.size(); i++) {
-            if(listCourses.get(i).getCourseID()==courseID){
-                totalPage = i+1;
+            if (listCourses.get(i).getCourseID() == courseID) {
+                totalPage = i + 1;
             }
         }
-        int returnPage = totalPage/8+1;
-        if (totalPage % 8 == 0  ) {
+        int returnPage = totalPage / 8 + 1;
+        if (totalPage % 8 == 0) {
             returnPage--;
         }
-        
-       
-        
-        response.sendRedirect("listcourse?page="+returnPage);
+
+        response.sendRedirect("listcourse?page=" + returnPage);
 
     }
 

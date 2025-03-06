@@ -236,7 +236,7 @@ th {
     text-align: right;
     margin-right: 100px;
     margin-top: 20px;
-    
+
 }
 
 .paging button,input{
@@ -323,6 +323,7 @@ th {
 
 .search-users input{
     background: white;
+    color: black;
 }
 
 .content-left{

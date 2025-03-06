@@ -128,9 +128,6 @@
                     <label for="fee">Price</label>
                     <input type="number" id="price" name="price" value="${course.price}" required>
 
-                    <label for="instructor">Duration</label>
-                    <input type="number" id="duration" name="duration" value="${course.duration}" required>
-
                     <label for="instructor">Thumbnail</label>
                     <input type="text" id="thumbnail" name="thumbnail" value="${course.thumbnail}" required>
 

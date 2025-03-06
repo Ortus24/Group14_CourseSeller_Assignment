@@ -85,7 +85,8 @@ public class CourseDAO extends DBContext {
     }
 
     public void deleteCourse(int id) {
-        String sql = "DELETE FROM CourseVideos WHERE CourseID = ?;\n"
+        String sql = "DELETE FROM Lessons WHERE SectionID IN (SELECT SectionID FROM Sections WHERE CourseID = ?);\n"
+                + "DELETE FROM Sections WHERE CourseID = ?;\n"
                 + "DELETE FROM OrderDetails WHERE CourseID = ?;\n"
                 + "DELETE FROM Reviews WHERE CourseID = ?;\n"
                 + "DELETE FROM Courses WHERE CourseID = ?;";
@@ -95,6 +96,7 @@ public class CourseDAO extends DBContext {
             ps.setInt(2, id);
             ps.setInt(3, id);
             ps.setInt(4, id);
+            ps.setInt(5, id);
             ps.executeUpdate();
         } catch (SQLException ex) {
             Logger.getLogger(CourseDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -111,7 +113,7 @@ public class CourseDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"),  rs.getString("thumbnail"),
+                        rs.getInt("price"), rs.getString("thumbnail"),
                         rs.getInt("categoryID"), rs.getString("createdDate"), rs.getBoolean("status"));
                 return c;
             }
@@ -129,7 +131,7 @@ public class CourseDAO extends DBContext {
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 Courses c = new Courses(rs.getInt("courseID"), rs.getString("title"), rs.getString("description"),
-                        rs.getInt("price"),  rs.getString("thumbnail"),
+                        rs.getInt("price"), rs.getString("thumbnail"),
                         rs.getInt("categoryID"), rs.getString("createdDate"), rs.getBoolean("status"));
                 return c;
             }
@@ -141,6 +143,6 @@ public class CourseDAO extends DBContext {
 
 //    public static void main(String[] args) {
 //        CourseDAO d = new CourseDAO();
-//        System.out.println(d.getCourses().get(35).getTitle());
+//        d.deleteCourse(37);
 //    }
 }

@@ -37,8 +37,8 @@ public class CategoryDAO extends DBContext {
         return list;
     }
     
-    public static void main(String[] args) {
-        CategoryDAO d = new CategoryDAO();
-        System.out.println(d.getCategory().get(0).getCategoryName());
-    }
+//    public static void main(String[] args) {
+//        CategoryDAO d = new CategoryDAO();
+//        System.out.println(d.getCategory().get(0).getCategoryName());
+//    }
 }
